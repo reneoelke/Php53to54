@@ -12,7 +12,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
+class PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
 	/**
      * A list of deprecated functions with their alternatives.
@@ -37,5 +37,5 @@ class PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff extends Generic_Sniffs_PH
      *
      * @var bool
      */
-    public $error = false;
+    public $error = true;
 }
