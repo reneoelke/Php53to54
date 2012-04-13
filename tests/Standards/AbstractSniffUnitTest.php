@@ -1,6 +1,6 @@
 <?php
 
-require_once 'PHP/CodeSniffer.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 
 /**
  * CLASS PHP53to54_Tests_AbstractSniffUnitTest
@@ -23,12 +23,11 @@ abstract class PHP53to54_Tests_AbstractSniffUnitTest extends PHPUnit_Framework_T
 	{
 		// autodetect standard and sniff if not passed
 		if ($standard == null) {
-			$standard = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..';
+			$standard = realpath(__DIR__.'/../../Standards/PHP53to54');
 		}
 		if ($sniff == null) {
-			$sniff = str_replace('_Test_', '_Sniff_', substr(get_class($this), 0, -8));
+			$sniff = str_replace('_Tests_', '_Sniffs_', substr(get_class($this), 0, -8)).'Sniff';
 		}
-		
 		try {
 			$this->fixture->process(array(), $standard, array($sniff));
 			$this->fixture->setIgnorePatterns(array());
@@ -55,12 +54,12 @@ abstract class PHP53to54_Tests_AbstractSniffUnitTest extends PHPUnit_Framework_T
 		foreach($actualErrors as $line => $lineErrors) {
 			$actualErrorCount = count($lineErrors);
 			if (!isset($expectedErrorsCountPerLine[$line])) {
-				$messages[] = sprintf('[LINE %d] Expected 0 %s but found %d', $line, $severity, $actualErrorCount);
+				$messages[] = sprintf('[LINE %d] Expected 0 %ss but found %d', $line, $severity, $actualErrorCount);
 				break;
 			}
 			$expectedErrorCount = $expectedErrorsCountPerLine[$line];
 			if ($expectedErrorCount !== $actualErrorCount) {
-				$messages[] = sprintf('[LINE %d] Expected %d %s but found %d', $line, $expectedErrorCount, $severity, $actualErrorCount);
+				$messages[] = sprintf('[LINE %d] Expected %d %ss but found %d', $line, $expectedErrorCount, $severity, $actualErrorCount);
 				break;
 			}
 		}

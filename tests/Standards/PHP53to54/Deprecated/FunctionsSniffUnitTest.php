@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__.'/../AbstractSniffUnitTest.php';
-
 /**
  * Unit test class for Deprecated/Functions sniff.
  *
@@ -13,10 +11,11 @@ require_once __DIR__.'/../AbstractSniffUnitTest.php';
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Tests_Deprecated_FunctionsUnitTest extends PHP53to54_Tests_AbstractSniffUnitTest
+class PHP53to54_Tests_Deprecated_FunctionsSniffUnitTest extends PHP53to54_Tests_AbstractSniffUnitTest
 {
 	public function testProcess()
 	{
+		require_once __DIR__.'/../../../../Standards/PHP53to54/Sniffs/Deprecated/FunctionsSniff.php';
 		$this->processFile(__DIR__.'/FunctionsSniffUnitTest.inc');
 	}
 	
