@@ -39,8 +39,8 @@ abstract class PHP53to54_Tests_AbstractSniffUnitTest extends PHPUnit_Framework_T
 		$files = $this->fixture->getFiles();
 		$failureMessages = array();
 		foreach($files as $file) {
-			$failureMessages = array_merge($failureMessages, $this->generateFailureMessage('warning', $this->getWarningList(), $file->getWarnings()));
-			$failureMessages = array_merge($failureMessages, $this->generateFailureMessage('error', $this->getErrorList(), $file->getErrors()));
+			$failureMessages = array_merge($failureMessages, $this->generateFailureMessage($file, 'warning', $this->getWarningList(), $file->getWarnings()));
+			$failureMessages = array_merge($failureMessages, $this->generateFailureMessage($file, 'error', $this->getErrorList(), $file->getErrors()));
 		}
 		if (!empty($failureMessages)) {
 			$this->fail(implode(PHP_EOL, $failureMessages));
@@ -48,18 +48,19 @@ abstract class PHP53to54_Tests_AbstractSniffUnitTest extends PHPUnit_Framework_T
 		return true;
 	}
 	
-	protected function generateFailureMessage($severity, $expectedErrorsCountPerLine, $actualErrors)
+	protected function generateFailureMessage($file, $severity, $expectedErrorsCountPerLine, $actualErrors)
 	{
 		$messages = array();
 		foreach($actualErrors as $line => $lineErrors) {
+			$filename = $file->getFilename();
 			$actualErrorCount = count($lineErrors);
 			if (!isset($expectedErrorsCountPerLine[$line])) {
-				$messages[] = sprintf('[LINE %d] Expected 0 %ss but found %d', $line, $severity, $actualErrorCount);
+				$messages[] = sprintf('%s:%d no %ss expected, but found %d', basename($filename), $line, $severity, $actualErrorCount);
 				break;
 			}
 			$expectedErrorCount = $expectedErrorsCountPerLine[$line];
 			if ($expectedErrorCount !== $actualErrorCount) {
-				$messages[] = sprintf('[LINE %d] Expected %d %ss but found %d', $line, $expectedErrorCount, $severity, $actualErrorCount);
+				$messages[] = sprintf('%s:%d Expected %d %ss but found %d', basename($filename), $line, $expectedErrorCount, $severity, $actualErrorCount);
 				break;
 			}
 		}

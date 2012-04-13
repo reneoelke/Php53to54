@@ -29,7 +29,10 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest extends PHP53to54_Te
      */
 	public function getErrorList()
 	{
-		return array();
+		return array(
+			4 => 1,
+			8 => 1,
+		);
 	}
 	
 	/**
@@ -42,17 +45,8 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest extends PHP53to54_Te
      */
 	public function getWarningList()
 	{
-        return array(
-			4 => 1,
-			5 => 1,
+		return array(
 			6 => 1,
-			7 => 1,
-			8 => 1,
-			10 => 1,
-			11 => 1,
-			12 => 1,
-			13 => 1,
-			14 => 1,
 		);
     }
 }

@@ -43,7 +43,7 @@ class PHP53to54_Tests_Deprecated_FunctionAliasesSniffUnitTest extends PHP53to54_
 	public function getWarningList()
 	{
         return array(
-			3 => 1,
+			3 => 2,
 			5 => 1,
 		);
     }
