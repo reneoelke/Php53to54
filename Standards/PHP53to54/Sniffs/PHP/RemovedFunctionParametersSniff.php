@@ -65,7 +65,7 @@ class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff implements PHP_CodeSni
 		return true;
 	}
 	
-	public function getFunctionParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+	public function getFunctionCallParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
 	{
 		$tokens = $phpcsFile->getTokens();
 		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
@@ -101,7 +101,7 @@ class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff implements PHP_CodeSni
 			return;
 		}
 
-		$parameterTokens = $this->getFunctionParameters($phpcsFile, $stackPtr);
+		$parameterTokens = $this->getFunctionCallParameters($phpcsFile, $stackPtr);
 		$parameterRegExps = $this->forbiddenFunctionsParameters[$functionName];
 		foreach($parameterTokens as $index => $parameterToken) {
 			switch($parameterToken['code']) {

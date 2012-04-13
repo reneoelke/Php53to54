@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CLASS PHP53to54_Sniffs_Deprecated_FunctionsSniff
  * 
@@ -11,7 +12,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
 {
 	/**
      * A list of deprecated functions with their alternatives.
@@ -23,7 +24,7 @@ class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_Depr
      */
 	protected $forbiddenFunctions = array(
 		'define_syslog_variables' => null,
-		'import_request_variables' => 'consider using extract()',
+		'import_request_variables' => 'consider using extract',
 		'session_is_registered' => 'use $_SESSION',
 		'session_register' => 'use $_SESSION',
 		'session_unregister' => 'use $_SESSION',
