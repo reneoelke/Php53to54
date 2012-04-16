@@ -1,9 +1,23 @@
 <?php
 
 /**
- * CLASS PHP53to54_Sniffs_Deprecated_FunctionsSniff
+ * Removed Function Aliases Test
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
+/**
+ * Deprecated Function Call
  * 
- * This sniff searches for functions declared as deprecated (E_DEPRECATED error level).
+ * Checks PHP source files for calls to functions that have been removed in
+ * PHP 5.4.
  *
  * @category PHP
  * @package	PHP_CodeSniffer

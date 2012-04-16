@@ -1,9 +1,22 @@
 <?php
 
 /**
- * CLASS PHP53to54_Sniffs_PHP_ForbiddenFunctionNamesSniff
+ * Forbidden Function Names
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
+/**
+ * Forbidden Function Names
  * 
- * Search for invalid constant names.
+ * Search for definitions of functions that have been added in PHP 5.4.
  *
  * @category PHP
  * @package	PHP_CodeSniffer
@@ -30,7 +43,7 @@ class PHP53to54_Sniffs_PHP_ForbiddenFunctionNamesSniff extends Generic_Sniffs_PH
 		'trait_exists' => null,
 		'header_register_callback' => null,
 
-		//SPL
+		// SPL
 		'class_uses' => null,
 
 		// Session

@@ -1,7 +1,20 @@
 <?php
 
 /**
- * Unit test class for Deprecated/FunctionAliases sniff.
+ * Unit Test for Deprecated/Functions Sniff
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
+/**
+ * Unit Test for Deprecated/Functions Sniff
  *
  * @group PHP53to54
  * @category PHP
@@ -11,14 +24,8 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Tests_Deprecated_FunctionAliasesSniffUnitTest extends PHP53to54_Tests_AbstractSniffUnitTest
+class PHP53to54_Tests_Deprecated_FunctionsSniffUnitTest extends AbstractSniffUnitTest
 {
-	public function testProcess()
-	{
-		require_once __DIR__.'/../../../../Standards/PHP53to54/Sniffs/Deprecated/FunctionAliasesSniff.php';
-		$this->processFile(__DIR__.'/FunctionAliasesSniffUnitTest.inc');
-	}
-	
 	/**
      * Returns the lines where errors should occur.
      *

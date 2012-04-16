@@ -1,11 +1,23 @@
 <?php
 
-require_once __DIR__.'/RemovedFunctionParametersSniff.php';
+/**
+ * Forbidden Constant Names
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
 
 /**
- * CLASS PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff
+ * Forbidden Constant Names
  * 
- * Search for invalid constant names.
+ * Search for constant definitions that define constants that have been added in 
+ * PHP 5.4.
  *
  * @category PHP
  * @package	PHP_CodeSniffer

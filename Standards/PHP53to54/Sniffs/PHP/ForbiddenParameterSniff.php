@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * Forbidden Function Parameter
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
 require_once __DIR__.'/RemovedFunctionParametersSniff.php';
 
 /**
- * CLASS PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff
+ * Forbidden Function Parameter
  * 
- * Search for invalid function / closure parameters.
+ * Search for function definitions that use global variable as their parameters.
  *
  * @category PHP
  * @package	PHP_CodeSniffer

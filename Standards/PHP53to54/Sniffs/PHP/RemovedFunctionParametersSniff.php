@@ -1,10 +1,23 @@
 <?php
 
 /**
- * CLASS PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff
- * 
- * This sniff searches for functions that are called with deprecated parameters.
+ * Removed Function Parameters
  *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
+/**
+ * Removed Function Parameters
+ * 
+ * Search for function calls of functions that have invalid parameters.
+ * 
  * @category PHP
  * @package	PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>

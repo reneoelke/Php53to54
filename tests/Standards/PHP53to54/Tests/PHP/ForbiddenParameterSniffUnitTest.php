@@ -1,7 +1,20 @@
 <?php
 
 /**
- * Unit test class for PHP/RemovedFunctionParameters sniff.
+ * Unit test class for PHP/ForbiddenParameter sniff.
+ *
+ * PHP version 5
+ *
+ * @category  PHP
+ * @package	PHP_CodeSniffer
+ * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @copyright 2012 foobugs oelke & eichner GbR
+ * @license BSD Licence
+ * @link https://github.com/foobugs/jagger
+ */
+
+/**
+ * Unit test class for PHP/ForbiddenParameter sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -11,14 +24,8 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest extends PHP53to54_Tests_AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_ForbiddenParameterSniffUnitTest extends AbstractSniffUnitTest
 {
-	public function testProcess()
-	{
-		require_once __DIR__.'/../../../../Standards/PHP53to54/Sniffs/PHP/RemovedFunctionParametersSniff.php';
-		$this->processFile(__DIR__.'/RemovedFunctionParametersSniffUnitTest.inc');
-	}
-	
 	/**
      * Returns the lines where errors should occur.
      *
@@ -29,10 +36,7 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest extends PHP53to54_Te
      */
 	public function getErrorList()
 	{
-		return array(
-			4 => 1,
-			8 => 1,
-		);
+		return array();
 	}
 	
 	/**
@@ -45,8 +49,12 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest extends PHP53to54_Te
      */
 	public function getWarningList()
 	{
-		return array(
-			6 => 1,
+        return array(
+			3 => 3,
+			5 => 1,
+			8 => 1,
+			13 => 2,
+			22 => 1,
 		);
     }
 }
