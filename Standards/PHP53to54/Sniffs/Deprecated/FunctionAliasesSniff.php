@@ -23,6 +23,7 @@
  * @package	PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
+ * 
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
