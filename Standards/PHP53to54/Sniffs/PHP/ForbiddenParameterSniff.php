@@ -60,6 +60,9 @@ class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff extends PHP53to54_Sniffs_PHP_
 	{
 		$tokens = $phpcsFile->getTokens();
 		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
+		if (!isset($tokens[$openBracket]['parenthesis_closer'])) {
+			return false;
+		}
 		$closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 		
 		$parameters = array();
@@ -86,6 +89,9 @@ class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff extends PHP53to54_Sniffs_PHP_
 		$functionNamePtr = $phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false);
 		
 		$parameterTokens = $this->getFunctionDefinitionParameters($phpcsFile, $functionNamePtr);
+		if (!$parameterTokens) {
+			return false;
+		}
 		foreach($parameterTokens as $index => $parameterToken) {
 			$variableName = $parameterToken['content'];
 			if (!in_array($variableName, $this->forbiddenParameterNames)) {
