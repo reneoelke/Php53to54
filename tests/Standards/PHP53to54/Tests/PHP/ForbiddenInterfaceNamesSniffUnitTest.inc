@@ -9,3 +9,10 @@ class JsonSerializable {
 interface JsonSerializable {
 	
 }
+
+namespace app {
+	
+	interface JsonSerializable {
+		
+	}
+}

@@ -135,8 +135,17 @@ class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffe
 	{
 		return array(
 			T_STRING,
+			T_NAMESPACE,
 		);
 	}
+	
+	/**
+	 * Cache for storing last namespace names found in files while 
+	 * parsing them.
+	 * 
+	 * @var array(string = string)
+	 */
+	protected $lastNamespacesPerFile = null;
 	
 	/**
      * Processes this test, when one of its tokens is encountered.
@@ -149,25 +158,67 @@ class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffe
 	public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
 	{
 		$tokens = $phpcsFile->getTokens();
-		if (strtolower($tokens[$stackPtr]['content']) !== 'define') {
-			return;
+		$token = $tokens[$stackPtr];
+		
+		$result = true;
+		switch($token['code']) {
+			case T_NAMESPACE:
+				$result = $this->processNamespace($phpcsFile, $stackPtr);
+				break;
+			default:
+			case T_STRING:
+				if ($this->getLastNamespaceForFile($phpcsFile)) {
+					return false;
+				}
+				if (strtolower($token['content']) !== 'define') {
+					break;
+				}
+				$result = $this->processConstantDefinition($phpcsFile, $stackPtr);
+				break;
 		}
+		return $result;
+	}
+	
+	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
+	protected function getLastNamespaceForFile(PHP_CodeSniffer_File $phpcsFile)
+	{
+		$filename = $phpcsFile->getFilename();
+		if (empty($this->lastNamespacesPerFile[$filename])) {
+			return false;
+		}
+		return $this->lastNamespacesPerFile[$filename];
+	}
+	
+	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
+	protected function processNamespace(PHP_CodeSniffer_File$phpcsFile, $stackPtr)
+	{
+		$tokens = $phpcsFile->getTokens();
+		$token = $tokens[$stackPtr];
+		$namspaceToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
+		$this->lastNamespacesPerFile[$phpcsFile->getFilename()] = strtolower($namspaceToken['content']);
+		return true;
+	}
+	
+	protected function processConstantDefinition(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+	{
+		$tokens = $phpcsFile->getTokens();
+		
 		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
 		if ($openBracket == false) {
-			return;
+			return false;
 		}
 		$firstParameterPtr = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($openBracket + 1), null, true);
 		if ($firstParameterPtr == false) {
-			return;
+			return false;
 		}
 		
 		// define($var, 'foobar') raises warning
 		if ($tokens[$firstParameterPtr]['code'] == T_VARIABLE) {
 			$phpcsFile->addWarning(sprintf('constant definition with variable could be forbidden'), $firstParameterPtr);
-			return;
+			return false;
 		}
 		if ($tokens[$firstParameterPtr]['code'] != T_CONSTANT_ENCAPSED_STRING) {
-			return;
+			return false;
 		}
 		
 		// define('string', 'foobar') check for invalid string
@@ -175,6 +226,6 @@ class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffe
 		if (in_array($firstParameterValue, $this->forbiddenConstantNames)) {
 			$phpcsFile->addError(sprintf('%s is an invalid name for a constant', $firstParameterValue), $firstParameterPtr);
 		}
-		return;
+		return false;
 	}
 }

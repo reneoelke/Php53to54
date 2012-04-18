@@ -13,8 +13,6 @@
  * @link https://github.com/foobugs/jagger
  */
 
-require_once __DIR__.'/RemovedFunctionParametersSniff.php';
-
 /**
  * Forbidden Interface Names Sniff
  * 
@@ -44,8 +42,17 @@ class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff implements PHP_CodeSniff
 	{
 		return array(
 			T_INTERFACE,
+			T_NAMESPACE,
 		);
 	}
+	
+	/**
+	 * Cache for storing last namespace names found in files while 
+	 * parsing them.
+	 * 
+	 * @var array(string = string)
+	 */
+	protected $lastNamespacesPerFile = null;
 	
 	/**
      * Processes this test, when one of its tokens is encountered.
@@ -58,6 +65,48 @@ class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff implements PHP_CodeSniff
 	public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
 	{
 		$tokens = $phpcsFile->getTokens();
+		$token = $tokens[$stackPtr];
+		
+		$result = true;
+		switch($token['code']) {
+			case T_NAMESPACE:
+				$result = $this->processNamespace($phpcsFile, $stackPtr);
+				break;
+			case T_INTERFACE:
+			default:
+				if ($this->getLastNamespaceForFile($phpcsFile)) {
+					return false;
+				}
+				$result = $this->processInterface($phpcsFile, $stackPtr);
+				break;
+		}
+		return $result;
+	}
+	
+	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
+	protected function getLastNamespaceForFile(PHP_CodeSniffer_File $phpcsFile)
+	{
+		$filename = $phpcsFile->getFilename();
+		if (empty($this->lastNamespacesPerFile[$filename])) {
+			return false;
+		}
+		return $this->lastNamespacesPerFile[$filename];
+	}
+	
+	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
+	protected function processNamespace(PHP_CodeSniffer_File$phpcsFile, $stackPtr)
+	{
+		$tokens = $phpcsFile->getTokens();
+		$token = $tokens[$stackPtr];
+		$namspaceToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
+		$this->lastNamespacesPerFile[$phpcsFile->getFilename()] = strtolower($namspaceToken['content']);
+		return true;
+	}
+	
+	protected function processInterface(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+	{
+		$tokens = $phpcsFile->getTokens();
+		
 		$interfaceNameToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
 		$interfaceName = $interfaceNameToken['content'];
 		$forbiddenInterfaceNames = array_map('strtolower', $this->forbiddenInterfacenames);
