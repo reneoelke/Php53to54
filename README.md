@@ -2,7 +2,7 @@
 
 A set of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that can check if a project is compatible with PHP 5.4.
 
-This project is currently in progress and not usable!
+THIS PROJECT IS IN DEVELOPMENT (PRE-ALPHA) AND SHOULD NOT BE USED UNLESS YOU KNOW WHAT YOU’RE DOING!
 
 # Installation
 
