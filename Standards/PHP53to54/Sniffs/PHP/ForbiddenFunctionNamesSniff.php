@@ -28,6 +28,15 @@
 class PHP53to54_Sniffs_PHP_ForbiddenFunctionNamesSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
 	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
+	/**
 	 * A list of forbidden function names
 	 * 
 	 * @var array(string => array(string, [string]))

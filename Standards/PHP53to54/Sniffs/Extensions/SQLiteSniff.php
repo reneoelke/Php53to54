@@ -28,6 +28,15 @@
  */
 class PHP53to54_Sniffs_Extensions_SQLiteSniff implements PHP_CodeSniffer_Sniff
 {
+	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
 	protected $classnames = array(
 		'SQLiteResult',
 		'SQLiteUnbuffered',

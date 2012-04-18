@@ -17,7 +17,7 @@
  * Forbidden Constant Names
  * 
  * Search for constant definitions that define constants that have been added in 
- * PHP 5.4.
+ * PHP 5.4 and would conflict with them.
  *
  * @category PHP
  * @package	PHP_CodeSniffer
@@ -28,6 +28,15 @@
  */
 class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffer_Sniff
 {
+	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
 	/**
 	 * A list of forbidden constant names.
 	 * 

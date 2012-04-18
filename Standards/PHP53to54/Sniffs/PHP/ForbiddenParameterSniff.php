@@ -30,6 +30,15 @@ require_once __DIR__.'/RemovedFunctionParametersSniff.php';
 class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
 {
 	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
+	/**
 	 * A list of removed functions with their parameters associated regular
 	 * expression that are not allowed anymore.
 	 * 

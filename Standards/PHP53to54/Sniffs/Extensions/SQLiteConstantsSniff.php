@@ -16,7 +16,8 @@
 /**
  * SQLite Constants Search
  * 
- * @todo create a generic test that searches for the usage of forbidden constants
+ * @todo create a generic test that searches for the _usage_
+ * of forbidden constants
  * 
  * Searches constants from the SQLite extension that has been removed in PHP 5.4
  * 
@@ -29,6 +30,15 @@
  */
 class PHP53to54_Sniffs_Extensions_SQLiteConstantsSniff implements PHP_CodeSniffer_Sniff
 {
+	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
 	protected $constants = array(
 		'SQLITE_ASSOC',
 		'SQLITE_BOTH',

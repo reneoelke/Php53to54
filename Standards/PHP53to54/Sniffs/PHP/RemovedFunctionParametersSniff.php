@@ -28,6 +28,15 @@
 class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff implements PHP_CodeSniffer_Sniff
 {
 	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
+	/**
 	 * A list of removed functions with their parameters associated regular
 	 * expression that are not allowed anymore.
 	 * 

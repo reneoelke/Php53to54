@@ -30,6 +30,15 @@
 class PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
 	/**
+	 * A list of tokenizers this sniff supports.
+	 *
+	 * @var array
+	 */
+	public $supportedTokenizers = array(
+		'PHP',
+	);
+	
+	/**
      * A list of deprecated functions with their alternatives.
      *
      * The value is NULL if no alternative exists. IE, the
