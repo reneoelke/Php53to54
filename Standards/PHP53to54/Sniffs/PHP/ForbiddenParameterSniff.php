@@ -13,8 +13,6 @@
  * @link https://github.com/foobugs/jagger
  */
 
-require_once __DIR__.'/RemovedFunctionParametersSniff.php';
-
 /**
  * Forbidden Function Parameter
  * 
@@ -28,7 +26,9 @@ require_once __DIR__.'/RemovedFunctionParametersSniff.php';
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
+class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff
+	extends PHP53to54_AbstractSniff
+	implements PHP_CodeSniffer_Sniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
@@ -64,25 +64,6 @@ class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff extends PHP53to54_Sniffs_PHP_
 			T_FUNCTION,
 			T_CLOSURE,
 		);
-	}
-	
-	public function getFunctionDefinitionParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-	{
-		$tokens = $phpcsFile->getTokens();
-		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-		if (!isset($tokens[$openBracket]['parenthesis_closer'])) {
-			return false;
-		}
-		$closeBracket = $tokens[$openBracket]['parenthesis_closer'];
-		
-		$parameters = array();
-		$tmpPtr = $openBracket;
-		while (($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr)) !== false) {
-			if ($tmpPtr > $closeBracket) break;
-			$parameters[] = $tokens[$tmpPtr];
-			$tmpPtr++;
-		}
-		return $parameters;
 	}
 	
 	/**

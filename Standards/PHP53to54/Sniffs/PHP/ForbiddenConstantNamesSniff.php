@@ -26,7 +26,9 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffer_Sniff
+class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff
+	extends PHP53to54_AbstractSniff
+	implements PHP_CodeSniffer_Sniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
@@ -186,26 +188,6 @@ class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff implements PHP_CodeSniffe
 				break;
 		}
 		return $result;
-	}
-	
-	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
-	protected function getLastNamespaceForFile(PHP_CodeSniffer_File $phpcsFile)
-	{
-		$filename = $phpcsFile->getFilename();
-		if (empty($this->lastNamespacesPerFile[$filename])) {
-			return false;
-		}
-		return $this->lastNamespacesPerFile[$filename];
-	}
-	
-	// @TODO Refactor this because it’s DRY with ForbiddenClassNamesSniff
-	protected function processNamespace(PHP_CodeSniffer_File$phpcsFile, $stackPtr)
-	{
-		$tokens = $phpcsFile->getTokens();
-		$token = $tokens[$stackPtr];
-		$namspaceToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
-		$this->lastNamespacesPerFile[$phpcsFile->getFilename()] = strtolower($namspaceToken['content']);
-		return true;
 	}
 	
 	protected function processConstantDefinition(PHP_CodeSniffer_File $phpcsFile, $stackPtr)

@@ -25,7 +25,9 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff implements PHP_CodeSniffer_Sniff
+class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
+	extends PHP53to54_AbstractSniff
+	implements PHP_CodeSniffer_Sniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
@@ -61,50 +63,6 @@ class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff implements PHP_CodeSni
 			T_STRING,
 		);
     }
-
-	// @TODO DRY in CallTimePassByReference
-	public function isFunction(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-	{
-		$tokens = $phpcsFile->getTokens();
-		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-		if ($tokens[$openBracket]['code'] !== T_OPEN_PARENTHESIS) {
-			return false;
-		}
-		if (isset($tokens[$openBracket]['parenthesis_closer']) === false) {
-			return false;
-		}
-		return true;
-	}
-	
-	// @TODO DRY in CallTimePassByReference
-	public function isFunctionCall(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-	{
-		$tokens = $phpcsFile->getTokens();
-		$search	= PHP_CodeSniffer_Tokens::$emptyTokens;
-		$search[] = T_BITWISE_AND;
-		$previous = $phpcsFile->findPrevious($search, ($stackPtr - 1), null, true);
-		if ($tokens[$previous]['code'] === T_FUNCTION) {
-			return false;
-		}
-		return true;
-	}
-	
-	// @TODO DRY in CallTimePassByReference
-	public function getFunctionCallParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-	{
-		$tokens = $phpcsFile->getTokens();
-		$openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
-		$closeBracket = $tokens[$openBracket]['parenthesis_closer'];
-		
-		$parameters = array();
-		$tmpPtr = $openBracket;
-		while (($tmpPtr = $phpcsFile->findNext(array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE), $tmpPtr)) !== false) {
-			if ($tmpPtr > $closeBracket) break;
-			$parameters[$tmpPtr] = $tokens[$tmpPtr];
-			$tmpPtr++;
-		}
-		return $parameters;
-	}
 	
 	/**
      * Processes this test, when one of its tokens is encountered.
