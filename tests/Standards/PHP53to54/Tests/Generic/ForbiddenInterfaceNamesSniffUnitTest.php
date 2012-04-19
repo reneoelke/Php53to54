@@ -24,7 +24,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Tests_PHP_ForbiddenInterfaceNamesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_Generic_ForbiddenInterfaceNamesSniffUnitTest extends AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.

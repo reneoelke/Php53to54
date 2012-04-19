@@ -58,6 +58,11 @@ class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff
 		'$_ENV',
 	);
 	
+	/**
+     * Returns an array of tokens this test wants to listen for.
+     *
+     * @return array
+     */
 	public function register()
 	{
 		return array(

@@ -37,11 +37,24 @@ class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff implements PHP_CodeSniffe
 		'PHP',
 	);
 	
+	/**
+     * Returns an array of tokens this test wants to listen for.
+     *
+     * @return array
+     */
 	public function register()
     {
         return array(T_BREAK, T_CONTINUE);
     }
 
+	/**
+     * Processes this test, when one of its tokens is encountered.
+     *
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     * @return void
+     */
 	public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
 	{
 		$tokens = $phpcsFile->getTokens();

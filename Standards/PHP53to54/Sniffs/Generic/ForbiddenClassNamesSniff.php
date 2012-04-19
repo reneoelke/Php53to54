@@ -25,7 +25,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_ForbiddenClassNamesSniff
+class PHP53to54_Sniffs_Generic_ForbiddenClassNamesSniff
 	extends PHP53to54_AbstractSniff
 	implements PHP_CodeSniffer_Sniff
 {
@@ -44,18 +44,18 @@ class PHP53to54_Sniffs_PHP_ForbiddenClassNamesSniff
 	 * 
 	 * @var array(string => array(string, [string]))
 	 */
-	protected $forbiddenClassnames = array(
-		'CallbackFilterIterator',
-		'RecursiveCallbackFilterIterator',
-		'ReflectionZendExtension',
-		'SessionHandler',
-		'SNMP',
-		'Transliterator',
-		'Spoofchecker',
-	);
+	public $names = array();
+	
+	/**
+	 * Turn namespace checking on/off
+	 * 
+	 * @var boolean
+	 */
+	public $checkNamespace = true;
 	
 	public function register()
 	{
+		$this->parseArrayProperty('names');
 		return array(
 			T_CLASS,
 			T_NAMESPACE,
@@ -91,7 +91,7 @@ class PHP53to54_Sniffs_PHP_ForbiddenClassNamesSniff
 			default:
 			case T_CLASS:
 				// only check classnames if we're in global namespace
-				if (!empty($this->lastNamespace)) {
+				if ($this->checkNamespace && !empty($this->lastNamespace)) {
 					break;
 				}
 				$result = $this->processClass($phpcsFile, $stackPtr);
@@ -106,7 +106,7 @@ class PHP53to54_Sniffs_PHP_ForbiddenClassNamesSniff
 		$classnameToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
 		$classname = $classnameToken['content'];
 
-		$forbiddenClassnames = array_map('strtolower', $this->forbiddenClassnames);
+		$forbiddenClassnames = array_map('strtolower', $this->names);
 		if (in_array(strtolower($classname), $forbiddenClassnames)) {
 			$phpcsFile->addError(sprintf('%s classname is a reserved classname in PHP 5.4', $classname), $stackPtr);
 		}
