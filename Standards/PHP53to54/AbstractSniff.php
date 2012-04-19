@@ -28,6 +28,14 @@
  */
 abstract class PHP53to54_AbstractSniff
 {
+	/**
+	 * Cache for storing last namespace names found in files while 
+	 * parsing them.
+	 * 
+	 * @var array(string = string)
+	 */
+	protected $lastNamespacesPerFile = null;
+	
 	protected function getLastNamespaceForFile(PHP_CodeSniffer_File $phpcsFile)
 	{
 		$filename = $phpcsFile->getFilename();

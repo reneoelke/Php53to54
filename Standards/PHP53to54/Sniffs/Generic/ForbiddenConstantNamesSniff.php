@@ -26,7 +26,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff
+class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 	extends PHP53to54_AbstractSniff
 	implements PHP_CodeSniffer_Sniff
 {
@@ -44,119 +44,18 @@ class PHP53to54_Sniffs_PHP_ForbiddenConstantNamesSniff
 	 * 
 	 * @var array(string => array(string, [string]))
 	 */
-	protected $forbiddenConstantNames = array(
-		// PHP Core:
-		'ENT_DISALLOWED',
-		'ENT_HTML401',
-		'ENT_HTML5',
-		'ENT_SUBSTITUTE',
-		'ENT_XML1',
-		'ENT_XHTML',
-		'IPPROTO_IP',
-		'IPPROTO_IPV6',
-		'IPV6_MULTICAST_HOPS',
-		'IPV6_MULTICAST_IF',
-		'IPV6_MULTICAST_LOOP',
-		'IP_MULTICAST_IF',
-		'IP_MULTICAST_LOOP',
-		'IP_MULTICAST_TTL',
-		'MCAST_JOIN_GROUP',
-		'MCAST_LEAVE_GROUP',
-		'MCAST_BLOCK_SOURCE',
-		'MCAST_UNBLOCK_SOURCE',
-		'MCAST_JOIN_SOURCE_GROUP',
-		'MCAST_LEAVE_SOURCE_GROUP',
-
-		// Curl:
-		'CURLOPT_MAX_RECV_SPEED_LARGE',
-		'CURLOPT_MAX_SEND_SPEED_LARGE',
-		// LibXML:
-		'LIBXML_HTML_NODEFDTD',
-		'LIBXML_HTML_NOIMPLIED',
-		'LIBXML_PEDANTIC',
-
-		// OpenSSL:
-		'OPENSSL_CIPHER_AES_128_CBC',
-		'OPENSSL_CIPHER_AES_192_CBC',
-		'OPENSSL_CIPHER_AES_256_CBC',
-		'OPENSSL_RAW_DATA',
-		'OPENSSL_ZERO_PADDING',
-
-		// Output buffering:
-		'PHP_OUTPUT_HANDLER_CLEAN',
-		'PHP_OUTPUT_HANDLER_CLEANABLE',
-		'PHP_OUTPUT_HANDLER_DISABLED',
-		'PHP_OUTPUT_HANDLER_FINAL',
-		'PHP_OUTPUT_HANDLER_FLUSH',
-		'PHP_OUTPUT_HANDLER_FLUSHABLE',
-		'PHP_OUTPUT_HANDLER_REMOVABLE',
-		'PHP_OUTPUT_HANDLER_STARTED',
-		'PHP_OUTPUT_HANDLER_STDFLAGS',
-		'PHP_OUTPUT_HANDLER_WRITE',
-
-		// Sessions:
-		'PHP_SESSION_ACTIVE',
-		'PHP_SESSION_DISABLED',
-		'PHP_SESSION_NONE',
-
-		// Streams:
-		'STREAM_META_ACCESS',
-		'STREAM_META_GROUP',
-		'STREAM_META_GROUP_NAME',
-		'STREAM_META_OWNER',
-		'STREAM_META_OWNER_NAME',
-		'STREAM_META_TOUCH',
-
-		// Zlib:
-		'ZLIB_ENCODING_DEFLATE',
-		'ZLIB_ENCODING_GZIP',
-		'ZLIB_ENCODING_RAW',
-
-		// Intl:
-		'U_IDNA_DOMAIN_NAME_TOO_LONG_ERROR',
-		'IDNA_CHECK_BIDI',
-		'IDNA_CHECK_CONTEXTJ',
-		'IDNA_NONTRANSITIONAL_TO_ASCII',
-		'IDNA_NONTRANSITIONAL_TO_UNICODE',
-		'INTL_IDNA_VARIANT_2003',
-		'INTL_IDNA_VARIANT_UTS46',
-		'IDNA_ERROR_EMPTY_LABEL',
-		'IDNA_ERROR_LABEL_TOO_LONG',
-		'IDNA_ERROR_DOMAIN_NAME_TOO_LONG',
-		'IDNA_ERROR_LEADING_HYPHEN',
-		'IDNA_ERROR_TRAILING_HYPHEN',
-		'IDNA_ERROR_HYPHEN_3_4',
-		'IDNA_ERROR_LEADING_COMBINING_MARK',
-		'IDNA_ERROR_DISALLOWED',
-		'IDNA_ERROR_PUNYCODE',
-		'IDNA_ERROR_LABEL_HAS_DOT',
-		'IDNA_ERROR_INVALID_ACE_LABEL',
-		'IDNA_ERROR_BIDI',
-		'IDNA_ERROR_CONTEXTJ',
-
-		// Json:
-		'JSON_PRETTY_PRINT',
-		'JSON_UNESCAPED_SLASHES',
-		'JSON_NUMERIC_CHECK',
-		'JSON_UNESCAPED_UNICODE',
-		'JSON_BIGINT_AS_STRING',
-	);
+	public $forbiddenConstantNames = array();
 	
 	public function register()
 	{
+		$this->forbiddenConstantNames = preg_split('/[\s,\r\n]/', $this->forbiddenConstantNames);
+		$this->forbiddenConstantNames = array_map('trim', $this->forbiddenConstantNames);
+		$this->forbiddenConstantNames = array_filter($this->forbiddenConstantNames);
 		return array(
 			T_STRING,
 			T_NAMESPACE,
 		);
 	}
-	
-	/**
-	 * Cache for storing last namespace names found in files while 
-	 * parsing them.
-	 * 
-	 * @var array(string = string)
-	 */
-	protected $lastNamespacesPerFile = null;
 	
 	/**
      * Processes this test, when one of its tokens is encountered.
