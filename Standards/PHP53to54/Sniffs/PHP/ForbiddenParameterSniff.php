@@ -18,7 +18,8 @@ require_once __DIR__.'/RemovedFunctionParametersSniff.php';
 /**
  * Forbidden Function Parameter
  * 
- * Search for function definitions that use global variable as their parameters.
+ * Search for function or closure definitions that use global variable as their
+ * parameters.
  *
  * @category PHP
  * @package	PHP_CodeSniffer
