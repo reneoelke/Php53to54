@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 <ruleset name="PHP53to54">
 	<description>A standard for migrating from PHP 5.3 to 5.4.</description>
+	<rule ref="PHP53to54.Generic.ForbiddenInterfaceNames">
+		<properties>
+			<property name="names" value="JsonSerializable,SessionHandlerInterface" />
+			<property name="checkNamespace" value="true" />
+		</properties>
+	</rule>
 	<rule ref="PHP53to54.Generic.ForbiddenConstantNames">
 		<properties>
-			<property name="forbiddenConstantNames" value="
+			<property name="names" value="
 				ENT_DISALLOWED
 				ENT_HTML401
 				ENT_HTML5

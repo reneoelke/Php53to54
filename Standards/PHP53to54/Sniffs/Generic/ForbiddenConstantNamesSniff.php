@@ -44,13 +44,18 @@ class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 	 * 
 	 * @var array(string => array(string, [string]))
 	 */
-	public $forbiddenConstantNames = array();
+	public $names = array();
+	
+	/**
+	 * Turn namespace checking on/off
+	 * 
+	 * @var boolean
+	 */
+	public $checkNamespace = true;
 	
 	public function register()
 	{
-		$this->forbiddenConstantNames = preg_split('/[\s,\r\n]/', $this->forbiddenConstantNames);
-		$this->forbiddenConstantNames = array_map('trim', $this->forbiddenConstantNames);
-		$this->forbiddenConstantNames = array_filter($this->forbiddenConstantNames);
+		$this->parseArrayProperty('names');
 		return array(
 			T_STRING,
 			T_NAMESPACE,
@@ -77,7 +82,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 				break;
 			default:
 			case T_STRING:
-				if ($this->getLastNamespaceForFile($phpcsFile)) {
+				if ($this->checkNamespace && $this->getLastNamespaceForFile($phpcsFile)) {
 					return false;
 				}
 				if (strtolower($token['content']) !== 'define') {
@@ -113,7 +118,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 		
 		// define('string', 'foobar') check for invalid string
 		$firstParameterValue = substr($tokens[$firstParameterPtr]['content'], 1, -1);
-		if (in_array($firstParameterValue, $this->forbiddenConstantNames)) {
+		if (in_array($firstParameterValue, $this->names)) {
 			$phpcsFile->addError(sprintf('%s is an invalid name for a constant', $firstParameterValue), $firstParameterPtr);
 		}
 		return false;

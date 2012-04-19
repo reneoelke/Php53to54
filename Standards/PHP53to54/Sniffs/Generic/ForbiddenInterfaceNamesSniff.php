@@ -25,7 +25,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff
+class PHP53to54_Sniffs_Generic_ForbiddenInterfaceNamesSniff
 	extends PHP53to54_AbstractSniff
 	implements PHP_CodeSniffer_Sniff
 {
@@ -44,26 +44,23 @@ class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff
 	 * 
 	 * @var array(string => array(string, [string]))
 	 */
-	protected $forbiddenInterfacenames = array(
-		'JsonSerializable',
-		'SessionHandlerInterface',
-	);
+	public $names = array();
+	
+	/**
+	 * Turn namespace checking on/off
+	 * 
+	 * @var boolean
+	 */
+	public $checkNamespace = true;
 	
 	public function register()
 	{
+		$this->parseArrayProperty('names');
 		return array(
 			T_INTERFACE,
 			T_NAMESPACE,
 		);
 	}
-	
-	/**
-	 * Cache for storing last namespace names found in files while 
-	 * parsing them.
-	 * 
-	 * @var array(string = string)
-	 */
-	protected $lastNamespacesPerFile = null;
 	
 	/**
      * Processes this test, when one of its tokens is encountered.
@@ -85,7 +82,7 @@ class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff
 				break;
 			case T_INTERFACE:
 			default:
-				if ($this->getLastNamespaceForFile($phpcsFile)) {
+				if ($this->checkNamespace && $this->getLastNamespaceForFile($phpcsFile)) {
 					return false;
 				}
 				$result = $this->processInterface($phpcsFile, $stackPtr);
@@ -100,9 +97,9 @@ class PHP53to54_Sniffs_PHP_ForbiddenInterfaceNamesSniff
 		
 		$interfaceNameToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
 		$interfaceName = $interfaceNameToken['content'];
-		$forbiddenInterfaceNames = array_map('strtolower', $this->forbiddenInterfacenames);
+		$names = array_map('strtolower', $this->names);
 		
-		if (in_array(strtolower($interfaceName), $forbiddenInterfaceNames)) {
+		if (in_array(strtolower($interfaceName), $names)) {
 			$phpcsFile->addError(sprintf('%s interface is a reserved interface in PHP 5.4', $interfaceName), $stackPtr);
 		}
 		return true;

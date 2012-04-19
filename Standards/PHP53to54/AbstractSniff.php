@@ -28,6 +28,17 @@
  */
 abstract class PHP53to54_AbstractSniff
 {
+	protected function parseArrayProperty($propertyName)
+	{
+		if (!is_string($this->{$propertyName})) {
+			return true;
+		}
+		$this->{$propertyName} = preg_split('/[\s,\r\n]/', $this->{$propertyName});
+		$this->{$propertyName} = array_map('trim', $this->{$propertyName});
+		$this->{$propertyName} = array_filter($this->{$propertyName});
+		return $this;
+	}
+	
 	/**
 	 * Cache for storing last namespace names found in files while 
 	 * parsing them.
