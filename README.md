@@ -21,4 +21,16 @@ THIS PROJECT IS IN DEVELOPMENT (PRE-ALPHA) AND SHOULD NOT BE USED UNLESS YOU KNO
 
 After you’ve installed the jagger-sniffs to your PHP_CodeSniffer directory you can specify the coding standard, i.e. the sniffs you want to use with PHP_CodeSniffer. The following command uses all sniffs defined in jagger to check all files and directories:
 
-	phpcs --standard="jagger" .
+	phpcs -p --standard="PHP53to54" .
+	
+Excluding Files
+
+	phpcs --standard="PHP53to54" --ignore=*.js,*.ctp
+
+Define file extensions that should be checked
+
+	phpcs --standard="PHP53to54" --extensions=php,js
+	
+Increase memory limit for phpcs 
+
+	phpcs --sstandard="PHP53to54" -d memory_limit=32M
