@@ -4,6 +4,14 @@ A set of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that 
 
 THIS PROJECT IS IN DEVELOPMENT (PRE-ALPHA) AND SHOULD NOT BE USED UNLESS YOU KNOW WHAT YOU’RE DOING!
 
+# Features
+
+* Checks for deprecated and removed function calls also including removed extensions (SQLite)
+* Checks for definition classes, interfaces, constants that would collide with new ones added in PHP 5.4 (namespace-aware)
+* Check for variable usage in `break`/`continue` statements
+* Check for added or removed function parameters
+* Check for call time pass by reference which is not allowed anymore
+
 # Installation
 
 * Install [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) with
