@@ -78,5 +78,5 @@ class PHP53to54_Sniffs_SNMP_DeprecatedFunctionsSniff extends Generic_Sniffs_PHP_
      *
      * @var bool
      */
-    public $error = true;
+    public $error = false;
 }

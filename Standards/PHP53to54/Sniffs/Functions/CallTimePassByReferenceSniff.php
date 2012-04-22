@@ -60,7 +60,7 @@ class PHP53to54_Sniffs_Functions_CallTimePassByReferenceSniff
 				continue;
 			}
 			if ($previousToken['code'] == T_BITWISE_AND) {
-				$phpcsFile->addError('Call-time pass by reference has been removed', $stackPtr);
+				$phpcsFile->addError('Call-time pass by reference has been removed', $stackPtr, 'CalltimePassByReferenceRemoved');
 			}
 		}
 		return true;
