@@ -125,4 +125,15 @@ abstract class PHP53to54_AbstractSniff
 		return $parameters;
 	}
 
+	public function getFunctionCallParameterByIndex(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $index)
+	{
+		$i = 0;
+		foreach($this->getFunctionCallParameters($phpcsFile, $stackPtr) as $parameter) {
+			if ($i == $index) {
+				return $parameter;
+			}
+			$i++;
+		}
+		return false;
+	}
 }
