@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Removed Function Aliases Test
+ * SNMP OOP-Only
  *
  * PHP version 5
  *
@@ -14,13 +14,12 @@
  */
 
 /**
- * Deprecated Function Call
+ * SNMP OOP-Only
  * 
- * Checks PHP source files for calls to functions that have been removed in
- * PHP 5.4.
- * 
- * @todo create own generic deprecatedfunctionsniff that also checks for namespace and can be configured via XML
+ * Checks for calls to snmp_* functions that will return false in PHP 5.4.
  *
+ * @todo create own generic deprecatedfunctionsniff that also checks for namespace and can be configured via XML
+ * 
  * @category PHP
  * @package	PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
@@ -28,7 +27,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class PHP53to54_Sniffs_SNMP_DeprecatedFunctionsSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
@@ -48,13 +47,30 @@ class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_Depr
      * @var array(string => string|null)
      */
 	protected $forbiddenFunctions = array(
-		'define_syslog_variables' => null,
-		'import_request_variables' => 'consider using extract',
-		'session_is_registered' => 'use $_SESSION',
-		'session_register' => 'use $_SESSION',
-		'session_unregister' => 'use $_SESSION',
-		'mcrypt_generic_end' => null,
-		'mysql_list_dbs' => null,
+		'snmp_get_quick_print' => null,
+		'snmp_get_valueretrieval' => null,
+		'snmp_read_mib' => null,
+		'snmp_set_enum_print' => null,
+		'snmp_set_oid_numeric_print' => null,
+		'snmp_set_oid_output_format' => null,
+		'snmp_set_quick_print' => null,
+		'snmp_set_valueretrieval' => null,
+		'snmp2_get' => null,
+		'snmp2_getnext' => null,
+		'snmp2_real_walk' => null,
+		'snmp2_set' => null,
+		'snmp2_walk' => null,
+		'snmp3_get' => null,
+		'snmp3_getnext' => null,
+		'snmp3_real_walk' => null,
+		'snmp3_set' => null,
+		'snmp3_walk' => null,
+		'snmpget' => null,
+		'snmpgetnext' => null,
+		'snmprealwalk' => null,
+		'snmpset' => null,
+		'snmpwalk' => null,
+		'snmpwalkoid' => null,
 	);
 
 	/**

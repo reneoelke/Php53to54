@@ -18,6 +18,8 @@
  * 
  * Checks php source files for calls to function aliaeses that have been removed
  * in PHP 5.4.
+ * 
+ * @todo create own generic deprecatedfunctionsniff that also checks for namespace and can be configured via XML
  *
  * @category PHP
  * @package	PHP_CodeSniffer
