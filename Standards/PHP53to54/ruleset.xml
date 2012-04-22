@@ -104,4 +104,17 @@
 				JSON_BIGINT_AS_STRING" />
 		</properties>
 	</rule>
+	<rule ref="PHP53to54.Generic.RemovedINIDirectives">
+		<properties>
+			<property name="names" value="
+				magic_quotes_runtime
+				magic_quotes_sybase
+				define_syslog_variables
+				highlight.bg
+				session.bug_compat_42
+				session.bug_compat_warn
+				y2k_compliance
+			" />
+		</properties>
+	</rule>
 </ruleset>

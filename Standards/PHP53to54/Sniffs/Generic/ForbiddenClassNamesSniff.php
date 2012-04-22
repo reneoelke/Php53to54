@@ -42,7 +42,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenClassNamesSniff
 	 * A list of removed functions with their parameters associated regular
 	 * expression that are not allowed anymore.
 	 * 
-	 * @var array(string => array(string, [string]))
+	 * @var array(string)
 	 */
 	public $names = array();
 	
@@ -108,7 +108,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenClassNamesSniff
 
 		$forbiddenClassnames = array_map('strtolower', $this->names);
 		if (in_array(strtolower($classname), $forbiddenClassnames)) {
-			$phpcsFile->addError(sprintf('%s classname is a reserved classname in PHP 5.4', $classname), $stackPtr);
+			$phpcsFile->addError(sprintf('%s classname is a reserved classname in PHP 5.4', $classname), $stackPtr, 'forbiddenClassname');
 		}
 		return true;
 	}

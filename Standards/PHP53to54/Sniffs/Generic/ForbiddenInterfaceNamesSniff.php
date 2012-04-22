@@ -100,7 +100,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenInterfaceNamesSniff
 		$names = array_map('strtolower', $this->names);
 		
 		if (in_array(strtolower($interfaceName), $names)) {
-			$phpcsFile->addError(sprintf('%s interface is a reserved interface in PHP 5.4', $interfaceName), $stackPtr);
+			$phpcsFile->addError(sprintf('%s interface is a reserved interface in PHP 5.4', $interfaceName), $stackPtr, 'invalidInterfaceName');
 		}
 		return true;
 	}

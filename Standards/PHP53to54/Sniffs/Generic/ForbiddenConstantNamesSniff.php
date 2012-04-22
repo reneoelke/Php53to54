@@ -109,7 +109,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 		
 		// define($var, 'foobar') raises warning
 		if ($tokens[$firstParameterPtr]['code'] == T_VARIABLE) {
-			$phpcsFile->addWarning(sprintf('constant definition with variable could be forbidden'), $firstParameterPtr);
+			$phpcsFile->addWarning(sprintf('constant definition with variable could be forbidden'), $firstParameterPtr, 'possibleInvalidConstantName');
 			return false;
 		}
 		if ($tokens[$firstParameterPtr]['code'] != T_CONSTANT_ENCAPSED_STRING) {
@@ -119,7 +119,7 @@ class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
 		// define('string', 'foobar') check for invalid string
 		$firstParameterValue = substr($tokens[$firstParameterPtr]['content'], 1, -1);
 		if (in_array($firstParameterValue, $this->names)) {
-			$phpcsFile->addError(sprintf('%s is an invalid name for a constant', $firstParameterValue), $firstParameterPtr);
+			$phpcsFile->addError(sprintf('%s is an invalid name for a constant', $firstParameterValue), $firstParameterPtr, 'invalidConstantName');
 		}
 		return false;
 	}

@@ -84,7 +84,6 @@ abstract class PHP53to54_AbstractSniff
 		return $parameters;
 	}
 	
-	
 	public function isFunction(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
 	{
 		$tokens = $phpcsFile->getTokens();
