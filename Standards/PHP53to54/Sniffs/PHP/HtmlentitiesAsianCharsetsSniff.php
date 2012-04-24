@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Changed htmlentities default Character Set
+ * Removed INI Directives Sniff
  *
  * PHP version 5
  *
@@ -14,10 +14,10 @@
  */
 
 /**
- * Changed htmlentities default Character Set
+ * Removed INI Directives Sniff
  * 
- * Search for calls to htmlentities with no third parameter passed which will
- * use utf-8 as default encoding instead of iso in php 5.4.
+ * Search for calls to htmlentities with asian character sets which will lead to
+ * a E_STRICT error message.
  * 
  * @category PHP
  * @package	PHP_CodeSniffer
@@ -26,7 +26,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_HtmlentitiesEncodingSniff
+class PHP53to54_Sniffs_PHP_HtmlentitiesAsianCharsetsSniff
 	extends PHP53to54_AbstractSniff
 	implements PHP_CodeSniffer_Sniff
 {
@@ -37,6 +37,16 @@ class PHP53to54_Sniffs_PHP_HtmlentitiesEncodingSniff
 	 */
 	public $supportedTokenizers = array(
 		'PHP',
+	);
+	
+	// from http://en.wikipedia.org/wiki/Character_set
+	protected $invalidEncodings = array(
+		'BIG5',
+		'GB2312',
+		'GB2312',
+		'BIG5-HKSCS',
+		'Shift_JIS',
+		'EUC-JP',
 	);
 	
 	/**
@@ -72,12 +82,16 @@ class PHP53to54_Sniffs_PHP_HtmlentitiesEncodingSniff
 		if (!$this->isFunction($phpcsFile, $stackPtr) || !$this->isFunctionCall($phpcsFile, $stackPtr)) {
 			return true;
 		}
-		// // check if third parameter defined 
-		// $thirdParameter = $this->getFunctionCallParameterByIndex($phpcsFile, $stackPtr, 2);
-		// if (!$thirdParameter) {
-		// 	$phpcsFile->addError('htmlentites changed default character encoding', $stackPtr, 'ChangedDefaultCharacterEncoding');
-		// 	return true;
-		// }
+		// check if third parameter defined
+		$thirdParameter = $this->getFunctionCallParameterByIndex($phpcsFile, $stackPtr, 2);
+		if (!$thirdParameter || $thirdParameter['code'] !== T_CONSTANT_ENCAPSED_STRING) {
+			return true;
+		}
+		$thirdParameterValue = strtoupper(substr($thirdParameter['content'], 1, -1));
+		if (in_array($thirdParameterValue, $this->invalidEncodings)) {
+			$phpcsFile->addError('htmlentites throws E_STRICT with asian charsets', $stackPtr, 'ErrorAsianCharsets');
+			return true;
+		}
 		return true;
 	}
 }

@@ -117,7 +117,7 @@ abstract class PHP53to54_AbstractSniff
 		
 		$parameters = array();
 		$tmpPtr = $openBracket;
-		while (($tmpPtr = $phpcsFile->findNext(array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE), $tmpPtr)) !== false) {
+		while (($tmpPtr = $phpcsFile->findNext(array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER), $tmpPtr)) !== false) {
 			if ($tmpPtr > $closeBracket) break;
 			$parameters[$tmpPtr] = $tokens[$tmpPtr];
 			$tmpPtr++;
