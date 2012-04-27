@@ -114,6 +114,7 @@
 				session.bug_compat_42
 				session.bug_compat_warn
 				y2k_compliance
+				short_open_tag
 			" />
 		</properties>
 	</rule>
