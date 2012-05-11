@@ -72,12 +72,26 @@ class PHP53to54_Sniffs_PHP_HtmlentitiesEncodingSniff
 		if (!$this->isFunction($phpcsFile, $stackPtr) || !$this->isFunctionCall($phpcsFile, $stackPtr)) {
 			return true;
 		}
-		// // check if third parameter defined 
-		// $thirdParameter = $this->getFunctionCallParameterByIndex($phpcsFile, $stackPtr, 2);
-		// if (!$thirdParameter) {
-		// 	$phpcsFile->addError('htmlentites changed default character encoding', $stackPtr, 'ChangedDefaultCharacterEncoding');
-		// 	return true;
-		// }
+		// check if third parameter defined 
+		$thirdParameter = $this->getFunctionCallParameterByIndex($phpcsFile, $stackPtr, 2);
+		// missing third parameter
+		if (!$thirdParameter) {
+			$phpcsFile->addWarning('default encoding changed from ISO to UTF8', $stackPtr, 'ChangedDefaultCharacterEncoding');
+			return true;
+		}
+		switch($thirdParameter['code']) {
+			case T_VARIABLE:
+				$phpcsFile->addWarning('default encoding changed from ISO to UTF8', $stackPtr, 'ChangedDefaultCharacterEncoding');
+				return true;
+				break;
+			case T_CONSTANT_ENCAPSED_STRING:
+				$stringValue = substr($thirdParameter['content'], 1, -1);
+				if (empty($stringValue)) {
+					$phpcsFile->addWarning('default encoding changed from ISO to UTF8', $stackPtr, 'ChangedDefaultCharacterEncoding');
+				}
+				break;
+		}
+		var_dump($thirdParameter);
 		return true;
 	}
 }
