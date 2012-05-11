@@ -71,7 +71,7 @@ class PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
 		$token = $tokens[$stackPtr];
 
 		// check function name
-		if (strtolower($token['content']) !== 'php_ini_set') {
+		if (strtolower($token['content']) !== 'ini_set') {
 			return true;
 		}
 		// check if it’s a function call
