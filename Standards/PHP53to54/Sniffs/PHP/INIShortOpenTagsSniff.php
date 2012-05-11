@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Removed INI Directives Sniff
+ * Search for short_open_tags ini_set
  *
  * PHP version 5
  *
@@ -16,8 +16,8 @@
 /**
  * Removed INI Directives Sniff
  * 
- * Search for calls to php_ini_set which try to change some of the removed
- * php ini directives.
+ * Search for calls to ini_set which try to set `short_open_tag` to 'on' or
+ * anything which has no effect in PHP 5.4 anymore.
  * 
  * @category PHP
  * @package	PHP_CodeSniffer
@@ -26,7 +26,7 @@
  * @license BSD Licence
  * @link https://github.com/foobugs/jagger
  */
-class PHP53to54_Sniffs_PHP_SaveModeINIDirectivesSniff
+class PHP53to54_Sniffs_PHP_INIShortOpenTagsSniff
 	extends PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
 	implements PHP_CodeSniffer_Sniff
 {
@@ -36,30 +36,25 @@ class PHP53to54_Sniffs_PHP_SaveModeINIDirectivesSniff
 	 * @var array(string)
 	 */
 	public $functions = array(
-		'ini_get',
+		'ini_set',
 	);
-	
+
 	 /**
 	 * A list of removed INI directives
 	 * 
 	 * @var array(string)
 	 */
 	public $names = array(
-		'safe_mode',
-		'safe_mode_gid',
-		'safe_mode_include_dir',
-		'safe_mode_exec_dir',
-		'safe_mode_allowed_env_vars',
-		'safe_mode_protected_env_vars',
+		'short_open_tag',
 	);
-	
+
 	/**
 	 * Triggered when the first parameter of a ini_set call matches
 	 */
 	protected function foundName(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $directiveName)
 	{
-		$message = sprintf('%s is part of safe_mode which was removed in PHP 5.4', $directiveName);
-		$phpcsFile->addWarning($message, $stackPtr, 'INIDirectiveDeprecated');
+		$message = sprintf('%s changed with PHP 5.4 to always on', $directiveName);
+		$phpcsFile->addWarning($message, $stackPtr);
 		return true;
 	}
 }
