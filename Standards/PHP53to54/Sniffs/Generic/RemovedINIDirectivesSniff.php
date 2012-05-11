@@ -47,6 +47,15 @@ class PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
 	public $names = array();
 	
 	/**
+	 * A list of ini set or get functions which parameters should be checked
+	 * 
+	 * @var array(string)
+	 */
+	public $functions = array(
+		'ini_set',
+	);
+	
+	/**
      * Returns an array of tokens this test wants to listen for.
      *
      * @return array
@@ -70,13 +79,14 @@ class PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
 		$tokens = $phpcsFile->getTokens();
 		$token = $tokens[$stackPtr];
 
-		// check function name
-		if (strtolower($token['content']) !== 'ini_set') {
+		// check function name for reading or writing to the ini
+		$functionName = strtolower($token['content']);
+		if (!in_array($functionName, $this->functions)) {
 			return true;
 		}
 		// check if it’s a function call
 		if (!$this->isFunction($phpcsFile, $stackPtr) || !$this->isFunctionCall($phpcsFile, $stackPtr)) {
-			return;
+			return true;
 		}
 		$parameters = $this->getFunctionCallParameters($phpcsFile, $stackPtr);
 		if (count($parameters) == 0) {
@@ -88,8 +98,18 @@ class PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
 		}
 		$iniDirectiveName = substr($firstParameter['content'], 1, -1);
 		if (in_array($iniDirectiveName, $this->names)) {
-			$phpcsFile->addError(sprintf('%s was removed in PHP 5.4', $iniDirectiveName), $stackPtr, 'DirectiveRemoved');
+			$this->foundName($phpcsFile, $stackPtr, $iniDirectiveName);
 		}
+		return true;
+	}
+	
+	/**
+	 * Triggered when the first parameter of a ini_set call matches
+	 */
+	protected function foundName(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $directiveName)
+	{
+		$message = sprintf('%s was removed in PHP 5.4', $directiveName);
+		$phpcsFile->addError($message, $stackPtr, 'INIDirectiveRemoved');
 		return true;
 	}
 }
