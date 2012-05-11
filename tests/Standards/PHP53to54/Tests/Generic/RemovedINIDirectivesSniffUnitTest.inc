@@ -2,12 +2,12 @@
 
 // valid
 echo "define_syslog_variables";
-php_ini_set('anything', 'something');
+ini_set('anything', 'something');
 
 // invalid
-php_ini_set('define_syslog_variables', true);
-php_ini_set("define_syslog_variables", true);
-php_ini_set(
+ini_set('define_syslog_variables', true);
+ini_set("define_syslog_variables", true);
+ini_set(
 	"define_syslog_variables"
 	,
 	true
