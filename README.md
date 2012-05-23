@@ -1,44 +1,48 @@
-# Jagger
+# PHP53to54
 
-A set of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that can check if a project is compatible with PHP 5.4.
+PHP53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
-THIS PROJECT IS IN DEVELOPMENT (PRE-ALPHA) AND SHOULD NOT BE USED UNLESS YOU KNOW WHAT YOU’RE DOING!
+## Features
 
-# Features
+* Check for removed, deprecated or changed function, methods, constants etc. including stuff from removed or changed extensions
+* Scan for usage of added, changed or removed parameters
+* Search for removed ini-directives
+* Namespace-aware scan for class, interface, constant definitions that would collide with new ones
+* Check for invalid `break`/`continue` statements
+* Check for call time pass by reference
 
-* Checks for deprecated and removed function calls also including removed extensions (SQLite)
-* Checks for definition classes, interfaces, constants that would collide with new ones added in PHP 5.4 (namespace-aware)
-* Check for variable usage in `break`/`continue` statements
-* Check for added or removed function parameters
-* Check for call time pass by reference which is not allowed anymore
+## Installation
 
-# Installation
-
-* Install [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) with
+Make sure you have [PHP_CodeSniffer 1.3+](http://pear.php.net/PHP_CodeSniffer) allready installed and the latest version.
 
 	pear install PHP_CodeSniffer
 	
-* Checkout this repository to the sniff repository of PHP_CodeSniffer that is located in the PEAR package. Usually something like this:
+### Git-Install
 
-	git clone [repository-url] [CodeSniffer Standards Directory]
+Run the following code in your `pear/PHP/CodeSniffer/Standards` directory:
+
+	git clone git://github.com/foobugs/jagger.git
 	
-	mac: /usr/lib/php/pear/PHP/CodeSniffer/Standards
-	ubuntu: /usr/share/php/PHP/CodeSniffer/Standard
+### ZIP Install
 
-# Usage
+Download the [ZIP](https://github.com/foobugs/jagger/zipball/master) file and extract everything into `pear/PHP/CodeSniffer/Standards`.
 
-After you’ve installed the jagger-sniffs to your PHP_CodeSniffer directory you can specify the coding standard, i.e. the sniffs you want to use with PHP_CodeSniffer. The following command uses all sniffs defined in jagger to check all files and directories:
+## Usage
 
-	phpcs -p --standard="PHP53to54" .
+After you have installed jagger successfully (you can check it by running `phpcs -i` and see if PHP53to54 ist listed) you can specifiy the Standard when calling PHP_CodeSniffer:
+
+	phpcs -p --standard=PHP53to54 <source-path>
 	
-Excluding Files
+If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard like this:
 
-	phpcs --standard="PHP53to54" --ignore=*.js,*.ctp
+	phpcs -p -standard=/Users/frank/Downloads/jagger/Standards/PHP53to54 <source-path>
 
-Define file extensions that should be checked
-
-	phpcs --standard="PHP53to54" --extensions=php,js
+You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 	
-Increase memory limit for phpcs 
+## Future
 
-	phpcs --sstandard="PHP53to54" -d memory_limit=32M
+We plan to include more sniffs as PHP 5.5 oder later will be released.
+
+## Participate!
+
+You can participate in this project by forking the [Repository](https://github.com/foobugs/jagger) and push changes back to the project. Feel free to post issues or whishes in the [issue section].
