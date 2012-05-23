@@ -5,12 +5,13 @@
  *
  * PHP version 5
  *
- * @category  PHP
- * @package	PHP_CodeSniffer
+ * @category PHP
+ * @package PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD Licence
- * @link https://github.com/foobugs/jagger
+ * @license BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link https://github.com/foobugs/PHP53to54
+ * @since 1.0-beta
  */
 
 /**
@@ -18,17 +19,17 @@
  * 
  * Checks PHP source files for calls to functions that have been removed in
  * PHP 5.4.
- * 
- * @todo create own generic deprecatedfunctionsniff that also checks for namespace and can be configured via XML
  *
  * @category PHP
- * @package	PHP_CodeSniffer
+ * @package PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD Licence
- * @link https://github.com/foobugs/jagger
+ * @license BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link https://github.com/foobugs/PHP53to54
+ * @since 1.0-beta
  */
-class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends
+	Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
@@ -40,13 +41,13 @@ class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_Depr
 	);
 	
 	/**
-     * A list of deprecated functions with their alternatives.
-     *
-     * The value is NULL if no alternative exists. IE, the
-     * function should just not be used.
-     *
-     * @var array(string => string|null)
-     */
+	 * A list of deprecated functions with their alternatives.
+	 *
+	 * The value is NULL if no alternative exists. IE, the
+	 * function should just not be used.
+	 *
+	 * @var array(string => string|null)
+	 */
 	protected $forbiddenFunctions = array(
 		'define_syslog_variables' => null,
 		'import_request_variables' => 'consider using extract',
@@ -58,9 +59,9 @@ class PHP53to54_Sniffs_Deprecated_FunctionsSniff extends Generic_Sniffs_PHP_Depr
 	);
 
 	/**
-     * If true, an error will be thrown; otherwise a warning.
-     *
-     * @var bool
-     */
-    public $error = true;
+	 * If true, an error will be thrown; otherwise a warning.
+	 *
+	 * @var bool
+	 */
+	public $error = true;
 }

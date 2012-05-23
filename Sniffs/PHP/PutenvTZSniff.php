@@ -5,12 +5,13 @@
  *
  * PHP version 5
  *
- * @category  PHP
- * @package	PHP_CodeSniffer
+ * @category PHP
+ * @package PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD Licence
- * @link https://github.com/foobugs/jagger
+ * @license BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link https://github.com/foobugs/PHP53to54
+ * @since 1.0-beta
  */
 
 /**
@@ -20,13 +21,15 @@
  * and thus this searches for calls to putenv that try to set TZ.
  *
  * @category PHP
- * @package	PHP_CodeSniffer
+ * @package PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD Licence
- * @link https://github.com/foobugs/jagger
+ * @license BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link https://github.com/foobugs/PHP53to54
+ * @since 1.0-beta
  */
-class PHP53to54_Sniffs_PHP_PutenvTZSniff extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
+class PHP53to54_Sniffs_PHP_PutenvTZSniff extends
+	PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
 {
 	/**
 	 * A list of tokenizers this sniff supports.
