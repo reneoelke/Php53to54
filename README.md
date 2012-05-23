@@ -25,7 +25,7 @@ Run the following code in your `pear/PHP/CodeSniffer/Standards` directory:
 	
 ### ZIP Install
 
-Download the [ZIP](https://github.com/foobugs/PHP53to54/zipball/master) file and extract everything into `pear/PHP/CodeSniffer/Standards`.
+Download the [ZIP](https://github.com/foobugs/PHP53to54/zipball/master) file and extract everything into `pear/PHP/CodeSniffer/Standards`
 
 ## Usage
 
@@ -45,4 +45,4 @@ We plan to include more sniffs as PHP 5.5 oder later will be released.
 
 ## Participate!
 
-You can participate in this project by forking the [Repository](https://github.com/foobugs/PHP53to54) and push changes back to the project. Feel free to post issues or whishes in the [issue section].
+You can participate in this project by forking the [Repository](https://github.com/foobugs/PHP53to54) and push changes back to the project. Feel free to post issues or whishes in the [issue section](https://github.com/foobugs/PHP53to54/issues).
