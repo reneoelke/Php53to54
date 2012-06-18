@@ -33,7 +33,7 @@ After you have installed jagger successfully (you can check it by running `phpcs
 
 	phpcs -p --standard=PHP53to54 <source-path>
 	
-If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard like this:
+If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
 	phpcs -p -standard=/Users/frank/Downloads/jagger/Standards/PHP53to54 <source-path>
 

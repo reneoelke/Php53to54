@@ -1,5 +1,13 @@
 <?php
 
+// loading classes for usage as standalone standard
+if (!class_exists('PHP53to54_AbstractSniff')) {
+	require __DIR__.'/../../AbstractSniff.php';
+}
+if (!class_exists('PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff')) {
+	require __DIR__.'/RemovedFunctionParametersSniff.php';
+}
+
 /**
  * putenv TZ Sniff
  *

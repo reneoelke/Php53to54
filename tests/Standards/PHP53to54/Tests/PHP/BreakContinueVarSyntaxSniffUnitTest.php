@@ -39,12 +39,14 @@ class PHP53to54_Tests_PHP_BreakContinueVarSyntaxSniffUnitTest extends AbstractSn
 	public function getErrorList()
 	{
 		return array(
-			25 => 1,
+			24 => 1,
 			29 => 1,
-			33 => 1,
-			37 => 2,
-			41 => 2,
-			45 => 1,
+			34 => 1,
+			38 => 1,
+			42 => 1,
+			46 => 1,
+			50 => 1,
+			54 => 1,
 		);
 	}
 	

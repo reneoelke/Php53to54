@@ -71,18 +71,9 @@ class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff implements PHP_CodeSniffe
 			$nextNotEmptyToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $curToken + 1, null, true);
 			$nextToken = $tokens[$nextNotEmptyToken];
 			
-			$staticObjectMethodCall = $token['code'] == T_STRING && $nextToken['code'] == T_DOUBLE_COLON;
-			$objectMethodCall = $token['code'] == T_STRING && $nextToken['code'] == T_OBJECT_OPERATOR;
-			$functionCall = $token['code'] == T_STRING && $nextToken['code'] == T_OPEN_PARENTHESIS;
-			$isVariable = $token['code'] == T_VARIABLE;
-			
-			if ($staticObjectMethodCall || $objectMethodCall || $functionCall) {
-				$phpcsFile->addError('function calls in break/continue statements not supported', $stackPtr);
-				break;
-			}
-			if ($isVariable) {
-				$phpcsFile->addError('break/continue with variable is not supported', $stackPtr);
-				break;
+			if (!in_array($nextToken['code'], array(T_WHITESPACE, T_LNUMBER, T_SEMICOLON))) {
+				$phpcsFile->addError('break/continue allows only integers nothing else.', $stackPtr);
+				return true;
 			}
 		}
 		return true;
