@@ -23,6 +23,7 @@
  * @category PHP
  * @package PHP_CodeSniffer
  * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @author Maik Penz // <maik@phpkuh.de>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license BSD http://www.opensource.org/licenses/bsd-license.php
  * @link https://github.com/foobugs/PHP53to54
@@ -87,6 +88,11 @@ class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff implements PHP_CodeSniffe
 				$phpcsFile->addError('break/continue allows only integers nothing else.', $stackPtr);
 				return true;
 			}
+            
+            if ( $nextToken['content'] == '0' ) {
+                $phpcsFile->addError('break/continue 0 is no longer allowed. Use without argument.', $stackPtr);
+				return true;
+            }
 		}
 		return true;
 	}
