@@ -39,6 +39,17 @@ class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff implements PHP_CodeSniffe
 		'PHP',
 	);
 	
+    /**
+     * Prepared key test.
+     *
+     * @var array
+     */
+	protected $_testTokenKeys = array(
+		T_WHITESPACE => true,
+        T_LNUMBER => true,
+        T_SEMICOLON => true,
+	);
+	
 	/**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -66,12 +77,13 @@ class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff implements PHP_CodeSniffe
 		if (!$nextSemicolonToken) {
 			return false;
 		}
-		for ($curToken = $stackPtr + 1; $curToken < $nextSemicolonToken; $curToken++) {
-			$token = $tokens[$curToken];
+        
+        $curToken = $stackPtr + 1;
+        while ( $curToken++ < $nextSemicolonToken ) {
 			$nextNotEmptyToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $curToken + 1, null, true);
-			$nextToken = $tokens[$nextNotEmptyToken];
+			$nextToken = &$tokens[$nextNotEmptyToken];
 			
-			if (!in_array($nextToken['code'], array(T_WHITESPACE, T_LNUMBER, T_SEMICOLON))) {
+			if ( !isset($this->_testTokenKeys[$nextToken['code']] ) {
 				$phpcsFile->addError('break/continue allows only integers nothing else.', $stackPtr);
 				return true;
 			}
