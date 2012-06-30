@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for PHP/ForbiddenParameter sniff.
+ * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for PHP/ForbiddenParameter sniff.
+ * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_ForbiddenParameterSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_BreakContinueVarSyntaxUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -38,9 +39,16 @@ class PHP53to54_Tests_PHP_ForbiddenParameterSniffUnitTest extends AbstractSniffU
      */
 	public function getErrorList()
 	{
-		return array();
+		return array(
+			25 => 1,
+			29 => 1,
+			33 => 1,
+			37 => 2,
+			41 => 2,
+			45 => 1,
+		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *
@@ -51,12 +59,7 @@ class PHP53to54_Tests_PHP_ForbiddenParameterSniffUnitTest extends AbstractSniffU
      */
 	public function getWarningList()
 	{
-        return array(
-			3 => 3,
-			5 => 1,
-			8 => 1,
-			13 => 2,
-			22 => 1,
+		return array(
 		);
     }
 }

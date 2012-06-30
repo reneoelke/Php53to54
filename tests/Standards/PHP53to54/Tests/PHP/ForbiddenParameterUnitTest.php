@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit Test for Deprecated/Functions Sniff
+ * Unit test class for PHP/ForbiddenParameter sniff.
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit Test for Deprecated/Functions Sniff
+ * Unit test class for PHP/ForbiddenParameter sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,7 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_Deprecated_FunctionsSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_ForbiddenParameterUnitTest extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -52,8 +52,11 @@ class PHP53to54_Tests_Deprecated_FunctionsSniffUnitTest extends AbstractSniffUni
 	public function getWarningList()
 	{
         return array(
-			3 => 2,
+			3 => 3,
 			5 => 1,
+			8 => 1,
+			13 => 2,
+			22 => 1,
 		);
     }
 }

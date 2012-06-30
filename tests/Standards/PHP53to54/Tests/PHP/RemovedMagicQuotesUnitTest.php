@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_RemovedMagicQuotesUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -44,7 +45,7 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends Abstrac
 			8 => 1,
 		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *

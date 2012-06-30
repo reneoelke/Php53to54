@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
+ * Unit Test for Deprecated/FunctionAliases Sniff
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
+ * Unit Test for Deprecated/FunctionAliases Sniff
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,7 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_BreakContinueVarSyntaxSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_Deprecated_FunctionAliasesUnitTest extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -39,12 +39,8 @@ class PHP53to54_Tests_PHP_BreakContinueVarSyntaxSniffUnitTest extends AbstractSn
 	public function getErrorList()
 	{
 		return array(
-			25 => 1,
-			29 => 1,
-			33 => 1,
-			37 => 2,
-			41 => 2,
-			45 => 1,
+			3 => 1,
+			5 => 1,
 		);
 	}
 	
@@ -58,7 +54,7 @@ class PHP53to54_Tests_PHP_BreakContinueVarSyntaxSniffUnitTest extends AbstractSn
      */
 	public function getWarningList()
 	{
-		return array(
+        return array(
 		);
     }
 }
