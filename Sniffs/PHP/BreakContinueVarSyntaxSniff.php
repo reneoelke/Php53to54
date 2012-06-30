@@ -41,6 +41,17 @@ implements PHP_CodeSniffer_Sniff
     );
 
     /**
+     * Prepared key test.
+     *
+     * @var array
+     */
+    protected $_testTokenKeys = array(
+        T_WHITESPACE => true,
+        T_LNUMBER => true,
+        T_SEMICOLON => true,
+    );
+
+    /**
      * Returns the token types that this sniff is interested in.
      *
      * @return array(int)
@@ -67,41 +78,34 @@ implements PHP_CodeSniffer_Sniff
         // iterate over next tokens and search for hints to variable usage
         // or method/function calls
         $nextSemicolonToken = $phpcsFile->findNext(
-            T_SEMICOLON, ($stackPtr), null, false
+                T_SEMICOLON, ($stackPtr), null, false
         );
         if (!$nextSemicolonToken) {
             return false;
         }
-        $curToken = $stackPtr;
-        while (++$curToken < $nextSemicolonToken) {
-            $token = $tokens[$curToken];
+
+        $curToken = $stackPtr + 1;
+        while ( $curToken++ < $nextSemicolonToken ) {
             $nextNotEmptyToken = $phpcsFile->findNext(
-                PHP_CodeSniffer_Tokens::$emptyTokens, $curToken + 1,
-                null, true
+                PHP_CodeSniffer_Tokens::$emptyTokens,
+                $curToken , null, true
             );
-            $nextToken = $tokens[$nextNotEmptyToken];
+            $nextToken = &$tokens[$nextNotEmptyToken];
 
-            $staticObjectMethodCall = $token['code'] == T_STRING
-                && $nextToken['code'] == T_DOUBLE_COLON;
-            $objectMethodCall = $token['code'] == T_STRING
-                && $nextToken['code'] == T_OBJECT_OPERATOR;
-            $functionCall = $token['code'] == T_STRING
-                && $nextToken['code'] == T_OPEN_PARENTHESIS;
-            $isVariable = $token['code'] == T_VARIABLE;
-
-            if ($staticObjectMethodCall || $objectMethodCall || $functionCall) {
+            if ( !isset($this->_testTokenKeys[$nextToken['code']]) ) {
                 $phpcsFile->addError(
-                    'function calls in break/continue statements not supported',
+                    'break/continue allows only integers nothing else.',
                     $stackPtr
                 );
-                break;
+                break ;
             }
-            if ($isVariable) {
+
+            if ( $nextToken['content'] == '0' ) {
                 $phpcsFile->addError(
-                    'break/continue with variable is not supported',
+                    'break/continue 0 is no longer allowed. Use without argument.',
                     $stackPtr
                 );
-                break;
+                break ;
             }
         }
         return true;

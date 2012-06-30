@@ -40,12 +40,15 @@ extends PHP53to54_AbstractSniffUnitTest
 	public function getErrorList()
 	{
 		return array(
+		    14 => 1,
+		    19 => 1,
 			25 => 1,
 			29 => 1,
 			33 => 1,
-			37 => 2,
-			41 => 2,
+			37 => 1,
+			41 => 1,
 			45 => 1,
+		    49 => 1,
 		);
 	}
 

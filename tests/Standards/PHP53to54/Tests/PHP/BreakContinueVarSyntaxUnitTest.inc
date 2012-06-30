@@ -44,3 +44,9 @@ for($i = 0; $i < 100; $i++) {
 for($i = 0; $i < 100; $i++) {
 	break (3 * $i);
 }
+
+do {
+    break 0;
+} while($i = 0);
+
+}

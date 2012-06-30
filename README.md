@@ -35,7 +35,7 @@ After you have installed PHP53to54 successfully (you can check it by running `ph
 
 	phpcs -p --standard=PHP53to54 <source-path>
 	
-If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard like this:
+If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
 	phpcs -p -standard=/Users/frank/Downloads/PHP53to54/Standards/PHP53to54 <source-path>
 
