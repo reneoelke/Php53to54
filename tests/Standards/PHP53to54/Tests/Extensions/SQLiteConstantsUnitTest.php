@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for PHP/RemovedFunctionParameters sniff.
+ * Unit test class for Extensions/SQLiteConstantSniff
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for PHP/RemovedFunctionParameters sniff.
+ * Unit test class for Extensions/SQLiteConstantSniff
  *
  * @group PHP53to54
  * @category PHP
@@ -26,9 +26,10 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_Generic_ForbiddenConstantNamesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_SQLiteConstantsUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
-	/**
+    /**
      * Returns the lines where errors should occur.
      *
      * The key of the array should represent the line number and the value
@@ -36,16 +37,14 @@ class PHP53to54_Tests_Generic_ForbiddenConstantNamesSniffUnitTest extends Abstra
      *
      * @return array(int => int)
      */
-	public function getErrorList()
-	{
-		return array(
-			5 => 1,			
-			10 => 1,			
-			13 => 1,			
-		);
-	}
-	
-	/**
+    public function getErrorList()
+    {
+        return array(
+            11 => 1,
+        );
+    }
+
+    /**
      * Returns the lines where warnings should occur.
      *
      * The key of the array should represent the line number and the value
@@ -53,10 +52,8 @@ class PHP53to54_Tests_Generic_ForbiddenConstantNamesSniffUnitTest extends Abstra
      *
      * @return array(int => int)
      */
-	public function getWarningList()
-	{
-		return array(
-			8 => 1,
-		);
+    public function getWarningList()
+    {
+        return array();
     }
 }

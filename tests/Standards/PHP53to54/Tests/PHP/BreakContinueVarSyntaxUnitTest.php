@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for PHP/RemovedFunctionParameters sniff.
+ * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for PHP/RemovedFunctionParameters sniff.
+ * Unit test class for PHP/BreakContinueVarSyntaxSniff sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_BreakContinueVarSyntaxUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -39,12 +40,18 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends Abstrac
 	public function getErrorList()
 	{
 		return array(
-			4 => 1,
-			6 => 1,
-			8 => 1,
+		    14 => 1,
+		    19 => 1,
+			25 => 1,
+			29 => 1,
+			33 => 1,
+			37 => 1,
+			41 => 1,
+			45 => 1,
+		    49 => 1,
 		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *

@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_Generic_ForbiddenClassNamesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_Generic_ForbiddenConstantNamesUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -39,11 +40,12 @@ class PHP53to54_Tests_Generic_ForbiddenClassNamesSniffUnitTest extends AbstractS
 	public function getErrorList()
 	{
 		return array(
-			4 => 1,
-			8 => 1,
+			5 => 1,
+			10 => 1,
+			13 => 1,
 		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *
@@ -55,6 +57,7 @@ class PHP53to54_Tests_Generic_ForbiddenClassNamesSniffUnitTest extends AbstractS
 	public function getWarningList()
 	{
 		return array(
+			8 => 1,
 		);
     }
 }
