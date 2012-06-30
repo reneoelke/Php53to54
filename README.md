@@ -22,6 +22,8 @@ Make sure you have [PHP_CodeSniffer 1.3+](http://pear.php.net/PHP_CodeSniffer) a
 Run the following code in your `pear/PHP/CodeSniffer/Standards` directory:
 
 	git clone git://github.com/foobugs/PHP53to54.git
+
+On Ubuntu (maybe other GNU/Linux) the default path is `/usr/share/php/PHP/CodeSniffer/Standards`.
 	
 ### ZIP Install
 
