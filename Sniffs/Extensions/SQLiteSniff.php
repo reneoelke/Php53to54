@@ -28,7 +28,8 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Extensions_SQLiteSniff implements PHP_CodeSniffer_Sniff
+class PHP53to54_Sniffs_Extensions_SQLiteSniff
+implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.

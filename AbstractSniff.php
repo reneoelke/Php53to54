@@ -30,6 +30,7 @@
  * @since     1.0-beta
  */
 abstract class PHP53to54_AbstractSniff
+implements PHP_CodeSniffer_Sniff
 {
     /**
      * Cache for storing last namespace names found in files while

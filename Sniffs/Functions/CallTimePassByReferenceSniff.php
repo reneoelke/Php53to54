@@ -29,7 +29,6 @@
  */
 class PHP53to54_Sniffs_Functions_CallTimePassByReferenceSniff
 extends PHP53to54_AbstractSniff
-implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.

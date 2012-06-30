@@ -95,7 +95,7 @@ extends PHP53to54_AbstractSniff
         if (!$parameterTokens) {
             return false;
         }
-        foreach($parameterTokens as $index => $parameterToken) {
+        foreach ($parameterTokens as $index => $parameterToken) {
             $variableName = $parameterToken['content'];
             if (!isset($this->forbiddenParameterNames[$variableName])) {
                 continue;
