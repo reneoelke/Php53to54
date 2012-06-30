@@ -37,7 +37,7 @@ If you did not put the Standard into PHP_CodeSniffers Standard directory you can
 
 	phpcs -p -standard=/Users/frank/Downloads/PHP53to54/Standards/PHP53to54 <source-path>
 
-You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
+You can find more options and arguments (for instance ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 	
 ## Future
 
