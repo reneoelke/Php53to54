@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Removed INI Directives Sniff
+ * Changed htmlentities default Character Set
  *
  * PHP version 5
  *
@@ -15,10 +15,10 @@
  */
 
 /**
- * Removed INI Directives Sniff
+ * Changed htmlentities default Character Set
  *
- * Search for calls to htmlentities with asian character sets which will lead to
- * a E_STRICT error message.
+ * Search for calls to htmlentities with no third parameter passed which will
+ * use utf-8 as default encoding instead of iso in php 5.4.
  *
  * @category  PHP
  * @package   PHP_CodeSniffer
@@ -28,7 +28,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_HtmlentitiesAsianCharsetsSniff
+class PHP53to54_Sniffs_PHP_HtmlentitiesEncodingSniff
 extends PHP53to54_AbstractSniff
 {
     /**
@@ -40,16 +40,6 @@ extends PHP53to54_AbstractSniff
         'PHP',
     );
 
-    // from http://en.wikipedia.org/wiki/Character_set
-    protected $invalidEncodings = array(
-        'BIG5',
-        'GB2312',
-        'GB2312',
-        'BIG5-HKSCS',
-        'Shift_JIS',
-        'EUC-JP',
-    );
-
     /**
      * Returns the token types that this sniff is interested in.
      *
@@ -58,7 +48,7 @@ extends PHP53to54_AbstractSniff
      */
     public function register()
     {
-        return array( T_STRING );
+        return array( T_STRING, );
     }
 
     /**
@@ -90,20 +80,36 @@ extends PHP53to54_AbstractSniff
         $thirdParameter = $this->getFunctionCallParameterByIndex(
             $phpcsFile, $stackPtr, 2
         );
-        if (!$thirdParameter
-            || $thirdParameter['code'] !== T_CONSTANT_ENCAPSED_STRING
-        ) {
-            return true;
-        }
-        $thirdParameterValue = strtoupper(substr($thirdParameter['content'], 1, -1));
-        if (in_array($thirdParameterValue, $this->invalidEncodings)) {
-            $phpcsFile->addError(
-                'htmlentites throws E_STRICT with asian charsets',
+        // missing third parameter
+        if (!$thirdParameter) {
+            $phpcsFile->addWarning(
+                'default encoding changed from ISO to UTF8',
                 $stackPtr,
-                'ErrorAsianCharsets'
+                'ChangedDefaultCharacterEncoding'
             );
             return true;
         }
+        switch($thirdParameter['code']) {
+        case T_VARIABLE:
+            $phpcsFile->addWarning(
+                'default encoding changed from ISO to UTF8',
+                $stackPtr,
+                'ChangedDefaultCharacterEncoding'
+            );
+            return true;
+
+        case T_CONSTANT_ENCAPSED_STRING:
+        default:
+            $stringValue = substr($thirdParameter['content'], 1, -1);
+            if (empty($stringValue)) {
+                $phpcsFile->addWarning(
+                    'default encoding changed from ISO to UTF8',
+                    $stackPtr,
+                    'ChangedDefaultCharacterEncoding'
+                );
+            }
+        }
+        var_dump($thirdParameter);
         return true;
     }
 }

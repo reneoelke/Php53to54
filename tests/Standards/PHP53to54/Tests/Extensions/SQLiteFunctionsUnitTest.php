@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit Test for Deprecated/FunctionAliases Sniff
+ * Unit test class for Extensions/SQLiteFunctionsSniff
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit Test for Deprecated/FunctionAliases Sniff
+ * Unit test class for Extensions/SQLiteFunctionsSniff
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_Deprecated_FunctionAliasesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_SQLiteFunctionsUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -39,11 +40,10 @@ class PHP53to54_Tests_Deprecated_FunctionAliasesSniffUnitTest extends AbstractSn
 	public function getErrorList()
 	{
 		return array(
-			3 => 1,
-			5 => 1,
+			11 => 1,
 		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *
@@ -54,7 +54,7 @@ class PHP53to54_Tests_Deprecated_FunctionAliasesSniffUnitTest extends AbstractSn
      */
 	public function getWarningList()
 	{
-        return array(
+		return array(
 		);
     }
 }
