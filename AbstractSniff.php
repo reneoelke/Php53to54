@@ -41,6 +41,12 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
+     * @var array
+     */
+    protected $_functionCallParametersMap = array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER);
+
+    /**
+     *
      * @param string $propertyName
      * @return PHP53to54_AbstractSniff - fluent interface
      */
@@ -162,8 +168,10 @@ abstract class PHP53to54_AbstractSniff
 
         $parameters = array();
         $tmpPtr = $openBracket;
-        while (($tmpPtr = $phpcsFile->findNext(array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER), $tmpPtr)) !== false) {
-            if ($tmpPtr > $closeBracket) break;
+        while (($tmpPtr = $phpcsFile->findNext($this->_functionCallParametersMap, $tmpPtr)) !== false) {
+            if ($tmpPtr > $closeBracket) {
+                break;
+            }
             $parameters[$tmpPtr] = $tokens[$tmpPtr];
             $tmpPtr++;
         }
