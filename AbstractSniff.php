@@ -5,13 +5,13 @@
  *
  * PHP version 5
  *
- * @category PHP
- * @package PHP_CodeSniffer
- * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD http://www.opensource.org/licenses/bsd-license.php
- * @link https://github.com/foobugs/PHP53to54
- * @since 1.0-beta
+ * @license   BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link      https://github.com/foobugs/PHP53to54
+ * @since     1.0-beta
  */
 
 /**
@@ -20,14 +20,14 @@
  * Jaggers base class for Sniffs that provides methods that can be used in
  * various Sniffs.
  *
- * @category PHP
- * @package PHP_CodeSniffer
- * @author Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
- * @author Maik Penz // <maik@phpkuh.de>
+ * @category  PHP
+ * @package   PHP_CodeSniffer
+ * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
+ * @author    Maik Penz // <maik@phpkuh.de>
  * @copyright 2012 foobugs oelke & eichner GbR
- * @license BSD http://www.opensource.org/licenses/bsd-license.php
- * @link https://github.com/foobugs/PHP53to54
- * @since 1.0-beta
+ * @license   BSD http://www.opensource.org/licenses/bsd-license.php
+ * @link      https://github.com/foobugs/PHP53to54
+ * @since     1.0-beta
  */
 abstract class PHP53to54_AbstractSniff
 {
@@ -43,7 +43,7 @@ abstract class PHP53to54_AbstractSniff
      *
      * @var array
      */
-    protected $_functionCallParametersMap = array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER);
+    protected $functionCallParametersMap = array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER);
 
     /**
      *
@@ -77,8 +77,10 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     *
      * @return boolean - always true
      */
     protected function processNamespace(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
@@ -92,8 +94,10 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     *
      * @return array - false on error
      */
     public function getFunctionDefinitionParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
@@ -117,8 +121,10 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     *
      * @return boolean
      */
     public function isFunction(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
@@ -136,8 +142,11 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     *
+     * @return boolean
      */
     public function isFunctionCall(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
@@ -153,8 +162,10 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     *
      * @return array - false on error
      */
     public function getFunctionCallParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
@@ -168,7 +179,7 @@ abstract class PHP53to54_AbstractSniff
 
         $parameters = array();
         $tmpPtr = $openBracket;
-        while (($tmpPtr = $phpcsFile->findNext($this->_functionCallParametersMap, $tmpPtr)) !== false) {
+        while (($tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)) !== false) {
             if ($tmpPtr > $closeBracket) {
                 break;
             }
@@ -180,9 +191,11 @@ abstract class PHP53to54_AbstractSniff
 
     /**
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
-     * @param integer $stackPtr
-     * @param integer $index
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token in
+     *                                        the stack passed in $tokens.
+     * @param int                  $index
+     *
      * @return mixed - false on error
      */
     public function getFunctionCallParameterByIndex(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $index)
