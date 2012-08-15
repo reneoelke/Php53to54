@@ -1,0 +1,7 @@
+In order to run tests link from/ copy to CodeSniffer tests path.
+
+For Ubuntu (maybe other GNU/Linux) that is `/usr/share/php/test/PHP_CodeSniffer/Standards/`.
+
+Now run
+# cd /path/to/PHP_CodeSniffer/
+# phpunit --bootstrap AllTests.php Standards/PHP53to54/

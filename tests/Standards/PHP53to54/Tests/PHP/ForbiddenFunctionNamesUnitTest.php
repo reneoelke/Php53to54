@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_ForbiddenFunctionNamesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_ForbiddenFunctionNamesUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -40,7 +41,7 @@ class PHP53to54_Tests_PHP_ForbiddenFunctionNamesSniffUnitTest extends AbstractSn
 	{
 		return array();
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *

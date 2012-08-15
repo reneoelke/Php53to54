@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for Extensions/SQLiteConstantSniff
+ * Unit test class for PHP/RemovedFunctionParameters sniff.
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for Extensions/SQLiteConstantSniff
+ * Unit test class for PHP/RemovedFunctionParameters sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -26,7 +26,8 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_RemovedMagicQuotesUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
 	/**
      * Returns the lines where errors should occur.
@@ -39,10 +40,12 @@ class PHP53to54_Tests_PHP_RemovedFunctionParametersSniffUnitTest extends Abstrac
 	public function getErrorList()
 	{
 		return array(
-			11 => 1,
+			4 => 1,
+			6 => 1,
+			8 => 1,
 		);
 	}
-	
+
 	/**
      * Returns the lines where warnings should occur.
      *

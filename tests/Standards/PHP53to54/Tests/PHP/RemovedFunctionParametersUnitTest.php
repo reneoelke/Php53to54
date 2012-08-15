@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Unit test class for PHP/ForbiddenInterfaceNames sniff.
+ * Unit test class for PHP/RemovedFunctionParameters sniff.
  *
  * PHP version 5
  *
@@ -15,7 +15,7 @@
  */
 
 /**
- * Unit test class for PHP/ForbiddenInterfaceNames sniff.
+ * Unit test class for PHP/RemovedFunctionParameters sniff.
  *
  * @group PHP53to54
  * @category PHP
@@ -26,9 +26,10 @@
  * @link https://github.com/foobugs/PHP53to54
  * @since 1.0-beta
  */
-class PHP53to54_Tests_Generic_ForbiddenInterfaceNamesSniffUnitTest extends AbstractSniffUnitTest
+class PHP53to54_Tests_PHP_RemovedFunctionParametersUnitTest
+extends PHP53to54_AbstractSniffUnitTest
 {
-	/**
+    /**
      * Returns the lines where errors should occur.
      *
      * The key of the array should represent the line number and the value
@@ -36,15 +37,15 @@ class PHP53to54_Tests_Generic_ForbiddenInterfaceNamesSniffUnitTest extends Abstr
      *
      * @return array(int => int)
      */
-	public function getErrorList()
-	{
-		return array(
-			9 => 1,
-			13 => 1,
-		);
-	}
-	
-	/**
+    public function getErrorList()
+    {
+        return array(
+            4 => 1,
+            8 => 1,
+        );
+    }
+
+    /**
      * Returns the lines where warnings should occur.
      *
      * The key of the array should represent the line number and the value
@@ -52,9 +53,10 @@ class PHP53to54_Tests_Generic_ForbiddenInterfaceNamesSniffUnitTest extends Abstr
      *
      * @return array(int => int)
      */
-	public function getWarningList()
-	{
-		return array(
-		);
+    public function getWarningList()
+    {
+        return array(
+            6 => 1,
+        );
     }
 }
