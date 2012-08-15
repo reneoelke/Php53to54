@@ -10,7 +10,7 @@
 				SessionHandler
 				SNMP
 				Transliterator
-				Spoofchecker	
+				Spoofchecker
 			"/>
 			<property name="checkNamespace" value="true" />
 		</properties>
@@ -101,7 +101,8 @@
 				JSON_UNESCAPED_SLASHES
 				JSON_NUMERIC_CHECK
 				JSON_UNESCAPED_UNICODE
-				JSON_BIGINT_AS_STRING" />
+				JSON_BIGINT_AS_STRING
+			" />
 		</properties>
 	</rule>
 	<rule ref="PHP53to54.Generic.RemovedINIDirectives">

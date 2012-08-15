@@ -5,20 +5,10 @@ while($i = 0) {
 	continue;
 }
 
-while($i = 0) {
-	continue 1;
-}
-
 for($i = 0; $i < 100; $i++) {
 	break
 		;
 }
-
-for($i = 0; $i < 100; $i++) {
-	break 2;
-}
-
-// invalid calls
 
 for($i = 0; $i < 100; $i++) {
 	break 99 + 3
@@ -30,6 +20,7 @@ for($i = 0; $i < 100; $i++) {
 		;
 }
 
+// invalid calls
 for($i = 0; $i < 100; $i++) {
 	break $i;
 }
@@ -52,4 +43,10 @@ for($i = 0; $i < 100; $i++) {
 
 for($i = 0; $i < 100; $i++) {
 	break (3 * $i);
+}
+
+do {
+    break 0;
+} while($i = 0);
+
 }

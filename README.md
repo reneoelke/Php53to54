@@ -21,7 +21,9 @@ Make sure you have [PHP_CodeSniffer 1.3+](http://pear.php.net/PHP_CodeSniffer) a
 
 Run the following code in your `pear/PHP/CodeSniffer/Standards` directory:
 
-	git clone git://github.com/foobugs/jagger.git
+	git clone git://github.com/foobugs/PHP53to54.git
+
+On Ubuntu (maybe other GNU/Linux) the default path is `/usr/share/php/PHP/CodeSniffer/Standards`.
 	
 ### ZIP Install
 
@@ -29,15 +31,15 @@ Download the [ZIP](https://github.com/foobugs/PHP53to54/zipball/master) file and
 
 ## Usage
 
-After you have installed jagger successfully (you can check it by running `phpcs -i` and see if PHP53to54 ist listed) you can specifiy the Standard when calling PHP_CodeSniffer:
+After you have installed PHP53to54 successfully (you can check it by running `phpcs -i` and see if PHP53to54 ist listed) you can specifiy the Standard when calling PHP_CodeSniffer:
 
 	phpcs -p --standard=PHP53to54 <source-path>
 	
 If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
-	phpcs -p -standard=/Users/frank/Downloads/jagger/Standards/PHP53to54 <source-path>
+	phpcs -p -standard=/Users/frank/Downloads/PHP53to54/Standards/PHP53to54 <source-path>
 
-You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
+You can find more options and arguments (for instance ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 	
 ## Future
 
