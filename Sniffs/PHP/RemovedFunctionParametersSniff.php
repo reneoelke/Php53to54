@@ -91,33 +91,38 @@ extends PHP53to54_AbstractSniff
         $parameterTokens = $this->getFunctionCallParameters($phpcsFile, $stackPtr);
         $parameterRegExps = $this->forbiddenFunctionsParameters[$functionName];
         foreach ($parameterTokens as $index => $parameterToken) {
+            // only look at first function parameters
+            if ($index > 0) {
+                continue;
+            }
+            $tokenContent = $parameterToken['content'];
             switch($parameterToken['code']) {
-            case T_CONSTANT_ENCAPSED_STRING:
-                if (!isset($parameterRegExps[$index])) {
-                    continue;
-                }
-                $regexp = $parameterRegExps[$index];
-                $string = substr($parameterToken['content'], 1, -1);
-                if (preg_match($regexp, $string)) {
-                    $phpcsFile->addError(
+                case T_CONSTANT_ENCAPSED_STRING:
+                    if (!isset($parameterRegExps[$index])) {
+                        continue;
+                    }
+                    $regexp = $parameterRegExps[$index];
+                    $string = substr($tokenContent, 1, -1);
+                    if (preg_match($regexp, $string)) {
+                        $phpcsFile->addError(
+                            sprintf(
+                                '%s function parameter %d value %s is invalid',
+                                $functionName, $index, $functionName
+                            ),
+                            $stackPtr
+                        );
+                    }
+                    break;
+                case T_VARIABLE:
+                default:
+                    $phpcsFile->addWarning(
                         sprintf(
-                            '%s function parameter %d value %s is invalid',
-                            $functionName, $index, $functionName
+                            '%s function parameter %s is possibly deprecated',
+                            $functionName, $tokenContent
                         ),
                         $stackPtr
                     );
-                }
-                break;
-
-            case T_VARIABLE:
-            default:
-                $phpcsFile->addWarning(
-                    sprintf(
-                        '%s function parameter %d is possibly deprecated',
-                        $functionName, $index
-                    ),
-                    $stackPtr
-                );
+                    break;
             }
         }
     }

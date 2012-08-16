@@ -112,10 +112,12 @@ implements PHP_CodeSniffer_Sniff
 
         $parameters = array();
         $tmpPtr = $openBracket;
+        $parameterIndex = 1;
         while (($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr)) !== false) {
             if ($tmpPtr > $closeBracket) break;
-            $parameters[] = $tokens[$tmpPtr];
+            $parameters[$parameterIndex] = $tokens[$tmpPtr];
             $tmpPtr++;
+            $parameterIndex++;
         }
         return $parameters;
     }
@@ -180,12 +182,14 @@ implements PHP_CodeSniffer_Sniff
 
         $parameters = array();
         $tmpPtr = $openBracket;
+        $parameterIndex = 1;
         while (($tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)) !== false) {
             if ($tmpPtr > $closeBracket) {
                 break;
             }
-            $parameters[$tmpPtr] = $tokens[$tmpPtr];
+            $parameters[$parameterIndex] = $tokens[$tmpPtr];
             $tmpPtr++;
+            $parameterIndex++;
         }
         return $parameters;
     }
