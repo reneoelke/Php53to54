@@ -92,7 +92,7 @@ extends PHP53to54_AbstractSniff
         $parameterRegExps = $this->forbiddenFunctionsParameters[$functionName];
         foreach ($parameterTokens as $index => $parameterToken) {
             // only look at first function parameters
-            if ($index > 0) {
+            if ($index > 1) {
                 continue;
             }
             $tokenContent = $parameterToken['content'];
