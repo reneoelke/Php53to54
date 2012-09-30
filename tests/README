@@ -1,7 +1,12 @@
-In order to run tests link from/ copy to CodeSniffer tests path.
+In order to run the test you will need to link PHP53to54 to your PHP_CodeSniffer
+test path.
 
-For Ubuntu (maybe other GNU/Linux) that is `/usr/share/php/test/PHP_CodeSniffer/Standards/`.
+For Ubuntu that is /usr/share/php/test/PHP_CodeSniffer/CodeSniffer/Standards/.
 
-Now run
-# cd /path/to/PHP_CodeSniffer/
-# phpunit --bootstrap AllTests.php Standards/PHP53to54/
+Now you can either run all CodeSniffer tests like
+
+# phpunit --bootstrap /path/to/AllTests.php /path/to/test/Standards
+
+or single tests only with
+
+# phpunit --bootstrap /path/to/AllTests.php /path/to/tests/Standards/PHP53to54/ 

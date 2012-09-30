@@ -8,3 +8,5 @@ echo hash ($algorithm);
 sprintf('%s', 'test'.hash('salsa20'));
 
 echo "Teststring".hash_file('no-match').'aslk';
+
+echo hash_file('no-match', 'gamma', 'beta', 'salsa10');

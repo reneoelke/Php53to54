@@ -1,25 +1,25 @@
 <?php
 
-function foo($_GET,$_POST, $_GLOBALS) {
-	
+function foo($_GET,$_POST, $GLOBALS) {
+
 }
 
 function abc(
 $GLOBALS
 ) {
-	
+
 }
 
-function bar(Array $_GET, $_POST) {
-	
+function bar(array $_GET, $_POST, callable $GLOBALS) {
+
 }
 
 function batz($foo, $bar) {
-	
+
 }
 
-$callback = 
-	function($a, $_GET) use ($x, $y) 
+$callback =
+	function($a, $_GET) use ($x, $y)
 	{
-		
+
 	};
