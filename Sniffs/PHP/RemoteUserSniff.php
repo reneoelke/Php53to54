@@ -67,7 +67,8 @@ extends PHP53to54_AbstractSniff
         $tokens = $phpcsFile->getTokens();
         $token = $tokens[$stackPtr];
         $content = substr($token['content'], 1, -1);
-        if ($content == 'REMOTE_USER') {
+        // would cause warning if sniff was executed on itself
+        if ($content == 'REMOTE' . '_USER') {
             $phpcsFile->addWarning(
                 'REMOTE_USER is deprecated as SAFE_MODE was removed',
                 $stackPtr
