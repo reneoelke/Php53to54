@@ -33,7 +33,7 @@ Make sure you’ve PHP_CodeSniffer installed. After that you can either put this
 
 		cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
 		git clone git://github.com/foobugs/PHP53to54.git
-
+                cd PHP53to54 & rm composer.json & git mv PHP53to54/* ./
 
 Usage
 -----
