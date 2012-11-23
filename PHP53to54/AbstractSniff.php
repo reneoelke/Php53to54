@@ -17,7 +17,7 @@
 /**
  * AbstractSniff
  *
- * Jaggers base class for Sniffs that provides methods that can be used in
+ * PHP53to54 base class for Sniffs that provides methods that can be used in
  * various Sniffs.
  *
  * @category  PHP
