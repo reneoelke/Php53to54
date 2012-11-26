@@ -31,6 +31,6 @@
         "squizlabs/php_codesniffer": "1.4.*"
     },
     "autoload": {
-        "psr-0": { "PHP53to54\\": ".\PHP53to54" }
+        "psr-0": { "PHP53to54\\": "./PHP53to54" }
     }
 }
