@@ -31,9 +31,9 @@ Make sure you’ve PHP_CodeSniffer installed. After that you can either put this
 	This script will go to your PHP_CodeSniffer Standards directory and place
 	a clone of PHP53to54 Standard inside of it:
 
-		cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
-		git clone git://github.com/foobugs/PHP53to54.git
-
+        cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
+        git clone git://github.com/foobugs/PHP53to54.git
+        cd PHP53to54 & rm composer.json & git mv PHP53to54/* ./
 
 Usage
 -----
