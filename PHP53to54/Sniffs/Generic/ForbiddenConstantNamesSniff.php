@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Forbidden Constant Names
  *
@@ -13,6 +12,14 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\Generic;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_Tokens;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Forbidden Constant Names
@@ -28,8 +35,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Generic_ForbiddenConstantNamesSniff
-extends PHP53to54_AbstractSniff
+class ForbiddenConstantNamesSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -83,22 +89,20 @@ extends PHP53to54_AbstractSniff
 
         $result = true;
         switch($token['code']) {
-        case T_NAMESPACE:
-            $result = $this->processNamespace($phpcsFile, $stackPtr);
-            break;
-
-        case T_STRING:
-        default:
-            if ($this->checkNamespace
-                && $this->getLastNamespaceForFile($phpcsFile)
-            ) {
-                return false;
-            }
-            if (strtolower($token['content']) !== 'define') {
+            case T_NAMESPACE:
+                $result = $this->processNamespace($phpcsFile, $stackPtr);
                 break;
-            }
-            $result = $this->processConstantDefinition($phpcsFile, $stackPtr);
-            break;
+            case T_STRING:
+            default:
+                if ($this->checkNamespace
+                    && $this->getLastNamespaceForFile($phpcsFile)
+                ) {
+                    return false;
+                }
+                if (strtolower($token['content']) !== 'define') {
+                    break;
+                }
+                $result = $this->processConstantDefinition($phpcsFile, $stackPtr);
         }
         return $result;
     }
@@ -112,19 +116,26 @@ extends PHP53to54_AbstractSniff
      *
      * @return void
      */
-    protected function processConstantDefinition(PHP_CodeSniffer_File $phpcsFile,
+    protected function processConstantDefinition(
+        PHP_CodeSniffer_File $phpcsFile,
         $stackPtr
     ) {
         $tokens = $phpcsFile->getTokens();
 
         $openBracket = $phpcsFile->findNext(
-            PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            $stackPtr + 1,
+            null,
+            true
         );
         if ($openBracket == false) {
             return false;
         }
         $firstParameterPtr = $phpcsFile->findNext(
-            PHP_CodeSniffer_Tokens::$emptyTokens, ($openBracket + 1), null, true
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            $openBracket + 1,
+            null,
+            true
         );
         if ($firstParameterPtr == false) {
             return false;
@@ -148,7 +159,8 @@ extends PHP53to54_AbstractSniff
         if (in_array($firstParameterValue, $this->names)) {
             $phpcsFile->addError(
                 sprintf(
-                    '%s is an invalid name for a constant', $firstParameterValue
+                    '%s is an invalid name for a constant',
+                    $firstParameterValue
                 ),
                 $firstParameterPtr,
                 'invalidConstantName'

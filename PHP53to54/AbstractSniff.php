@@ -1,5 +1,4 @@
 <?php
-
 /**
  * AbstractSniff
  *
@@ -13,6 +12,14 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54;
+
+use PHP_CodeSniffer_File;
+
+use PHP_CodeSniffer_Tokens;
+
+use LogicException;
 
 /**
  * AbstractSniff
@@ -29,8 +36,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-abstract class PHP53to54_AbstractSniff
-implements PHP_CodeSniffer_Sniff
+abstract class AbstractSniff implements \PHP_CodeSniffer_Sniff
 {
     /**
      * Cache for storing last namespace names found in files while
@@ -44,12 +50,20 @@ implements PHP_CodeSniffer_Sniff
      *
      * @var array
      */
-    protected $functionCallParametersMap = array(T_CONSTANT_ENCAPSED_STRING, T_VARIABLE, T_NULL, T_LNUMBER, T_DNUMBER);
+    protected $functionCallParametersMap = array(
+        T_CONSTANT_ENCAPSED_STRING,
+        T_VARIABLE,
+        T_NULL,
+        T_LNUMBER,
+        T_DNUMBER
+    );
 
     /**
+     * Parse array property.
      *
-     * @param string $propertyName
-     * @return PHP53to54_AbstractSniff - fluent interface
+     * @param string $propertyName property name
+     *
+     * @return \PHP53to54\AbstractSniff - fluent interface
      */
     protected function parseArrayProperty($propertyName)
     {
@@ -63,20 +77,23 @@ implements PHP_CodeSniffer_Sniff
     }
 
     /**
+     * Get last namespace.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     *
      * @return string
      */
     protected function getLastNamespaceForFile(PHP_CodeSniffer_File $phpcsFile)
     {
         $filename = $phpcsFile->getFilename();
-        if (empty($this->lastNamespacesPerFile[$filename])) {
+        if (!isset($this->lastNamespacesPerFile[$filename])) {
             return false;
         }
         return $this->lastNamespacesPerFile[$filename];
     }
 
     /**
+     * Process namespace.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
@@ -88,12 +105,16 @@ implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
         $token = $tokens[$stackPtr];
-        $namspaceToken = $tokens[$phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)];
-        $this->lastNamespacesPerFile[$phpcsFile->getFilename()] = strtolower($namspaceToken['content']);
+        $namspaceToken = $tokens[
+            $phpcsFile->findNext(array(T_STRING), ($stackPtr + 1), null, false)
+        ];
+        $this->lastNamespacesPerFile[$phpcsFile->getFilename()]
+            = strtolower($namspaceToken['content']);
         return true;
     }
 
     /**
+     * Get function definition parameters.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
@@ -101,10 +122,17 @@ implements PHP_CodeSniffer_Sniff
      *
      * @return array - false on error
      */
-    public function getFunctionDefinitionParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-    {
+    public function getFunctionDefinitionParameters(
+        PHP_CodeSniffer_File $phpcsFile,
+        $stackPtr
+    ) {
         $tokens = $phpcsFile->getTokens();
-        $openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
+        $openBracket = $phpcsFile->findNext(
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            ($stackPtr + 1),
+            null,
+            true
+        );
         if (!isset($tokens[$openBracket]['parenthesis_closer'])) {
             return false;
         }
@@ -113,8 +141,13 @@ implements PHP_CodeSniffer_Sniff
         $parameters = array();
         $tmpPtr = $openBracket;
         $parameterIndex = 1;
-        while (($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr)) !== false) {
-            if ($tmpPtr > $closeBracket) break;
+        while (
+            ($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr))
+            !== false
+        ) {
+            if ($tmpPtr > $closeBracket) {
+                break;
+            }
             $parameters[$parameterIndex] = $tokens[$tmpPtr];
             $tmpPtr++;
             $parameterIndex++;
@@ -123,6 +156,7 @@ implements PHP_CodeSniffer_Sniff
     }
 
     /**
+     * Is function.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
@@ -133,7 +167,12 @@ implements PHP_CodeSniffer_Sniff
     public function isFunction(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
+        $openBracket = $phpcsFile->findNext(
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            ($stackPtr + 1),
+            null,
+            true
+        );
         if ($tokens[$openBracket]['code'] !== T_OPEN_PARENTHESIS) {
             return false;
         }
@@ -144,6 +183,7 @@ implements PHP_CodeSniffer_Sniff
     }
 
     /**
+     * Is function call.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
@@ -164,6 +204,7 @@ implements PHP_CodeSniffer_Sniff
     }
 
     /**
+     * Get function call parameters.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
@@ -171,10 +212,17 @@ implements PHP_CodeSniffer_Sniff
      *
      * @return array - false on error
      */
-    public function getFunctionCallParameters(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
-    {
+    public function getFunctionCallParameters(
+        PHP_CodeSniffer_File $phpcsFile,
+        $stackPtr
+    ) {
         $tokens = $phpcsFile->getTokens();
-        $openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true);
+        $openBracket = $phpcsFile->findNext(
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            ($stackPtr + 1),
+            null,
+            true
+        );
         if (!isset($tokens[$openBracket]['parenthesis_closer'])) {
             return false;
         }
@@ -183,7 +231,10 @@ implements PHP_CodeSniffer_Sniff
         $parameters = array();
         $tmpPtr = $openBracket;
         $parameterIndex = 1;
-        while (($tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)) !== false) {
+        while (
+            $tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)
+            !== false
+        ) {
             if ($tmpPtr > $closeBracket) {
                 break;
             }
@@ -195,18 +246,23 @@ implements PHP_CodeSniffer_Sniff
     }
 
     /**
+     * Get function call parameter by index.
      *
      * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in
      *                                        the stack passed in $tokens.
-     * @param int                  $index
+     * @param int                  $index     index
      *
      * @return mixed - false on error
      */
-    public function getFunctionCallParameterByIndex(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $index)
-    {
+    public function getFunctionCallParameterByIndex(
+        PHP_CodeSniffer_File $phpcsFile,
+        $stackPtr,
+        $index
+    ) {
         $i = 0;
-        foreach($this->getFunctionCallParameters($phpcsFile, $stackPtr) as $parameter) {
+        $parameters = $this->getFunctionCallParameters($phpcsFile, $stackPtr);
+        foreach ($parameters as $parameter) {
             if ($i == $index) {
                 return $parameter;
             }

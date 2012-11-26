@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SNMP OOP-Only
  *
@@ -14,6 +13,8 @@
  * @since     1.0-beta
  */
 
+namespace PHP53to54\Sniffs\SNMP;
+
 /**
  * SNMP OOP-Only
  *
@@ -27,8 +28,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_SNMP_DeprecatedFunctionsSniff
-extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class DeprecatedFunctionsSniff extends \Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
     /**
      * A list of tokenizers this sniff supports.

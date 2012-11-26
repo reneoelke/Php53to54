@@ -1,5 +1,4 @@
 <?php
-
 /**
  * putenv TZ Sniff
  *
@@ -13,6 +12,10 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP_CodeSniffer_File;
 
 /**
  * putenv TZ sniff
@@ -28,8 +31,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_PutenvTZSniff
-extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
+class PutenvTZSniff extends RemovedFunctionParametersSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -71,8 +73,10 @@ extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
         }
         // find first string param
         $next = $phpcsFile->findNext(
-            array( T_DOUBLE_COLON, ),
-            $stackPtr + 2, null, true
+            array(T_DOUBLE_COLON),
+            $stackPtr + 2,
+            null,
+            true
         );
         if (!($firstParameterPtr = $next)) {
             return true;
@@ -80,7 +84,9 @@ extends PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
         $firstParameter = substr($tokens[$firstParameterPtr]['content'], 1, -1);
         if (preg_match('/^TZ=/', $firstParameter)) {
             $phpcsFile->addError(
-                'TZ environment variable not longer checked', $stackPtr, 'TZ'
+                'TZ environment variable not longer checked',
+                $stackPtr,
+                'TZ'
             );
         }
         return true;

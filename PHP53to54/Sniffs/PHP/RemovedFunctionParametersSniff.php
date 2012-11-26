@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed Function Parameters
  *
@@ -14,6 +13,12 @@
  * @since     1.0-beta
  */
 
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
+
 /**
  * Removed Function Parameters
  *
@@ -27,8 +32,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_RemovedFunctionParametersSniff
-extends PHP53to54_AbstractSniff
+class RemovedFunctionParametersSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -107,7 +111,9 @@ extends PHP53to54_AbstractSniff
                         $phpcsFile->addError(
                             sprintf(
                                 '%s function parameter %d value %s is invalid',
-                                $functionName, $index, $functionName
+                                $functionName,
+                                $index,
+                                $functionName
                             ),
                             $stackPtr
                         );
@@ -118,7 +124,8 @@ extends PHP53to54_AbstractSniff
                     $phpcsFile->addWarning(
                         sprintf(
                             '%s function parameter %s is possibly deprecated',
-                            $functionName, $tokenContent
+                            $functionName,
+                            $tokenContent
                         ),
                         $stackPtr
                     );

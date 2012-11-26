@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Forbidden Function Parameter
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Forbidden Function Parameter
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_ForbiddenParameterSniff
-extends PHP53to54_AbstractSniff
+class ForbiddenParameterSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -86,11 +90,13 @@ extends PHP53to54_AbstractSniff
         $functionNamePtr = $phpcsFile->findNext(
             array( T_STRING, ),
             ($stackPtr + 1),
-            null, false
+            null,
+            false
         );
 
         $parameterTokens = $this->getFunctionDefinitionParameters(
-            $phpcsFile, $functionNamePtr
+            $phpcsFile,
+            $functionNamePtr
         );
         if (!$parameterTokens) {
             return false;

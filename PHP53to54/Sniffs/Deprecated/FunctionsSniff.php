@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed Function Aliases Test
  *
@@ -13,6 +12,8 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\Deprecated;
 
 /**
  * Deprecated Function Call
@@ -28,8 +29,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Deprecated_FunctionsSniff
-extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class FunctionsSniff extends \Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
     /**
      * A list of tokenizers this sniff supports.

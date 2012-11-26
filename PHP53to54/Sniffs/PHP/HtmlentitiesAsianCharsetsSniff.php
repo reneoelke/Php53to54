@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed INI Directives Sniff
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Removed INI Directives Sniff
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_HtmlentitiesAsianCharsetsSniff
-extends PHP53to54_AbstractSniff
+class HtmlentitiesAsianCharsetsSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -88,7 +92,9 @@ extends PHP53to54_AbstractSniff
         }
         // check if third parameter defined
         $thirdParameter = $this->getFunctionCallParameterByIndex(
-            $phpcsFile, $stackPtr, 2
+            $phpcsFile,
+            $stackPtr,
+            2
         );
         if (!$thirdParameter
             || $thirdParameter['code'] !== T_CONSTANT_ENCAPSED_STRING
