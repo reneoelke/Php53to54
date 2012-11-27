@@ -11,13 +11,13 @@ usage
 
 [Fork](https://help.github.com/articles/fork-a-repo) or *remote pull* the repository.
 
-Add your sniffs (and tests).
+Add your ruleset, sniffs and tests.
 
-Fix your README.md and LICENCE.
+Fix the README.md and LICENCE.
 
-Give a name in your composer.json (and add to [packagist](http://packagist.org)).
+Give it a name in your composer.json (and add to [packagist](http://packagist.org)).
 
-Composed and eady to sniff.
+Composed and ready to sniff.
 
 provides
 --------
