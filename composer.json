@@ -6,7 +6,7 @@
         "phpcs",
         "standards"
     ],
-    "license": "BSD-2-clause",
+    "license": "BSD-2-Clause",
     "require": {
         "goatherd/phpcs_installer": "1.*"
     }
