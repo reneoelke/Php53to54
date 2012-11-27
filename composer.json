@@ -1,0 +1,13 @@
+{
+    "name": "PROJECT_NAME",
+    "description": "PROJECT_DESCRIPTION",
+    "type": "phpcs-standard",
+    "keywords": [
+        "phpcs",
+        "standards"
+    ],
+    "license": "BSD-2-clause",
+    "require": {
+        "goatherd/phpcs_installer": "1.*"
+    }
+}
