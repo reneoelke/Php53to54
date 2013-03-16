@@ -34,6 +34,6 @@
         "psr-0": { "PHP53to54\\": "./PHP53to54" }
     },
     "extra": {
-        "phpcs-name": "PHP53to54"
+        "phpcs-standard": "PHP53to54"
     }
 }
