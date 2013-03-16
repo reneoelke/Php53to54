@@ -10,7 +10,7 @@
         "compatibility"
     ],
     "homepage": "https://github.com/foobugs/PHP53to54",
-    "license": "BSD-3-clause",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Marcel Eichner"
