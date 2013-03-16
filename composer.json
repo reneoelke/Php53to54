@@ -10,7 +10,7 @@
         "compatibility"
     ],
     "homepage": "https://github.com/foobugs/PHP53to54",
-    "license": "BSD",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Marcel Eichner"
@@ -32,5 +32,8 @@
     },
     "autoload": {
         "psr-0": { "PHP53to54\\": "./PHP53to54" }
+    },
+    "extra": {
+        "phpcs-standard": "PHP53to54"
     }
 }
