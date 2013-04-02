@@ -4,13 +4,13 @@
  * Tests phpcs output on fixtures against expected reports.
  *
  */
-class AbstractPhpcsTest
+class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
 {
     /** @var string */
     public static $phpcsBinary;
 
     /** @var boolean */
-    public static $useStandardPath = false;
+    public static $useStandardPath = true;
 
     /**
      * Get the name of the standard to test against.
@@ -36,7 +36,7 @@ class AbstractPhpcsTest
      *
      * @return array
      */
-    abstract function fixtureSniffTestProvider();
+    abstract function fixtureSniffProvider();
 
     public function setUp()
     {
@@ -44,9 +44,9 @@ class AbstractPhpcsTest
     }
 
     /**
-     * @dataProvider fixtureSniffTestProvider
+     * @dataProvider fixtureSniffProvider
      */
-    public function fixtureSniffTest($fixtureName)
+    public function testFixtureSniff($fixtureName)
     {
         // TODO implement report generation
         // TODO implement report parser

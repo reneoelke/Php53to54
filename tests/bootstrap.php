@@ -1,11 +1,12 @@
 <?php
 
-require_once __DIR__ . '/AbstractSniffTest.php';
+// require abstract test case
+require_once __DIR__ . '/AbstractPhpcsTestCase.php';
 
 if (file_exists(__DIR__ . '/../vendor/bin/phpcs')) {
-    AbstractSniffTest::$phpcsBinary = __DIR__ . '/../vendor/bin/phpcs';
+    // default to composer phpcs
+    AbstractPhpcsTestCase::$phpcsBinary = __DIR__ . '/../vendor/bin/phpcs';
 } else {
     // fall back to system phpcs
-    AbstractSniffTest::$phpcsBinary = `which phpcs`;
-    AbstractSniffTest::$useStandardPath = true;
+    AbstractPhpcsTestCase::$phpcsBinary = `which phpcs 2>/dev/null`;
 }
