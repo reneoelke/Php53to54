@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Continue/Break syntax without variable
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP_CodeSniffer_File;
+
+use PHP_CodeSniffer_Tokens;
 
 /**
  * Continue/Break syntax without variable
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_BreakContinueVarSyntaxSniff
-implements PHP_CodeSniffer_Sniff
+class BreakContinueVarSyntaxSniff implements \PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -45,7 +49,7 @@ implements PHP_CodeSniffer_Sniff
      *
      * @var array
      */
-    protected $_testTokenKeys = array(
+    protected $testTokenKeys = array(
         T_WHITESPACE => true,
         T_LNUMBER => true,
         T_SEMICOLON => true,
@@ -78,21 +82,26 @@ implements PHP_CodeSniffer_Sniff
         // iterate over next tokens and search for hints to variable usage
         // or method/function calls
         $nextSemicolonToken = $phpcsFile->findNext(
-                T_SEMICOLON, ($stackPtr), null, false
+            T_SEMICOLON,
+            $stackPtr,
+            null,
+            false
         );
         if (!$nextSemicolonToken) {
             return false;
         }
 
         $curToken = $stackPtr + 1;
-        while ( $curToken++ < $nextSemicolonToken ) {
+        while ($curToken++ < $nextSemicolonToken) {
             $nextNotEmptyToken = $phpcsFile->findNext(
                 PHP_CodeSniffer_Tokens::$emptyTokens,
-                $curToken , null, true
+                $curToken,
+                null,
+                true
             );
             $nextToken = &$tokens[$nextNotEmptyToken];
 
-            if ( !isset($this->_testTokenKeys[$nextToken['code']]) ) {
+            if ( !isset($this->testTokenKeys[$nextToken['code']]) ) {
                 $phpcsFile->addError(
                     'break/continue allows only integers nothing else.',
                     $stackPtr

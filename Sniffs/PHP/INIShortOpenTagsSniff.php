@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Search for short_open_tags ini_set
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP53to54\Sniffs\Generic\RemovedINIDirectivesSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Removed INI Directives Sniff
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_INIShortOpenTagsSniff
-extends PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
+class INIShortOpenTagsSniff extends RemovedINIDirectivesSniff
 {
     /**
      * A list of ini set or get functions which parameters should be checked
@@ -59,7 +63,9 @@ extends PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
      *
      * @return boolean - always true
      */
-    protected function foundName(PHP_CodeSniffer_File $phpcsFile, $stackPtr,
+    protected function foundName(
+        PHP_CodeSniffer_File $phpcsFile,
+        $stackPtr,
         $directiveName
     ) {
         $message = sprintf('%s changed with PHP 5.4 to always on', $directiveName);

@@ -20,7 +20,13 @@ Requirements
 Installation
 ------------
 
-Make sure you’ve PHP_CodeSniffer installed. After that you can either put this standard into the PHP_CodeSniffer Standards directory located in your PEAR directory: (`pear/PHP/CodeSniffer/Standards`) or place the standard somewhere else and use it as standalone standard.
+
+* **Composer**
+
+        Add `foobugs/php53to54` to the `require-dev` section of your composer.json and run `composer install`.
+        CodeSniffer can now be accessed from `vendor/bin/phpcs`.
+
+For the next two options make sure you’ve PHP_CodeSniffer installed. After that you can either put this standard into the PHP_CodeSniffer Standards directory located in your PEAR directory: (`pear/PHP/CodeSniffer/Standards`) or place the standard somewhere else and use it as standalone standard.
 
 * **Download**
 	

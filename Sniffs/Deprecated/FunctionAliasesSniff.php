@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Deprecated Function Aliases
  *
@@ -13,6 +12,8 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\Deprecated;
 
 /**
  * Deprecated Function Aliases
@@ -28,8 +29,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Deprecated_FunctionAliasesSniff
-extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class FunctionAliasesSniff extends \Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
     /**
      * A list of tokenizers this sniff supports.

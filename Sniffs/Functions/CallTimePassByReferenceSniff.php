@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CallTimePassByReferenceSniff
  *
@@ -14,6 +13,12 @@
  * @since     1.0-beta
  */
 
+namespace PHP53to54\Sniffs\Functions;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
+
 /**
  * CallTimePassByReferenceSniff
  *
@@ -27,8 +32,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Functions_CallTimePassByReferenceSniff
-extends PHP53to54_AbstractSniff
+class CallTimePassByReferenceSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.

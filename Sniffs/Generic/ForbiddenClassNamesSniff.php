@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Forbidden Classnames Sniff
  *
@@ -14,6 +13,12 @@
  * @since     1.0-beta
  */
 
+namespace PHP53to54\Sniffs\Generic;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
+
 /**
  * Forbidden Classnames Sniff
  *
@@ -27,8 +32,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Generic_ForbiddenClassNamesSniff
-extends PHP53to54_AbstractSniff
+class ForbiddenClassNamesSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -71,7 +75,7 @@ extends PHP53to54_AbstractSniff
     public function register()
     {
         $this->parseArrayProperty('names');
-        return array( T_CLASS, T_NAMESPACE, );
+        return array(T_CLASS, T_NAMESPACE);
     }
 
     /**
@@ -91,18 +95,16 @@ extends PHP53to54_AbstractSniff
 
         $result = true;
         switch ($token['code']) {
-        case T_NAMESPACE:
-            $result = $this->processNamespace($phpcsFile, $stackPtr);
-            break;
-
-        case T_CLASS:
-        default:
-            // only check classnames if we're in global namespace
-            if ($this->checkNamespace && !empty($this->lastNamespace)) {
+            case T_NAMESPACE:
+                $result = $this->processNamespace($phpcsFile, $stackPtr);
                 break;
-            }
-            $result = $this->processClass($phpcsFile, $stackPtr);
-            break;
+            case T_CLASS:
+            default:
+                // only check classnames if we're in global namespace
+                if ($this->checkNamespace && !empty($this->lastNamespace)) {
+                    break;
+                }
+                $result = $this->processClass($phpcsFile, $stackPtr);
         }
         return $result;
     }
@@ -127,9 +129,11 @@ extends PHP53to54_AbstractSniff
         if (in_array(strtolower($classname), $forbiddenClassnames)) {
             $phpcsFile->addError(
                 sprintf(
-                    '%s classname is a reserved classname in PHP 5.4', $classname
+                    '%s classname is a reserved classname in PHP 5.4',
+                    $classname
                 ),
-                $stackPtr, 'forbiddenClassname'
+                $stackPtr,
+                'forbiddenClassname'
             );
         }
 

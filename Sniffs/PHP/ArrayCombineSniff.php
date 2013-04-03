@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Search for calls to array_combine
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\PHP;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Search for calls to array_combine
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_ArrayCombineSniff
-extends PHP53to54_AbstractSniff
+class ArrayCombineSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.

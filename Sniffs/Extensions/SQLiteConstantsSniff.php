@@ -14,6 +14,12 @@
  * @since     1.0-beta
  */
 
+namespace PHP53to54\Sniffs\Extensions;
+
+use PHP_CodeSniffer_File;
+
+use PHP_CodeSniffer_Tokens;
+
 /**
  * Deprecated Function Call
  *
@@ -27,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Extensions_SQLiteConstantsSniff
-implements PHP_CodeSniffer_Sniff
+class SQLiteConstantsSniff implements \PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -113,7 +118,9 @@ implements PHP_CodeSniffer_Sniff
         // check if its a constant definition in a class
         $previousNotEmptyToken = $phpcsFile->findPrevious(
             PHP_CodeSniffer_Tokens::$emptyTokens,
-            $stackPtr - 1, null, true
+            $stackPtr - 1,
+            null,
+            true
         );
         $previousToken = $tokens[$previousNotEmptyToken];
         if ($previousToken['code'] == T_CONST) {

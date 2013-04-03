@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed INI Directives Sniff
  *
@@ -13,6 +12,12 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
+
+namespace PHP53to54\Sniffs\Generic;
+
+use PHP53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Removed INI Directives Sniff
@@ -28,8 +33,7 @@
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Generic_RemovedINIDirectivesSniff
-extends PHP53to54_AbstractSniff
+class RemovedINIDirectivesSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -119,7 +123,9 @@ extends PHP53to54_AbstractSniff
      *
      * @return boolean - always true
      */
-    protected function foundName(PHP_CodeSniffer_File $phpcsFile, $stackPtr,
+    protected function foundName(
+        PHP_CodeSniffer_File $phpcsFile,
+        $stackPtr,
         $directiveName
     ) {
         $message = sprintf('%s was removed in PHP 5.4', $directiveName);
