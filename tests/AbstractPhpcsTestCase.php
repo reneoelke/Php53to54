@@ -42,7 +42,7 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
         $phpcs = self::$phpcsBinary;
         $standard = escapeshellarg($standard);
         if ($sniffs) {
-            $sniffs = '--sniff=' . escapeshellarg(implode(',', $sniffs));
+            $sniffs = '--sniffs=' . escapeshellarg(implode(',', $sniffs));
         } else {
             $sniffs = '';
         }
