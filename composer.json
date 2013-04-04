@@ -26,8 +26,15 @@
         "issues": "https://github.com/foobugs/PHP53to54/issues",
         "source": "https://github.com/foobugs/PHP53to54"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/php-migrations/PHP_CodeSniffer"
+        }
+    ],
     "require": {
         "php": ">=5.3",
+        "squizlabs/php_codesniffer": "1.5.1",
         "goatherd/phpcs_installer": "*"
     },
     "autoload": {
