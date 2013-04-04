@@ -8,3 +8,7 @@ var_dump('anything'.mysqli_get_metadata());
 import_request_variables();
 
 mcrypt_generic_end();
+
+error_reporting(E_ALL | E_STRICT);
+
+class Spoofchecker {}

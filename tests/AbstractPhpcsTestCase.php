@@ -51,7 +51,7 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
 
         $xml = @simplexml_load_string($xml);
         // assert that a report was generated
-        $this->assertNotEmpty($xml);
+        $this->assertNotEmpty($xml, 'Could not verify phpcs xml report.');
 
         // test warnings
         $reported = array();
