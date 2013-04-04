@@ -35,5 +35,8 @@
     },
     "extra": {
         "phpcs-standard": "PHP53to54"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
     }
 }

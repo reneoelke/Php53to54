@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <ruleset name="PHP53to54">
 	<description>A standard for migrating from PHP 5.3 to 5.4.</description>
+        <exclude-pattern>*/tests/*</exclude-pattern>
+        <exclude-pattern>*/vendor/*</exclude-pattern>
 	<rule ref="PHP53to54.Generic.ForbiddenClassNames">
 		<properties>
 			<property name="names" value="

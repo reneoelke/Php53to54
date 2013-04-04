@@ -16,12 +16,14 @@ Requirements
 ------------
 
 * [PHP_CodeSniffer 1.3.6+](http://pear.php.net/PHP_CodeSniffer)
+or
+* [composer](http://getcomposer.org/doc/00-intro.md#installation-nix)
 
 Installation
 ------------
 
 
-* **Composer**
+* **Composer** (recommended)
 
         Add `foobugs/php53to54` to the `require-dev` section of your composer.json and run `composer install`.
         CodeSniffer can now be accessed from `vendor/bin/phpcs`.
