@@ -22,9 +22,6 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
     protected $sniffs = array();
 
     /** @var array */
-    protected $sniffs = array();
-
-    /** @var array */
     protected $warnings = array();
 
     /** @var array */
