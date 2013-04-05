@@ -2,7 +2,12 @@
 
 namespace Sniffs\Generic;
 
-class ForbiddenClassNameTest extends \AbstractPhpcsTestCase
+/**
+ * @group ForbiddenClassNames
+ * @group Generic
+ *
+ */
+class ForbiddenClassNamesTest extends \AbstractPhpcsTestCase
 {
     protected $sniffs = array('PHP53to54.Generic.ForbiddenClassNames');
     protected $defaultType = "PHP53to54.Generic.ForbiddenClassNames.forbiddenClassname";
