@@ -12,11 +12,17 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
     /** @var string */
     protected $standard = 'php53to54';
 
+    /** @var string */
+    protected $fixture;
+
+    /** @var string */
+    protected $defaultType;
+
     /** @var array */
     protected $sniffs = array();
 
-    /** @var string */
-    protected $fixture;
+    /** @var array */
+    protected $sniffs = array();
 
     /** @var array */
     protected $warnings = array();
@@ -26,9 +32,6 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
 
     /** @var integer */
     protected $defaultSeverity = 5;
-
-    /** @var string */
-    protected $defaultType;
 
     /**
      *
