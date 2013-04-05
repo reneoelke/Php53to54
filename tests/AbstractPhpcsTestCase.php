@@ -9,6 +9,56 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
     /** @var string */
     public static $phpcsBinary;
 
+    /** @var string */
+    protected $standard = 'php53to54';
+
+    /** @var array */
+    protected $sniffs = array();
+
+    /** @var string */
+    protected $fixture;
+
+    /** @var array */
+    protected $warnings = array();
+
+    /** @var array */
+    protected $errors = array();
+
+    /** @var integer */
+    protected $defaultSeverity = 5;
+
+    /** @var string */
+    protected $defaultType;
+
+    /**
+     *
+     * @param array $list
+     */
+    protected function fixtureExpandErrorList(array &$list)
+    {
+        foreach ($list as $k => &$v) {
+            if (is_int($k)) {
+                $list[$v] = array($this->defaultType, $this->defaultSeverity);
+                unset($list[$k]);
+                continue;
+            }
+            switch (gettype($v)) {
+                case 'integer':
+                case 'boolean':
+                    $v = $this->defaultType;
+                case 'string':
+                    $v = array($v, $this->defaultSeverity);
+                    break;
+                case 'array':
+                    if (!isset($v[1])) {
+                        $v[1] = $this->defaultSeverity;
+                    }
+                    break;
+                default:
+            }
+        }
+    }
+
     /**
      *
      * For each fixture a file './_fixtures/FIXTURE_NAME.php' is tested against
@@ -17,7 +67,21 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    abstract public function fixtureSniffProvider();
+    public function fixtureSniffProvider()
+    {
+        $fixtures = array();
+        if ($this->fixture) {
+            $fixtures[] = array(
+                $this->fixture,
+                $this->standard,
+                $this->sniffs,
+                $this->errors,
+                $this->warnings,
+            );
+        }
+
+        return $fixtures;
+    }
 
     /** {@inheritdoc} */
     public function setUp()
@@ -55,15 +119,19 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
 
         // test warnings
         $reported = array();
+        $this->fixtureExpandErrorList($warnings);
         foreach ($xml->xpath('//warning') as $element) {
-            $reported[] = array((int) $element['line'], (int) $element['column'], (string) $element['source'], (int) $element['severity']);
+            $id = ((int) $element['line']) . ':' . ((int) $element['column']);
+            $reported[$id] = array((string) $element['source'], (int) $element['severity']);
         }
         $this->assertEquals($warnings, $reported, 'Mismatch between expected and reported warnings.');
 
         // test errors
         $reported = array();
+        $this->fixtureExpandErrorList($errors);
         foreach ($xml->xpath('//error') as $element) {
-            $reported[] = array((int) $element['line'], (int) $element['column'], (string) $element['source'], (int) $element['severity']);
+            $id = ((int) $element['line']) . ':' . ((int) $element['column']);
+            $reported[$id] = array((string) $element['source'], (int) $element['severity']);
         }
         $this->assertEquals($errors, $reported, 'Mismatch between expected and reported errors.');
     }

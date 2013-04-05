@@ -17,9 +17,11 @@ class FixtureTest extends \AbstractPhpcsTestCase
         foreach ($it as $fi) {
             $fn = substr($fi->getFilename(), -8);
             if ($fi->isFile() && $fn == '.def.php') {
-                $fixture = require($fi->getPathname());
-                $fixture[0] = $fi->getPath() . '/' . $fixture[0];
-                $fixtures[] = $fixture;
+                $fixtureList = require($fi->getPathname());
+                foreach ($fixtureList as $fixture) {
+                    $fixture[0] = $fi->getPath() . '/' . $fixture[0];
+                    $fixtures[] = $fixture;
+                }
             }
         }
 
