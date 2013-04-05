@@ -2,7 +2,7 @@
 
 return array(
     // fixture
-    'deprecated.php',
+    'test.php',
     // standard
     'php53to54',
     // sniffs

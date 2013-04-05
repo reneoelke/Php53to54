@@ -230,17 +230,12 @@ abstract class AbstractSniff implements \PHP_CodeSniffer_Sniff
 
         $parameters = array();
         $tmpPtr = $openBracket;
-        $parameterIndex = 1;
-        while (
-            $tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)
-            !== false
-        ) {
+        while ((bool) $tmpPtr = $phpcsFile->findNext($this->functionCallParametersMap, $tmpPtr)) {
             if ($tmpPtr > $closeBracket) {
                 break;
             }
-            $parameters[$parameterIndex] = $tokens[$tmpPtr];
+            $parameters[$tmpPtr] = $tokens[$tmpPtr];
             $tmpPtr++;
-            $parameterIndex++;
         }
         return $parameters;
     }

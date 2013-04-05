@@ -68,24 +68,26 @@ class CallTimePassByReferenceSniff extends AbstractSniff
     {
         $tokens = $phpcsFile->getTokens();
         $token = $tokens[$stackPtr];
-
         // check if it’s a function call
-        if (!$this->isFunction($phpcsFile, $stackPtr)
-            || !$this->isFunctionCall($phpcsFile, $stackPtr)
-        ) {
+        if (!$this->isFunction($phpcsFile, $stackPtr) || !$this->isFunctionCall($phpcsFile, $stackPtr)) {
             return;
         }
+
         // iterate over parameters and check if they passed with &
         $parameterTokens = $this->getFunctionCallParameters($phpcsFile, $stackPtr);
         foreach ($parameterTokens as $tmpPtr => $parameterToken) {
-            $previousToken = $tokens[$tmpPtr-1];
+            // there might be a whitespace between &-Operator and Token
+            $i = 0;
+            do {
+                $previousToken = $tokens[$tmpPtr-++$i];
+            } while($previousToken['code'] == T_WHITESPACE);
             if ($parameterToken['code'] != T_VARIABLE) {
                 continue;
             }
             if ($previousToken['code'] == T_BITWISE_AND) {
                 $phpcsFile->addError(
                     'Call-time pass by reference has been removed',
-                    $stackPtr,
+                    $tmpPtr-$i,
                     'CalltimePassByReferenceRemoved'
                 );
             }
