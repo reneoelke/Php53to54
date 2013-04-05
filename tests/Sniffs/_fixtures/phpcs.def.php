@@ -1,20 +1,23 @@
 <?php
 
 return array(
-    // fixture
-    'phpcs.php',
-    // standard
-    'psr2',
-    // sniffs
-    array(),
-    // errors
     array(
-        // line, column, sniff, severity
-        array(5,1,"PSR1.Classes.ClassDeclaration.MissingNamespace",5),
-    ),
-    // warnings
-    array(
-        array(1,1,"PSR1.Files.SideEffects.FoundWithSymbols",5),
-        array(10,9,"Generic.Files.LineLength.TooLong",5),
+        // fixture
+        'phpcs.php',
+        // standard
+        'psr2',
+        // sniffs
+        array(),
+        // errors
+        array(
+            // long form: line:column => [sniff, severity]
+            '5:1' => array("PSR1.Classes.ClassDeclaration.MissingNamespace", 5),
+        ),
+        // warnings
+        array(
+            // short form: line:column => sniff
+            '1:1' => "PSR1.Files.SideEffects.FoundWithSymbols",
+            '10:9' => "Generic.Files.LineLength.TooLong",
+        ),
     ),
 );
