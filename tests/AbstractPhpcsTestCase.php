@@ -38,20 +38,20 @@ abstract class AbstractPhpcsTestCase extends PHPUnit_Framework_TestCase
     {
         foreach ($list as $k => &$v) {
             if (is_int($k)) {
-                $list[$v] = array($this->$defaultType, $this->defaultSeverity);
+                $list[$v] = array($this->defaultType, $this->defaultSeverity);
                 unset($list[$k]);
                 continue;
             }
             switch (gettype($v)) {
                 case 'integer':
                 case 'boolean':
-                    $v = $this->$defaultType;
+                    $v = $this->defaultType;
                 case 'string':
-                    $v = array($v, $defaultSeverity);
+                    $v = array($v, $this->defaultSeverity);
                     break;
                 case 'array':
                     if (!isset($v[1])) {
-                        $v[1] = $defaultSeverity;
+                        $v[1] = $this->defaultSeverity;
                     }
                     break;
                 default:
