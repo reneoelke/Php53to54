@@ -42,6 +42,12 @@ For the next two options make sure you’ve PHP_CodeSniffer installed. After tha
 		cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
 		git clone git://github.com/foobugs/PHP53to54.git
 
+Development
+-----------
+
+A patch is needed for phpcs to work with namespaces and symlinks. In order to use unit tests you need to
+
+    composer.phar --verbose -o --prefer-source install
 
 Usage
 -----
