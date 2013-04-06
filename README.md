@@ -47,7 +47,7 @@ Development
 
 A patch is needed for phpcs to work with namespaces and symlinks. In order to use unit tests you need to
 
-    composer.phar --verbose -o --prefer-source install
+    composer.phar --dev --prefer-source install
 
 Usage
 -----
