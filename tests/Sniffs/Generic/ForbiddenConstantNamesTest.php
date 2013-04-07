@@ -19,10 +19,10 @@ class ForbiddenConstantNamesTest extends \AbstractPhpcsTestCase
     public function fixtureSniffProvider()
     {
         foreach (array(1,3) as $i) {
-            $this->fixture = __DIR__ . '/_fixtures/forbiddenConstant/' . $i . '.php';
+            $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/' . $i . '.php';
             $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, $this->errors, $this->warnings);
         }
-        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstant/2.php';
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/2.php';
         $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, array(), array());
 
         return $fixtures;
