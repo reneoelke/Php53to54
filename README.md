@@ -24,13 +24,13 @@ Make sure you’ve PHP_CodeSniffer installed. After that you can either put this
 
 ### Composer
 
-You cann add the standard to your vendors directory by adding the dependency to your projects `composer.json`: 
+You cann add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
 
 	"require": {
     	"foobugs-standards": "php53to54",
 	}
 
-After that you’re able to include the standard via the full path using the `--standard` parameter:
+After an update with `composer update`, you’re able to include the standard via the full path using the `--standard` parameter:
 
 	vendor/bin/phpcs --standard="`pwd`/vendor/foobugs-standards/php53to54" <targetDir>
 
