@@ -22,7 +22,7 @@ use PHP_CodeSniffer_File;
 /**
  * Removed INI Directives Sniff
  *
- * Search for calls to php_ini_set which try to change some of the removed
+ * Search for calls to php ini_set which try to change some of the removed
  * php ini directives.
  *
  * @category  PHP
