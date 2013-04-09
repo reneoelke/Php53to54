@@ -1,0 +1,59 @@
+{
+    "name": "goatherd/php53to54",
+    "description": "PHP53to54 is a collection of sniffs for PHP_CodeSniffer that check an PHP 5.3 application for PHP 5.4 compatibility.",
+    "type": "phpcs-standard",
+    "keywords": [
+        "phpcs",
+        "standards",
+        "php5.3",
+        "php5.4",
+        "compatibility"
+    ],
+    "homepage": "https://github.com/foobugs/PHP53to54",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Marcel Eichner"
+        },
+        {
+            "name": "Maik Penz"
+        },
+        {
+            "name": "René Oelke"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/foobugs/PHP53to54/issues",
+        "source": "https://github.com/foobugs/PHP53to54"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/php-migrations/PHP_CodeSniffer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "squizlabs/php_codesniffer": "1.*",
+        "goatherd/phpcs_installer": "*"
+    },
+    "autoload": {
+        "psr-0": { "PHP53to54\\": "./" }
+    },
+    "extra": {
+        "phpcs-standard": "PHP53to54"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -f vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54/*",
+            "rm -df vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54",
+            "mkdir vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54",
+            "ln -s ${PWD}/ruleset.xml vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54/ruleset.xml",
+            "ln -s ${PWD}/Sniffs vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54/Sniffs",
+            "ln -s ${PWD}/AbstractSniff.php vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHP53to54/AbstractSniff.php"
+        ]
+    }
+}
