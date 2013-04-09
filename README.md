@@ -1,6 +1,6 @@
-PHP53to54
+php53to54
 ===============================================================================
-PHP53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
+php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
 Features
 --------
@@ -41,7 +41,7 @@ Download the [zip master](https://github.com/foobugs-standards/php53to54/archive
 ### Git-Clone-Install
 
 This script will go to your PHP_CodeSniffer Standards directory and place
-a clone of PHP53to54 Standard inside of it:
+a clone of php53to54 Standard inside of it:
 
 	cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
 	git clone git@github.com:foobugs-standards/php53to54.git
@@ -55,7 +55,7 @@ If you have this standard copied or cloned into the PHP_CodeSniffer Standards di
 
 	phpcs -i
 
-If `PHP53to54` is listed there you’re ready to use this standard on any directory:
+If `php53to54` is listed there you’re ready to use this standard on any directory:
 
 	phpcs --standard=php53to54 <source-path>
 
