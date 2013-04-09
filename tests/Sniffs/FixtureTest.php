@@ -2,6 +2,10 @@
 
 namespace Sniffs;
 
+/**
+ * @group Fixtures
+ *
+ */
 class FixtureTest extends \AbstractPhpcsTestCase
 {
     /** {@inheritdoc} */

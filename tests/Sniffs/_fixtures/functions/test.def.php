@@ -10,17 +10,13 @@ return array(
         array('PHP53to54.Functions.CallTimePassByReference'),
         // errors
         array(
-            '41:14' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '42:5' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '43:14' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '44:18' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '45:19' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '46:11' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '46:20' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '47:11' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            '49:20' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
-            // last one is a false-positive
-            // '51:32' =>"PHP53to54.Functions.CallTimePassByReference.CalltimePassByReferenceRemoved",
+            '41:13' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '42:4' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '43:13' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '44:16' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '45:10' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '47:18' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '50:15' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
         ),
         // warnings
         array(

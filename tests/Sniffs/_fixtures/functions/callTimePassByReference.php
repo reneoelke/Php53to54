@@ -5,7 +5,7 @@ function foo($var)
 {
     $var++;
 }
-
+sprintf('', 1 & 2);
 class MyClass {
 
 	function foo($var)
@@ -42,11 +42,9 @@ MyClass::foo(&$foo);
 foo(&$foo);
 "string".foo(&$foo);
 foo('something', &$foo);
-foo('something', (&$foo));
-$obj->foo(& $foo, (& $foo));
-$obj->foo(&$foo);
+$obj->foo(& $foo);
 $obj->foo(
-    new $someClass(&$foo),
-    // false positive
+    new someClass(&$foo),
     array(1,'a', new stdClass, &$foo)
 );
+new $someClass(&$foo);
