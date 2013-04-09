@@ -13,7 +13,7 @@ class FixtureTest extends \AbstractPhpcsTestCase
     {
         // get fixture definitions from file
         $fixtures = array();
-        $fixturePath = __DIR__ . '/_fixtures';
+        $fixturePath = __DIR__ . '/_fixtures/fix';
         $it = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($fixturePath),
             \RecursiveIteratorIterator::SELF_FIRST
