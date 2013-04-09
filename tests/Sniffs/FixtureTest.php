@@ -2,6 +2,10 @@
 
 namespace Sniffs;
 
+/**
+ * @group Fixtures
+ *
+ */
 class FixtureTest extends \AbstractPhpcsTestCase
 {
     /** {@inheritdoc} */
@@ -9,7 +13,7 @@ class FixtureTest extends \AbstractPhpcsTestCase
     {
         // get fixture definitions from file
         $fixtures = array();
-        $fixturePath = __DIR__ . '/_fixtures';
+        $fixturePath = __DIR__ . '/_fixtures/functions';
         $it = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($fixturePath),
             \RecursiveIteratorIterator::SELF_FIRST

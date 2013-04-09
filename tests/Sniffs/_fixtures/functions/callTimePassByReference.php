@@ -42,11 +42,11 @@ MyClass::foo(&$foo);
 foo(&$foo);
 "string".foo(&$foo);
 foo('something', &$foo);
-foo('something', (&$foo));
-$obj->foo(& $foo, (& $foo));
+foo('something', & $foo);
 $obj->foo(&$foo);
 $obj->foo(
-    new $someClass(&$foo),
+    new someClass(&$foo),
     // false positive
     array(1,'a', new stdClass, &$foo)
 );
+new $someClass(&$foo);
