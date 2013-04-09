@@ -1,0 +1,43 @@
+{
+	"name": "foobugs-standards/php52to54",
+    "description": "PHP_CodeSniffer standard for compatibility checking of PHP 5.3 to 5.4 migrations.",
+    "version": "0.9",
+    "type": "phpcs-standard",
+    "keywords": [
+        "phpcs",
+        "PHP_CodeSniffer",
+        "standards",
+        "sniff",
+        "migration",
+        "tool",
+        "php5.3",
+        "php5.4",
+        "compatibility"
+    ],
+    "authors": [
+        {
+            "name": "Marcel Eichner",
+            "email": "marcel.eichner@foobugs.com",
+            "homepage": "http://www.marceleichner.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Maik Penz",
+            "email": "maik.penz@foobugs.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Rene Oelke",
+            "email": "rene.oelke@foobugs.com",
+            "role": "Developer"
+        },
+    ],
+    "homepage": "https://github.com/foobugs-standards/php53to54",
+    "support": {
+        "issues": "https://github.com/foobugs-standards/php53to54/issues",
+        "source": "https://github.com/foobugs-standards/php53to54"
+    },
+	"require": {
+        "php": ">=5.3",
+    }
+}
