@@ -47,6 +47,7 @@
     ],
     "require": {
         "php": ">=5.3",
+        "squizlabs/php_codesniffer": "1.99.*",
         "goatherd/phpcs_installer": "*"
     },
     "autoload": {
