@@ -47,7 +47,8 @@
         "psr-0": { "PHP53to54\\": "./" }
     },
     "extra": {
-        "phpcs-standard": "php53to54"
+        "phpcs-standard": "php53to54",
+        "phpcs-path": "foobugs-standards/php_codesniffer/CodeSniffer/Standards"
     },
     "require-dev": {
         "phpunit/phpunit": "3.*"
