@@ -1,5 +1,5 @@
 {
-    "name": "goatherd/php53to54",
+    "name": "foobugs-standards/php53to54",
     "description": "PHP53to54 is a collection of sniffs for PHP_CodeSniffer that check an PHP 5.3 application for PHP 5.4 compatibility.",
     "type": "phpcs-standard",
     "keywords": [
