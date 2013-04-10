@@ -39,15 +39,8 @@
         "issues": "https://github.com/foobugs-standards/php53to54/issues",
         "source": "https://github.com/foobugs-standards/php53to54"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/foobugs-standards/PHP_CodeSniffer"
-        }
-    ],
     "require": {
-        "php": ">=5.3",
-        "squizlabs/php_codesniffer": "1.99.*",
+        "foobugs-standards/php_codesniffer": "*",
         "goatherd/phpcs_installer": "*"
     },
     "autoload": {
