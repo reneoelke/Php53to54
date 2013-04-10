@@ -18,6 +18,7 @@
         "static",
         "analysis"
     ],
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Marcel Eichner",
