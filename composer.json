@@ -1,5 +1,5 @@
 {
-	"name": "foobugs-standards/php53to54",
+    "name": "foobugs-standards/php53to54",
     "description": "PHP_CodeSniffer standard for compatibility checking of PHP 5.3 to 5.4 migrations.",
     "version": "0.9",
     "type": "phpcs-standard",
@@ -34,7 +34,7 @@
             "name": "Rene Oelke",
             "email": "rene.oelke@foobugs.com",
             "role": "Developer"
-        },
+        }
     ],
     "homepage": "https://github.com/foobugs-standards/php53to54",
     "support": {
@@ -42,6 +42,9 @@
         "source": "https://github.com/foobugs-standards/php53to54"
     },
     "require": {
-        "php": ">=5.3",
+        "goatherd/phpcs_installer": "*"
+    },
+    "extra": {
+        "phpcs-standard": "php53to54"
     }
 }
