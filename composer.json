@@ -1,5 +1,5 @@
 {
-    "name": "foobugs-standards/php53to54",
+    "name": "goatherd/php53to54",
     "description": "PHP_CodeSniffer standard for compatibility checking of PHP 5.3 to 5.4 migrations.",
     "type": "phpcs-standard",
     "keywords": [
@@ -40,7 +40,7 @@
         "source": "https://github.com/foobugs-standards/php53to54"
     },
     "require": {
-        "foobugs-standards/php_codesniffer": "*",
+        "foobugs-standards/php_codesniffer": "1.99.*",
         "goatherd/phpcs_installer": "*"
     },
     "autoload": {
