@@ -1,5 +1,5 @@
 {
-    "name": "goatherd/php53to54",
+    "name": "foobugs-standards/php53to54",
     "description": "PHP53to54 is a collection of sniffs for PHP_CodeSniffer that check an PHP 5.3 application for PHP 5.4 compatibility.",
     "type": "phpcs-standard",
     "keywords": [
@@ -23,18 +23,18 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/foobugs/PHP53to54/issues",
-        "source": "https://github.com/foobugs/PHP53to54"
+        "issues": "https://github.com/foobugs-standards/PHP53to54/issues",
+        "source": "https://github.com/foobugs-standards/PHP53to54"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/php-migrations/PHP_CodeSniffer"
+            "url": "https://github.com/foobugs-standards/PHP_CodeSniffer"
         }
     ],
     "require": {
         "php": ">=5.3",
-        "squizlabs/php_codesniffer": "1.*",
+        "squizlabs/php_codesniffer": "1.99.*",
         "goatherd/phpcs_installer": "*"
     },
     "autoload": {
