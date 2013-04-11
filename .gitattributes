@@ -1,3 +1,2 @@
 /tests export-ignore
-/FEATURES.md
-/.travis.yml export-ignore
+/FEATURES.md export-ignore
