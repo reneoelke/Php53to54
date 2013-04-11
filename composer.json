@@ -43,15 +43,15 @@
         "foobugs-standards/php_codesniffer": "1.99.*",
         "goatherd/phpcs_installer": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
+    },
     "autoload": {
         "psr-0": { "PHP53to54\\": "./" }
     },
     "extra": {
         "phpcs-standard": "php53to54",
         "phpcs-path": "foobugs-standards/php_codesniffer/CodeSniffer/Standards"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "3.*"
     },
     "scripts": {
         "post-install-cmd": [
