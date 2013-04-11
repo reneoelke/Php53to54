@@ -18,12 +18,13 @@ class ForbiddenConstantNamesTest extends \AbstractPhpcsTestCase
     /** {@inheritdoc} */
     public function fixtureSniffProvider()
     {
-        foreach (array(1,3) as $i) {
-            $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/' . $i . '.php';
-            $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, $this->errors, $this->warnings);
+        for ($i = 17; $i < 94; $i++) {
+            $this->errors[$i-14] = $i .':8';
         }
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/1.php';
+        $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, $this->errors, $this->warnings);
         $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/2.php';
-        $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, array(), array());
+        $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, array('7:8', '12:9', '15:2'), array());
 
         return $fixtures;
     }

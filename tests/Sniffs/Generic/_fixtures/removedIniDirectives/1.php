@@ -14,3 +14,11 @@ ini_set(
 	,
 	true
 );
+// checklist
+ini_set('magic_quotes_runtime', true);
+ini_set('magic_quotes_sybase', true);
+ini_set('highlight.bg', true);
+ini_set('session.bug_compat_42', true);
+ini_set('session.bug_compat_warn', true);
+ini_set('y2k_compliance', true);
+ini_set('short_open_tag', true);
