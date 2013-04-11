@@ -17,11 +17,11 @@ class ForbiddenInterfaceNamesTest extends \AbstractPhpcsTestCase
     /** {@inheritdoc} */
     public function fixtureSniffProvider()
     {
-        $this->fixture = __DIR__ . '/_fixtures/forbiddenInterfaceName/invalid.php';
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenInterfaceName/invalid.inc';
         $fixtures = parent::fixtureSniffProvider();
 
         // second file is supposed to be valid
-        $this->fixture = __DIR__ . '/_fixtures/forbiddenInterfaceName/valid.php';
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenInterfaceName/valid.inc';
         $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, array(), array());
 
         return $fixtures;

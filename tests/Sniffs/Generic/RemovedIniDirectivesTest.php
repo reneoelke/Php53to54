@@ -17,7 +17,7 @@ class RemovedIniDirectivesTest extends \AbstractPhpcsTestCase
     /** {@inheritdoc} */
     public function fixtureSniffProvider()
     {
-        $this->fixture = __DIR__ . '/_fixtures/removedIniDirectives/1.php';
+        $this->fixture = __DIR__ . '/_fixtures/removedIniDirectives/1.inc';
         return parent::fixtureSniffProvider();
     }
 }

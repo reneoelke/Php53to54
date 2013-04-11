@@ -3,7 +3,7 @@
 return array(
         array(
         // fixture
-        'test.php',
+        '1.inc',
         // standard
         'php53to54',
         // sniffs

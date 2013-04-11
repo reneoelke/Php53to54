@@ -21,9 +21,9 @@ class ForbiddenConstantNamesTest extends \AbstractPhpcsTestCase
         for ($i = 17; $i < 94; $i++) {
             $this->errors[$i-14] = $i .':8';
         }
-        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/1.php';
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/1.inc';
         $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, $this->errors, $this->warnings);
-        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/2.php';
+        $this->fixture = __DIR__ . '/_fixtures/forbiddenConstantName/2.inc';
         $fixtures[] = array($this->fixture, $this->standard, $this->sniffs, array('7:8', '12:9', '15:2'), array());
 
         return $fixtures;

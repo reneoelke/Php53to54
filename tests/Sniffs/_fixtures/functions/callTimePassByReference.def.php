@@ -3,7 +3,7 @@
 return array(
     array(
         // fixture
-        'callTimePassByReference.php',
+        '1.inc',
         // standard
         'php53to54',
         // sniffs
