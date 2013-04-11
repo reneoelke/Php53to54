@@ -170,7 +170,8 @@ Language features
 
 ### CallTimePassByReference
 
-- [x] (static) method
+- [x] static method
+- [x] non-static method
 - [x] function
 - [x] closure
  
