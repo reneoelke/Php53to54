@@ -12,6 +12,8 @@ Known issues
 - [ ] tests common namespace for classes, traits and interfaces
 - [ ] constant `define()` is always global (namespace or not)
 - [ ] warn on ini_get of deprecated key
+- [ ] renamed functions not added to forbiddenFunctionNames sniff
+- [ ] functions and classes do not share names
 
 Deprecated or removed
 ---------------------
@@ -23,6 +25,26 @@ Deprecated or removed
 ### Constant
 
 ### Function
+
+**generic**
+
+ - [x] `define_syslog_variables`
+ - [x] `import_request_variables`: consider using `extract`
+ - [x] `session_is_registered`: use `$_SESSION`
+ - [x] `session_register`: use `$_SESSION`
+ - [x] `session_unregister`: use `$_SESSION`
+ - [x] `mcrypt_generic_end`
+ - [x] `mysql_list_dbs`
+
+**mysqli**
+
+ - [x] `mysqli_bind_param`: use `mysqli_stmt_bind_param`
+ - [x] `mysqli_bind_result`: use `mysqli_stmt_bind_result`
+ - [x] `mysqli_client_encoding`: use `mysqli_character_set_name`
+ - [x] `mysqli_fetch`: use `mysqli_stmt_fetch`
+ - [x] `mysqli_param_count`: use `mysqli_stmt_param_count`
+ - [x] `mysqli_get_metadata`: use `mysqli_stmt_result_metadata`
+ - [x] `mysqli_send_long_data`: use `mysqli_stmt_send_long_data`
 
 ### Method
 
