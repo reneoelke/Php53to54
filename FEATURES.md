@@ -5,8 +5,13 @@ Detailed feature list
 
 - [x] new language features are recognised
 - [ ] scans are namespace aware (not for `DeprecatedClassNames`)
+
+Known issues
+------------
+
 - [ ] tests common namespace for classes, traits and interfaces
 - [ ] constant `define()` is always global (namespace or not)
+- [ ] warn on ini_get of deprecated key
 
 Deprecated or removed
 ---------------------
@@ -25,6 +30,8 @@ Deprecated or removed
 
 ### INI directives
 
+**generic**
+
 - [x] `magic_quotes_runtime`
 - [x] `magic_quotes_sybase`
 - [x] `define_syslog_variables`
@@ -33,6 +40,16 @@ Deprecated or removed
 - [x] `session.bug_compat_warn`
 - [x] `y2k_compliance`
 - [x] `short_open_tag`
+
+**safe mode**
+
+- [x] `safe_mode'`
+- [x] `safe_mode_gid'`
+- [x] `safe_mode_include_dir'`
+- [x] `safe_mode_exec_dir'`
+- [x] `safe_mode_allowed_env_vars'`
+- [x] `safe_mode_protected_env_vars'`
+
 
 ### Extension
 
@@ -44,7 +61,7 @@ Added
 - [x] `CallbackFilterIterator`
 - [x] `RecursiveCallbackFilterIterator`
 - [x] `ReflectionZendExtension`
-- [x]  `SessionHandler`
+- [x] `SessionHandler`
 - [x] `SNMP`
 - [x] `Transliterator`
 - [x] `Spoofchecker`
