@@ -170,4 +170,14 @@ Language features
 
 ### CallTimePassByReference
 
+- [x] (static) method
+- [x] function
+- [x] closure
+ 
 ### Break/ Continue
+
+- [x] variable argument
+- [ ] non-integer argument
+- [ ] integer less than one
+- [ ] ignore comments and brackets
+- [ ] ignore integer strings (if greater than zero)
