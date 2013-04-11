@@ -6,18 +6,15 @@ while($i = 0) {
 }
 
 for($i = 0; $i < 100; $i++) {
-	break
-		;
+	break;
 }
 
 for($i = 0; $i < 100; $i++) {
-	break 99 + 3
-		;
-}
-
-for($i = 0; $i < 100; $i++) {
-	break (99 + 3)
-		;
+	continue (99);
+    continue (
+    /* comment */ 99 # 1234
+    );
+	break '3';
 }
 
 // invalid calls
@@ -45,8 +42,9 @@ for($i = 0; $i < 100; $i++) {
 	break (3 * $i);
 }
 
-do {
-    break 0;
-} while($i = 0);
-
-}
+do { break 1+2; } while(false);
+do { break 0; } while(false);
+do { continue 'a'; } while(false);
+do { continue 1.0; } while(false);
+do { continue (float) 1; } while(false);
+do { continue true; } while(false);

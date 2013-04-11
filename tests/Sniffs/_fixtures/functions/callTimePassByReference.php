@@ -48,3 +48,5 @@ $obj->foo(
     array(1,'a', new stdClass, &$foo)
 );
 new $someClass(&$foo);
+
+$foo(&$var);

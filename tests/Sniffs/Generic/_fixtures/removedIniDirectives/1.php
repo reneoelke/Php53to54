@@ -3,6 +3,10 @@
 // valid
 echo "define_syslog_variables";
 ini_set('anything', 'define_syslog_variables');
+class MyClass {
+    public function ini_set($var = 'safe_mode') {}
+}
+MyClass::ini_set('safe_mode');
 
 // invalid
 ini_set('define_syslog_variables', true);

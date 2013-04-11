@@ -33,7 +33,7 @@ use PHP_CodeSniffer_File;
  * @link      https://github.com/foobugs/PHP53to54
  * @since     1.0-beta
  */
-class SaveModeINIDirectivesSniff extends RemovedINIDirectivesSniff
+class SafeModeINIDirectivesSniff extends RemovedINIDirectivesSniff
 {
     /**
      * A list of ini set or get functions which parameters should be checked

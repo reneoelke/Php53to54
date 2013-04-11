@@ -17,6 +17,7 @@ return array(
             '45:10' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
             '47:18' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
             '50:15' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
+            '52:5' =>"PHP53to54.Functions.CallTimePassByReference.NotAllowed",
         ),
         // warnings
         array(
