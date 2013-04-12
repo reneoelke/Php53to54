@@ -176,12 +176,12 @@ Deprecated or removed
 
 **safe mode**
 
-- [x] `safe_mode'`
-- [x] `safe_mode_gid'`
-- [x] `safe_mode_include_dir'`
-- [x] `safe_mode_exec_dir'`
-- [x] `safe_mode_allowed_env_vars'`
-- [x] `safe_mode_protected_env_vars'`
+- [x] `safe_mode`
+- [x] `safe_mode_gid`
+- [x] `safe_mode_include_dir`
+- [x] `safe_mode_exec_dir`
+- [x] `safe_mode_allowed_env_vars`
+- [x] `safe_mode_protected_env_vars`
 
 ### Extension
 
