@@ -46,6 +46,33 @@ Deprecated or removed
  - [x] `mysqli_get_metadata`: use `mysqli_stmt_result_metadata`
  - [x] `mysqli_send_long_data`: use `mysqli_stmt_send_long_data`
 
+** SNMP **
+
+- [x] `snmp_get_quick_print`
+- [x] `snmp_get_valueretrieval`
+- [x] `snmp_read_mib`
+- [x] `snmp_set_enum_print`
+- [x] `snmp_set_oid_numeric_print`
+- [x] `snmp_set_oid_output_format`
+- [x] `snmp_set_quick_print`
+- [x] `snmp_set_valueretrieval`
+- [x] `snmp2_get`
+- [x] `snmp2_getnext`
+- [x] `snmp2_real_walk`
+- [x] `snmp2_set`
+- [x] `snmp2_walk`
+- [x] `snmp3_get`
+- [x] `snmp3_getnext`
+- [x] `snmp3_real_walk`
+- [x] `snmp3_set`
+- [x] `snmp3_walk`
+- [x] `snmpget`
+- [x] `snmpgetnext`
+- [x] `snmprealwalk`
+- [x] `snmpset`
+- [x] `snmpwalk`
+- [x] `snmpwalkoid`
+
 ### Method
 
 ### Parameter
@@ -71,7 +98,6 @@ Deprecated or removed
 - [x] `safe_mode_exec_dir'`
 - [x] `safe_mode_allowed_env_vars'`
 - [x] `safe_mode_protected_env_vars'`
-
 
 ### Extension
 
