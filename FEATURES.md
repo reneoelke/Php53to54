@@ -15,7 +15,10 @@ Known issues
 - [ ] renamed functions not added to forbiddenFunctionNames sniff
 - [ ] functions and classes do not share names
 - [ ] parameter types and use declarations are not tested for deprecated classnames
- 
+- [ ] E_STRICT sniff will issue error when warning seems more appropriate
+- [ ] E_STRICT detection is not tested and likely not that useful yet
+- [ ] added functions are reported as deprecated (wrong base sniff used)
+
 Deprecated or removed
 ---------------------
 
@@ -186,6 +189,10 @@ Deprecated or removed
 ### Extension
 
 - [x] `sqlite` (sqlite3 is still available)
+ 
+### `E_ALL` includes `E_STRICT`
+
+- [x] detects `error_reporting(E_ALL | ESTRICT)`
 
 Added
 -----
@@ -286,6 +293,55 @@ Added
 - [x] `SessionHandlerInterface`
 
 ### Function
+
+**generic**
+
+- [ ] `hex2bin()`
+- [ ] `http_response_code()`
+- [ ] `get_declared_traits()`
+- [ ] `getimagesizefromstring()`
+- [ ] `stream_set_chunk_size()`
+- [ ] `socket_import_stream()`
+- [ ] `trait_exists()`
+- [ ] `header_register_callback()`
+
+**spl**
+
+- [ ] `class_uses()`
+
+**session**
+
+- [ ] `session_status()`
+- [ ] `session_register_shutdown()`
+
+**mysqli**
+
+- [ ] `mysqli_error_list()`
+- [ ] `mysqli_stmt_error_list()`
+
+**libxml**
+
+- [ ] `libxml_set_external_entity_loader()`
+
+**ldap**
+
+- [ ] `ldap_control_paged_result()`
+- [ ] `ldap_control_paged_result_response()`
+
+**intl**
+
+- [ ] `transliterator_create()`
+- [ ] `transliterator_create_from_rules()`
+- [ ] `transliterator_create_inverse()`
+- [ ] `transliterator_get_error_code()`
+- [ ] `transliterator_get_error_message()`
+- [ ] `transliterator_list_ids()`
+- [ ] `transliterator_transliterate()`
+
+**zlib**
+
+- [ ] `zlib_decode()`
+- [ ] `zlib_encode()`
 
 ### Method
 
