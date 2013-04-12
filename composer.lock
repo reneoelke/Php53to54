@@ -1,90 +1,79 @@
 {
-    "hash": "a72a4fd3e1b04ca27b25e9ad7290c953",
+    "hash": "254a9382d3b0e6a87f5d515d7d2441f3",
     "packages": [
         {
-            "name": "foobugs-standards/php_codesniffer",
-            "version": "1.99.2",
+            "name": "goatherd/patch-installer",
+            "version": "0.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/foobugs-standards/PHP_CodeSniffer.git",
-                "reference": "1.99.2"
+                "url": "https://github.com/goatherd/patch-installer.git",
+                "reference": "0.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/foobugs-standards/PHP_CodeSniffer/zipball/1.99.2",
-                "reference": "1.99.2",
+                "url": "https://api.github.com/repos/goatherd/patch-installer/zipball/0.0.1",
+                "reference": "0.0.1",
                 "shasum": ""
             },
             "require": {
-                "ext-tokenizer": "*",
-                "php": ">=5.3.0"
+                "php": ">=5.3"
             },
-            "replace": {
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "suggest": {
-                "phpunit/php-timer": "dev-master"
-            },
-            "bin": [
-                "scripts/phpcs"
-            ],
-            "type": "library",
+            "type": "composer-installer",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.99.x-dev"
-                }
+                "class": "Goatherd\\Patch\\Installer"
             },
             "autoload": {
-                "files": [
-                    "CodeSniffer/Tokens.php"
-                ],
-                "classmap": [
-                    "CodeSniffer.php",
-                    "CodeSniffer/CLI.php",
-                    "CodeSniffer/Exception.php",
-                    "CodeSniffer/File.php",
-                    "CodeSniffer/MultiFileSniff.php",
-                    "CodeSniffer/Report.php",
-                    "CodeSniffer/Reporting.php",
-                    "CodeSniffer/Sniff.php",
-                    "CodeSniffer/Reports/",
-                    "CodeSniffer/CommentParser/",
-                    "CodeSniffer/Tokenizers/",
-                    "CodeSniffer/DocGenerators/",
-                    "CodeSniffer/Standards/AbstractPatternSniff.php",
-                    "CodeSniffer/Standards/AbstractScopeSniff.php",
-                    "CodeSniffer/Standards/AbstractVariableSniff.php",
-                    "CodeSniffer/Standards/IncorrectPatternException.php",
-                    "CodeSniffer/Standards/Generic/Sniffs/",
-                    "CodeSniffer/Standards/MySource/Sniffs/",
-                    "CodeSniffer/Standards/PEAR/Sniffs/",
-                    "CodeSniffer/Standards/PSR1/Sniffs/",
-                    "CodeSniffer/Standards/PSR2/Sniffs/",
-                    "CodeSniffer/Standards/Squiz/Sniffs/",
-                    "CodeSniffer/Standards/Zend/Sniffs/"
-                ]
+                "psr-0": {
+                    "Goatherd\\Patch\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
-                    "name": "Greg Sherwood",
-                    "role": "upstream"
-                },
-                {
                     "name": "Maik Penz",
-                    "role": "fork"
+                    "role": "developer"
                 }
             ],
-            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "https://github.com/foobugs-standards/PHP_CodeSniffer",
+            "description": "Install package as patch directly to vendor directory",
+            "homepage": "https://github.com/goatherd/patch-installer",
             "keywords": [
-                "phpcs",
-                "standards"
+                "composer-installer",
+                "patch"
             ],
-            "time": "2013-04-10 21:55:29"
+            "time": "2013-04-12 20:05:28"
+        },
+        {
+            "name": "goatherd/phpcs-patch",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/goatherd/phpcs-patch.git",
+                "reference": "0.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/goatherd/phpcs-patch/zipball/0.0.2",
+                "reference": "0.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "goatherd/patch-installer": "*",
+                "squizlabs/php_codesniffer": ">=1.4.0,<1.6"
+            },
+            "type": "patch",
+            "extra": {
+                "patch-path": "squizlabs/php_codesniffer",
+                "patch-files": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/File.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Extension to php_codesniffer",
+            "time": "2013-04-12 20:12:34"
         },
         {
             "name": "goatherd/phpcs_installer",
@@ -131,6 +120,73 @@
                 "standards"
             ],
             "time": "2013-04-10 20:52:23"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "1.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "1.4.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1.4.5",
+                "reference": "1.4.5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.2"
+            },
+            "bin": [
+                "scripts/phpcs"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/CLI.php",
+                    "CodeSniffer/Exception.php",
+                    "CodeSniffer/File.php",
+                    "CodeSniffer/MultiFileSniff.php",
+                    "CodeSniffer/Report.php",
+                    "CodeSniffer/Reporting.php",
+                    "CodeSniffer/Sniff.php",
+                    "CodeSniffer/Tokens.php",
+                    "CodeSniffer/Reports/",
+                    "CodeSniffer/CommentParser/",
+                    "CodeSniffer/Tokenizers/",
+                    "CodeSniffer/DocGenerators/",
+                    "CodeSniffer/Standards/AbstractPatternSniff.php",
+                    "CodeSniffer/Standards/AbstractScopeSniff.php",
+                    "CodeSniffer/Standards/AbstractVariableSniff.php",
+                    "CodeSniffer/Standards/IncorrectPatternException.php",
+                    "CodeSniffer/Standards/Generic/Sniffs/",
+                    "CodeSniffer/Standards/MySource/Sniffs/",
+                    "CodeSniffer/Standards/PEAR/Sniffs/",
+                    "CodeSniffer/Standards/PSR1/Sniffs/",
+                    "CodeSniffer/Standards/PSR2/Sniffs/",
+                    "CodeSniffer/Standards/Squiz/Sniffs/",
+                    "CodeSniffer/Standards/Zend/Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2013-04-03 23:16:28"
         }
     ],
     "packages-dev": null,

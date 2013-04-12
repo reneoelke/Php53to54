@@ -1,6 +1,9 @@
 <?php
 
 // valid
+MyClass::array_combine(array(), array());
+$obj->array_combine(array(), array());
+$array_combine(array(), array());
 
 // invalid
 array_combine($foo, $bugs);

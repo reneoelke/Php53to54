@@ -40,7 +40,7 @@
         "source": "https://github.com/foobugs-standards/php53to54"
     },
     "require": {
-        "foobugs-standards/php_codesniffer": "1.99.*",
+        "goatherd/phpcs-patch": "*",
         "goatherd/phpcs_installer": "*"
     },
     "require-dev": {
@@ -50,17 +50,16 @@
         "psr-0": { "PHP53to54\\": "./" }
     },
     "extra": {
-        "phpcs-standard": "php53to54",
-        "phpcs-path": "foobugs-standards/php_codesniffer/CodeSniffer/Standards"
+        "phpcs-standard": "php53to54"
     },
     "scripts": {
         "post-install-cmd": [
-            "rm -f vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54/*",
-            "rm -df vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54",
-            "mkdir vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54",
-            "ln -s ${PWD}/ruleset.xml vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54/ruleset.xml",
-            "ln -s ${PWD}/Sniffs vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54/Sniffs",
-            "ln -s ${PWD}/AbstractSniff.php vendor/foobugs-standards/php_codesniffer/CodeSniffer/Standards/php53to54/AbstractSniff.php"
+            "rm -f vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54/*",
+            "rm -df vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54",
+            "mkdir vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54",
+            "ln -s ${PWD}/ruleset.xml vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54/ruleset.xml",
+            "ln -s ${PWD}/Sniffs vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54/Sniffs",
+            "ln -s ${PWD}/AbstractSniff.php vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/php53to54/AbstractSniff.php"
         ]
     }
 }

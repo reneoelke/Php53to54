@@ -23,9 +23,9 @@ ini_get(
 	true
 );
 // checklist
-ini_get('safe_mode', true);
-ini_get('safe_mode_gid', true);
-ini_get('safe_mode_include_dir', true);
-ini_get('safe_mode_exec_dir', true);
-ini_get('safe_mode_allowed_env_vars', true);
-ini_get('safe_mode_protected_env_vars', true);
+ini_get('safe_mode');
+ini_get('safe_mode_gid');
+ini_get('safe_mode_include_dir');
+ini_get('safe_mode_exec_dir');
+ini_get('safe_mode_allowed_env_vars');
+ini_get('safe_mode_protected_env_vars');
