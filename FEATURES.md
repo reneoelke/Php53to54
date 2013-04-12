@@ -18,6 +18,8 @@ Known issues
 - [ ] E_STRICT sniff will issue error when warning seems more appropriate
 - [ ] E_STRICT detection is not tested and likely not that useful yet
 - [ ] added functions are reported as deprecated (wrong base sniff used)
+- [ ] added functions are only detected on use, not on definition
+- [ ] added function collision should give an error, not a warning
 
 Deprecated or removed
 ---------------------
