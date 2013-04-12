@@ -46,7 +46,7 @@ Deprecated or removed
  - [x] `mysqli_get_metadata`: use `mysqli_stmt_result_metadata`
  - [x] `mysqli_send_long_data`: use `mysqli_stmt_send_long_data`
 
-** SNMP **
+**snmp**
 
 - [x] `snmp_get_quick_print`
 - [x] `snmp_get_valueretrieval`
