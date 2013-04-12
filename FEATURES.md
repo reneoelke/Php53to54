@@ -14,15 +14,56 @@ Known issues
 - [ ] warn on ini_get of deprecated key
 - [ ] renamed functions not added to forbiddenFunctionNames sniff
 - [ ] functions and classes do not share names
-
+- [ ] parameter types and use declarations are not tested for deprecated classnames
+ 
 Deprecated or removed
 ---------------------
 
 ### Class
 
+**sqlite**
+
+- [x] `SQLiteResult`
+- [x] `SQLiteUnbuffered`
+- [x] `SQLiteDatabase`
+        
 ### Interface 
 
 ### Constant
+
+**sqlite**
+
+- [x] `SQLITE_ASSOC`
+- [x] `SQLITE_BOTH`
+- [x] `SQLITE_NUM`
+- [x] `SQLITE_OK`
+- [x] `SQLITE_ERROR`
+- [x] `SQLITE_INTERNAL`
+- [x] `SQLITE_PERM`
+- [x] `SQLITE_ABORT`
+- [x] `SQLITE_BUSY`
+- [x] `SQLITE_LOCKED`
+- [x] `SQLITE_NOMEM`
+- [x] `SQLITE_READONLY`
+- [x] `SQLITE_INTERRUPT`
+- [x] `SQLITE_IOERR`
+- [x] `SQLITE_NOTADB`
+- [x] `SQLITE_CORRUPT`
+- [x] `SQLITE_FORMAT`
+- [x] `SQLITE_NOTFOUND`
+- [x] `SQLITE_FULL`
+- [x] `SQLITE_CANTOPEN`
+- [x] `SQLITE_PROTOCOL`
+- [x] `SQLITE_EMPTY`
+- [x] `SQLITE_SCHEMA`
+- [x] `SQLITE_TOOBIG`
+- [x] `SQLITE_CONSTRAINT`
+- [x] `SQLITE_MISMATCH`
+- [x] `SQLITE_MISUSE`
+- [x] `SQLITE_NOLFS`
+- [x] `SQLITE_AUTH`
+- [x] `SQLITE_ROW`
+- [x] `SQLITE_DONE`
 
 ### Function
 
@@ -73,6 +114,49 @@ Deprecated or removed
 - [x] `snmpwalk`
 - [x] `snmpwalkoid`
 
+**sqlite**
+
+- [x] `sqlite_array_query`
+- [x] `sqlite_busy_timeout`
+- [x] `sqlite_changes`
+- [x] `sqlite_close`
+- [x] `sqlite_column`
+- [x] `sqlite_create_aggregate`
+- [x] `sqlite_create_function`
+- [x] `sqlite_current`
+- [x] `sqlite_error_string`
+- [x] `sqlite_escape_string`
+- [x] `sqlite_exec`
+- [x] `sqlite_factory`
+- [x] `sqlite_fetch_all`
+- [x] `sqlite_fetch_array`
+- [x] `sqlite_fetch_column_types`
+- [x] `sqlite_fetch_object`
+- [x] `sqlite_fetch_single`
+- [x] `sqlite_fetch_string`
+- [x] `sqlite_field_name`
+- [x] `sqlite_has_more`
+- [x] `sqlite_has_prev`
+- [x] `sqlite_key`
+- [x] `sqlite_last_error`
+- [x] `sqlite_last_insert_rowid`
+- [x] `sqlite_libencoding`
+- [x] `sqlite_libversion`
+- [x] `sqlite_next`
+- [x] `sqlite_num_fields`
+- [x] `sqlite_num_rows`
+- [x] `sqlite_open`
+- [x] `sqlite_popen`
+- [x] `sqlite_prev`
+- [x] `sqlite_query`
+- [x] `sqlite_rewind`
+- [x] `sqlite_seek`
+- [x] `sqlite_single_query`
+- [x] `sqlite_udf_decode_binary`
+- [x] `sqlite_udf_encode_binary`
+- [x] `sqlite_unbuffered_query`
+- [x] `sqlite_valid`
+
 ### Method
 
 ### Parameter
@@ -100,6 +184,8 @@ Deprecated or removed
 - [x] `safe_mode_protected_env_vars'`
 
 ### Extension
+
+- [x] `sqlite` (sqlite3 is still available)
 
 Added
 -----
