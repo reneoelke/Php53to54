@@ -17,7 +17,7 @@ class SafeModeINIDirectivesTest extends \AbstractPhpcsTestCase
     /** {@inheritdoc} */
     public function fixtureSniffProvider()
     {
-        $this->fixture = __DIR__ . '/_fixtures/safeModeIniDirectives/1.inc';
+        $this->fixture = __DIR__ . '/_fixtures/iniDirectives/safeMode.inc';
         return parent::fixtureSniffProvider();
     }
 }
