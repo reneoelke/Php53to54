@@ -2,8 +2,12 @@
 
 // valid calls
 putenv(' TZ=anything');
-
 echo "putenv('TZ_anything')";
+getenv('TZ');
 
 // invalid calls
-putenv('TZ=Europe/Amsterdam');
+putenv(
+    /* comment */
+    "TZ=Europe/Amsterdam");
+putenv("TZ=" . '*');
+putenv( "TZ=$timezone" );
