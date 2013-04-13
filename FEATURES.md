@@ -172,8 +172,17 @@ Deprecated or removed
 
 ### Method
 
-### Parameter
+### Function arguments
 
+**hash**
+
+`salsa10` and `salsa20` are no longer valid algorithms for
+- [ ] `string hash ( string $algo , string $data [, bool $raw_output = false])`
+- [ ] `string hash_file ( string $algo , string $filename [, bool $raw_output = false])`
+- [ ] `resource hash_init ( string $algo [, int $options = 0 [, string $key = NULL]])`
+- [ ] `string hash_hmac ( string $algo , string $data , string $key [, bool $raw_output = false ] )`
+- [ ] `string hash_hmac_file ( string $algo , string $filename , string $key [, bool $raw_output = false])`
+    
 ### INI directives
 
 **generic**
