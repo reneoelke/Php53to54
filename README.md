@@ -51,12 +51,28 @@ You can find more options and arguments (f.i. ignoring files, extensions, memory
 Development
 -----------
 
+Install with
+
+    composer install --dev
+
 Before you send a pull request make sure to add a test for your changes.
 
 Both testsuite and coding standard tests must pass before a pull request can be accepted:
 
-    phpunit
+    vendor/bin/phpunit
     vendor/bin/phpcs --standard=psr2 Sniffs/ AbstractSniff.php
+
+The testsuite utilises integration tests for a single or few sniffs and a single file at a time.
+If such a test fails you will get a `Mismatch between expected and reported %` message and a dump.
+
+Dumped is a multidimensional array with lines formated like
+```php
+   ROW . ':' . COLUMN => array(ERROR_CODE, SERVERITY),
+   // example
+   # '8:1' => array('Php53to54.Generic.ForbiddenInterfaceNames.invalidInterfaceName', 5)
+```
+
+Usually you will only see missing or additional error offsets.
 
 Participate!
 ------------
