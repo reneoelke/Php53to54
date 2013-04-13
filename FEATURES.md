@@ -22,6 +22,8 @@ Known issues
 - [ ] added function collision should give an error, not a warning
 - [ ] method (call) is detected as function (call)
 - [ ] removed INI keys should be tested for `ini_set` and `ini_get`
+- [ ] closure `use ($x[, $y]*)` arguments are parsed as function parameters
+- [ ] warning for disallowed function parameter while those cause the script to fail
 
 Deprecated or removed
 ---------------------
@@ -370,6 +372,20 @@ Language features/ changed behaviour
 - [ ] `array_combine($array1, $array2)`
       does return `array()` if both arguments are empty.
       Did return `false` and trigger `E_WARNING` before.
+
+### Restricted method argument names
+
+- [x] `$GLOBALS`
+- [x] `$_SERVER`
+- [x] `$_GET`
+- [x] `$_POST`
+- [x] `$_SET`
+- [x] `$_FILES`
+- [x] `$_COOKIE`
+- [x] `$_SESSION`
+- [x] `$_REQUEST`
+- [x] `$_ENV`
+
 
 ### CallTimePassByReference
 
