@@ -1,37 +1,41 @@
 <?php
 
-function foo($_GET,$_POST, $GLOBALS) {
+// valid
+function batz($foo, $bar) {}
+$foo($_GET);
+foo($_GET);
+$obj->foo($_GET);
+myClass::foo($_GET);
+$_GET = array();
+$x = function ($x) use ($_GET) {};
 
-}
+// invalid
+function foo($_GET,$_POST, $GLOBALS) {}
 
 function abc(
-$GLOBALS
+    $foo,
+    $bugs = '$_GET',
+    $GLOBALS
 ) {
 
 }
 
-function bar(array $_GET, $_POST, callable $GLOBALS) {
-
+class MyClass {
+    abstract function bar($_GET);
 }
 
-function batz($foo, $bar) {
+function bar(array $_GET, callable $GLOBALS) {}
 
-}
-
-$callback =
-	function($a, $_GET) use ($x, $y)
-	{
-
-	};
+$callback = function($a, $_GET) use ($x, $y) {};
 
 // checklist
-        '$GLOBALS' => true,
-        '$_SERVER' => true,
-        '$_GET' => true,
-        '$_POST' => true,
-        '$_SET' => true,
-        '$_FILES' => true,
-        '$_COOKIE' => true,
-        '$_SESSION' => true,
-        '$_REQUEST' => true,
-        '$_ENV' => true,
+function foo($GLOBALS) {}
+function foo($_SERVER) {}
+function foo($_GET) {}
+function foo($_POST) {}
+function foo($_SET) {}
+function foo($_FILES) {}
+function foo($_COOKIE) {}
+function foo($_SESSION) {}
+function foo($_REQUEST) {}
+function foo($_ENV) {}
