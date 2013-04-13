@@ -20,6 +20,7 @@ Known issues
 - [ ] added functions are reported as deprecated (wrong base sniff used)
 - [ ] added functions are only detected on use, not on definition
 - [ ] added function collision should give an error, not a warning
+- [ ] method (call) is detected as function (call)
 
 Deprecated or removed
 ---------------------
@@ -74,13 +75,16 @@ Deprecated or removed
 
 **generic**
 
- - [x] `define_syslog_variables`
- - [x] `import_request_variables`: consider using `extract`
- - [x] `session_is_registered`: use `$_SESSION`
- - [x] `session_register`: use `$_SESSION`
- - [x] `session_unregister`: use `$_SESSION`
- - [x] `mcrypt_generic_end`
- - [x] `mysql_list_dbs`
+- [x] `define_syslog_variables`
+- [x] `import_request_variables`: consider using `extract`
+- [x] `session_is_registered`: use `$_SESSION`
+- [x] `session_register`: use `$_SESSION`
+- [x] `session_unregister`: use `$_SESSION`
+- [x] `mcrypt_generic_end`
+- [x] `mysql_list_dbs`
+- [x] `get_magic_quotes_runtime`
+- [x] `get_magic_quotes_gpc`
+- [x] `set_magic_quotes_runtime`
 
 **mysqli**
 
@@ -351,14 +355,20 @@ Added
 
 ### Extension
 
-Language features
------------------
+Language features/ changed behaviour
+------------------------------------
 
 ### Keyword
 
 - [ ] `callable`
 - [ ] `insteadof`
 - [ ] `trait`
+
+### Function
+
+- [ ] `array_combine($array1, $array2)`
+      does return `array()` if both arguments are empty.
+      Did return `false` and trigger `E_WARNING` before.
 
 ### CallTimePassByReference
 
