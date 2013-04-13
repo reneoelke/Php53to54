@@ -415,3 +415,24 @@ Language features/ changed behaviour
 ### *nix
 
 - [x] `TZ` environment variable should no longer be relied on (tests `putenv("TZ=*")`)
+
+### htmlentities with asian encodings causes `E_STRICT`
+
+- [ ] detect usage of asian encodings
+```php
+array(
+    'BIG5',
+    '950', // alias for BIG5
+    'GB2312',
+    '936', // alias for GB2312
+    'BIG5-HKSCS',
+    'Shift_JIS',
+    'SJIS', // alias for Shift_JIS
+    'SJIS-win', // alias for Shift_JIS
+    '932', // alias for Shift_JIS
+    'cp932', // alias for Shift_JIS
+    'EUC-JP',
+    'EUCJP', // alias for EUC-JP
+    'eucJP-win', // alias for EUC-JP
+)
+```
