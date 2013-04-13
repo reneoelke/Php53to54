@@ -47,11 +47,18 @@ class HtmlentitiesAsianCharsetsSniff extends AbstractSniff
     // from http://en.wikipedia.org/wiki/Character_set
     protected $invalidEncodings = array(
         'BIG5',
+        '950', // alias for BIG5
         'GB2312',
-        'GB2312',
+        '936', // alias for GB2312
         'BIG5-HKSCS',
         'Shift_JIS',
+        'SJIS', // alias for Shift_JIS
+        'SJIS-win', // alias for Shift_JIS
+        '932', // alias for Shift_JIS
+        'cp932', // alias for Shift_JIS
         'EUC-JP',
+        'EUCJP',
+        'eucJP-win',
     );
 
     /**
