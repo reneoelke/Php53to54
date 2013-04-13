@@ -418,7 +418,8 @@ Language features/ changed behaviour
 
 ### htmlentities with asian encodings causes `E_STRICT`
 
-- [ ] detect usage of asian encodings
+- [ ] detect usage of asian encodings:
+
 ```php
 array(
     'BIG5',
