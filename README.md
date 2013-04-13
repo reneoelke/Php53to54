@@ -3,7 +3,9 @@ Php53to54
 
 Php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
-Features
+**This project is currently under development**
+ 
+ Features
 --------
 
 * Check for removed, deprecated or changed function, methods, constants etc. including stuff from removed or changed extensions
@@ -12,6 +14,8 @@ Features
 * Namespace-aware scan for class, interface, constant definitions that would collide with new ones
 * Check for invalid `break`/`continue` statements
 * Check for call time pass by reference
+
+[Detailed feature list](FEATURES.md).
 
 Requirements
 ------------
