@@ -65,14 +65,14 @@ Both testsuite and coding standard tests must pass before a pull request can be 
 The testsuite utilises integration tests for a single or few sniffs and a single file at a time.
 If such a test fails you will get a `Mismatch between expected and reported %` message and a dump.
 
-Dumped is a multidimensional array with lines formated like
+Dumped is a multidimensional array with rows formated like
 ```php
    ROW . ':' . COLUMN => array(ERROR_CODE, SERVERITY),
    // example
    # '8:1' => array('Php53to54.Generic.ForbiddenInterfaceNames.invalidInterfaceName', 5)
 ```
 
-Usually you will only see missing or additional error offsets.
+Usually only missing or exceeding offsets should be reported.
 
 Participate!
 ------------
