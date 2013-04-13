@@ -9,11 +9,11 @@ namespace Sniffs\Generic;
  */
 class ForbiddenConstantNamesTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('PHP53to54.Generic.ForbiddenConstantNames');
-    protected $defaultType = "PHP53to54.Generic.ForbiddenConstantNames.invalidConstantName";
+    protected $sniffs = array('php53to54.Generic.ForbiddenConstantNames');
+    protected $defaultType = "php53to54.Generic.ForbiddenConstantNames.invalidConstantName";
 
     protected $errors = array('5:8', '10:9', '13:2');
-    protected $warnings = array('8:9' => 'PHP53to54.Generic.ForbiddenConstantNames.possibleInvalidConstantName');
+    protected $warnings = array('8:9' => 'php53to54.Generic.ForbiddenConstantNames.possibleInvalidConstantName');
 
     /** {@inheritdoc} */
     public function fixtureSniffProvider()

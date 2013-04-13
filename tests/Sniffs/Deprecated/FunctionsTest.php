@@ -9,8 +9,8 @@ namespace Sniffs\Generic;
  */
 class FunctionsTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('PHP53to54.Deprecated.Functions');
-    protected $defaultType = "PHP53to54.Deprecated.Functions.Deprecated";
+    protected $sniffs = array('php53to54.Deprecated.Functions');
+    protected $defaultType = "php53to54.Deprecated.Functions.Deprecated";
 
     protected $errors = array('9:1', '10:1', '11:1', '12:1', '13:1', '14:1', '15:1');
 

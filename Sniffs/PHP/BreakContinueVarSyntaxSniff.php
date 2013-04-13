@@ -101,7 +101,7 @@ class BreakContinueVarSyntaxSniff implements \PHP_CodeSniffer_Sniff
             );
             $nextToken = &$tokens[$nextNotEmptyToken];
 
-            if ( !isset($this->testTokenKeys[$nextToken['code']]) ) {
+            if (!isset($this->testTokenKeys[$nextToken['code']])) {
                 $phpcsFile->addError(
                     'break/continue allows only integers nothing else.',
                     $stackPtr
@@ -109,7 +109,7 @@ class BreakContinueVarSyntaxSniff implements \PHP_CodeSniffer_Sniff
                 break ;
             }
 
-            if ( $nextToken['content'] == '0' ) {
+            if ($nextToken['content'] == '0') {
                 $phpcsFile->addError(
                     'break/continue 0 is no longer allowed. Use without argument.',
                     $stackPtr

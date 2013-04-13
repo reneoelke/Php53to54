@@ -1,7 +1,7 @@
 php53to54
 ===============================================================================
-php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
+php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
 Features
 --------
@@ -21,63 +21,42 @@ Requirements
 Installation
 ------------
 
-
-* **Composer** (recommended)
-
-        Add `foobugs/php53to54` to the `require-dev` section of your composer.json and run `composer install`.
-        CodeSniffer can now be accessed from `vendor/bin/phpcs`.
-
 For the next two options make sure you’ve PHP_CodeSniffer installed. After that you can either put this standard into the PHP_CodeSniffer Standards directory located in your PEAR directory: (`pear/PHP/CodeSniffer/Standards`) or place the standard somewhere else and use it as standalone standard.
 
-### Composer
+### Composer (recommended)
 
-You cann add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
+You can add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
 
-	"require": {
-    	"foobugs-standards": "php53to54",
-	}
-
-After an update with `composer update`, you’re able to include the standard via the full path using the `--standard` parameter:
-
-	vendor/bin/phpcs --standard="`pwd`/vendor/foobugs-standards/php53to54" <targetDir>
-
-### Download
-	
-Download the [zip master](https://github.com/foobugs-standards/php53to54/archive/master.zip) from github and extract it in the PHP_CodeSniffer Standards directory.
-
-### Git-Clone-Install
-
-This script will go to your PHP_CodeSniffer Standards directory and place
-a clone of php53to54 Standard inside of it:
-
-Development
------------
-
-A patch is needed for phpcs to work with namespaces and symlinks. In order to use unit tests you need to
-
-    composer.phar --dev --prefer-source install
+    "require-dev": {
+        "foobugs-standards/php53to54": "*",
+    }
 
 Usage
 -----
 
-### Installed standard
+### Composer install
 
-If you have this standard copied or cloned into the PHP_CodeSniffer Standards directory the standard should be listed when calling:
+After an update with `composer install --dev`, you are able to include the standard like:
 
-	phpcs -i
-
-If `php53to54` is listed there you’re ready to use this standard on any directory:
-
-	phpcs --standard=php53to54 <source-path>
+    vendor/bin/phpcs --standard=php53to54 <source-path>
 
 ### External standard
-	
+    
 If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
-	phpcs --standard=/Users/frank/Downloads/php53to54 <source-path>
+    phpcs --standard=/Users/frank/Downloads/php53to54 <source-path>
 
 You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 
+Development
+-----------
+
+Before you send a pull request make sure to add a test for your changes.
+
+Both testsuite and coding standard tests must pass before a pull request can be accepted:
+
+    phpunit
+    vendor/bin/phpcs --standard=psr2 Sniffs/ AbstractSniff.php
 
 Participate!
 ------------

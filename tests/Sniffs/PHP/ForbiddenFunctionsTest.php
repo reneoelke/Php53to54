@@ -9,8 +9,8 @@ namespace Sniffs\Generic;
  */
 class ForbiddenFunctionNamesTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('PHP53to54.PHP.ForbiddenFunctionNames');
-    protected $defaultType = "PHP53to54.PHP.ForbiddenFunctionNames";
+    protected $sniffs = array('php53to54.PHP.ForbiddenFunctionNames');
+    protected $defaultType = "php53to54.PHP.ForbiddenFunctionNames";
 
     protected $errors = array('19:5');
 

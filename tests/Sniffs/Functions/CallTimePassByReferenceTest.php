@@ -9,8 +9,8 @@ namespace Sniffs\Generic;
  */
 class CallTimePassByReferenceTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('PHP53to54.Functions.CallTimePassByReference');
-    protected $defaultType = "PHP53to54.Functions.CallTimePassByReference.NotAllowed";
+    protected $sniffs = array('php53to54.Functions.CallTimePassByReference');
+    protected $defaultType = "php53to54.Functions.CallTimePassByReference.NotAllowed";
 
     protected $errors = array('41:13', '42:4', '43:13', '44:16', '45:10', '47:18', '50:15', '52:5');
 

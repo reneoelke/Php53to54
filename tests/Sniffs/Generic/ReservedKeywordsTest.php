@@ -9,8 +9,8 @@ namespace Sniffs\Generic;
  */
 class ReservedKeywordsTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('PHP53to54.Generic.ReservedKeywords');
-    protected $defaultType = "PHP53to54.Generic.ReservedKeywords.unknown";
+    protected $sniffs = array('php53to54.Generic.ReservedKeywords');
+    protected $defaultType = "php53to54.Generic.ReservedKeywords.unknown";
 
     protected $errors = array('4:19', '5:7', '9:21', '13:10');
 

@@ -30,5 +30,5 @@ namespace PHP53to54\Sniffs\Functions;
  */
 class CallTimePassByReferenceSniff extends \Generic_Sniffs_Functions_CallTimePassByReferenceSniff
 {
-
+    // empty
 }

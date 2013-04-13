@@ -141,10 +141,7 @@ abstract class AbstractSniff implements \PHP_CodeSniffer_Sniff
         $parameters = array();
         $tmpPtr = $openBracket;
         $parameterIndex = 1;
-        while (
-            ($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr))
-            !== false
-        ) {
+        while (($tmpPtr = $phpcsFile->findNext(array(T_VARIABLE), $tmpPtr)) !== false) {
             if ($tmpPtr > $closeBracket) {
                 break;
             }
