@@ -199,10 +199,6 @@ Deprecated or removed
 
 - [x] `sqlite` (sqlite3 is still available)
  
-### `E_ALL` includes `E_STRICT`
-
-- [x] detects `error_reporting(E_ALL | ESTRICT)`
-
 Added
 -----
 
@@ -401,3 +397,11 @@ Language features/ changed behaviour
 - [ ] integer less than one
 - [ ] ignore comments and brackets
 - [ ] ignore integer strings (if greater than zero)
+
+### `E_ALL` includes `E_STRICT`
+
+- [x] detects `error_reporting(E_ALL | ESTRICT)`
+
+### *nix
+
+- [x] `TZ` environment variable should no longer be relied on (tests `putenv("TZ=*")`)
