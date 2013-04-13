@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ruleset name="php53to54">
+<ruleset name="Php53to54">
   <description>PHP_CodeSniffer standard for compatibility checking of PHP 5.3 to 5.4 migrations.</description>
-  <rule ref="PHP53to54.Generic.ForbiddenClassNames">
+  <rule ref="Php53to54.Generic.ForbiddenClassNames">
     <properties>
       <property name="names" value="
         CallbackFilterIterator
@@ -15,13 +15,13 @@
       <property name="checkNamespace" value="true" />
     </properties>
   </rule>
-  <rule ref="PHP53to54.Generic.ForbiddenInterfaceNames">
+  <rule ref="Php53to54.Generic.ForbiddenInterfaceNames">
     <properties>
       <property name="checkNamespace" value="true" />
       <property name="names" value="JsonSerializable,SessionHandlerInterface" />
     </properties>
   </rule>
-  <rule ref="PHP53to54.Generic.ForbiddenConstantNames">
+  <rule ref="Php53to54.Generic.ForbiddenConstantNames">
     <properties>
       <property name="checkNamespace" value="true" />
       <property name="names" value="
@@ -105,7 +105,7 @@
       " />
     </properties>
   </rule>
-  <rule ref="PHP53to54.Generic.RemovedINIDirectives">
+  <rule ref="Php53to54.Generic.RemovedINIDirectives">
     <properties>
       <property name="names" value="
         magic_quotes_runtime

@@ -9,8 +9,8 @@ namespace Sniffs\Generic;
  */
 class ForbiddenInterfaceNamesTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('php53to54.Generic.ForbiddenInterfaceNames');
-    protected $defaultType = "php53to54.Generic.ForbiddenInterfaceNames.invalidInterfaceName";
+    protected $sniffs = array('Php53to54.Generic.ForbiddenInterfaceNames');
+    protected $defaultType = "Php53to54.Generic.ForbiddenInterfaceNames.invalidInterfaceName";
 
     protected $errors = array('4:1', '6:1', '8:1', '10:1');
 

@@ -10,8 +10,8 @@ namespace Sniffs\Extensions;
  */
 class SQLiteFunctionNamesTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('php53to54.Extensions.SQLiteFunctions');
-    protected $defaultType = "php53to54.Extensions.SQLiteFunctions.Deprecated";
+    protected $sniffs = array('Php53to54.Extensions.SQLiteFunctions');
+    protected $defaultType = "Php53to54.Extensions.SQLiteFunctions.Deprecated";
 
     /** {@inheritdoc} */
     public function fixtureSniffProvider()

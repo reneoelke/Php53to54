@@ -1,7 +1,7 @@
-php53to54
+Php53to54
 ===============================================================================
 
-php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
+Php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
 Features
 --------
@@ -28,7 +28,7 @@ For the next two options make sure you’ve PHP_CodeSniffer installed. After tha
 You can add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
 
     "require-dev": {
-        "foobugs-standards/php53to54": "*",
+        "foobugs-standards/Php53to54": "*",
     }
 
 Usage
@@ -38,13 +38,13 @@ Usage
 
 After an update with `composer install --dev`, you are able to include the standard like:
 
-    vendor/bin/phpcs --standard=php53to54 <source-path>
+    vendor/bin/phpcs --standard=Php53to54 <source-path>
 
 ### External standard
     
 If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
-    phpcs --standard=/Users/frank/Downloads/php53to54 <source-path>
+    phpcs --standard=/Users/frank/Downloads/Php53to54 <source-path>
 
 You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 
@@ -61,4 +61,4 @@ Both testsuite and coding standard tests must pass before a pull request can be 
 Participate!
 ------------
 
-You can participate in this project by forking the [Repository](https://github.com/foobugs-standards/php53to54/) and push changes back to the project. Feel free to post issues or whishes in the [issue section](https://github.com/foobugs-standards/php53to54/issues).
+You can participate in this project by forking the [Repository](https://github.com/foobugs-standards/Php53to54/) and push changes back to the project. Feel free to post issues or whishes in the [issue section](https://github.com/foobugs-standards/Php53to54/issues).

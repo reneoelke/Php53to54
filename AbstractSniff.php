@@ -9,11 +9,11 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
 
-namespace PHP53to54;
+namespace Php53to54;
 
 use PHP_CodeSniffer_File;
 
@@ -24,7 +24,7 @@ use LogicException;
 /**
  * AbstractSniff
  *
- * PHP53to54 base class for Sniffs that provides methods that can be used in
+ * Php53to54 base class for Sniffs that provides methods that can be used in
  * various Sniffs.
  *
  * @category  PHP
@@ -33,7 +33,7 @@ use LogicException;
  * @author    Maik Penz // <maik@phpkuh.de>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
 abstract class AbstractSniff implements \PHP_CodeSniffer_Sniff
@@ -63,7 +63,7 @@ abstract class AbstractSniff implements \PHP_CodeSniffer_Sniff
      *
      * @param string $propertyName property name
      *
-     * @return \PHP53to54\AbstractSniff - fluent interface
+     * @return \Php53to54\AbstractSniff - fluent interface
      */
     protected function parseArrayProperty($propertyName)
     {

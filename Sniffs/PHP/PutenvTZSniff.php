@@ -9,11 +9,11 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
 
-namespace PHP53to54\Sniffs\PHP;
+namespace Php53to54\Sniffs\PHP;
 
 use PHP_CodeSniffer_File;
 
@@ -28,7 +28,7 @@ use PHP_CodeSniffer_File;
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
 class PutenvTZSniff extends RemovedFunctionParametersSniff

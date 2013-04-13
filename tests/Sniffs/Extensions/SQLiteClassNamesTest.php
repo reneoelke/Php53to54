@@ -10,8 +10,8 @@ namespace Sniffs\Extensions;
  */
 class SQLiteClassNamesTest extends \AbstractPhpcsTestCase
 {
-    protected $sniffs = array('php53to54.Extensions.SQLite');
-    protected $defaultType = "php53to54.Extensions.SQLite";
+    protected $sniffs = array('Php53to54.Extensions.SQLite');
+    protected $defaultType = "Php53to54.Extensions.SQLite";
 
     protected $errors = array('4:11', '5:11', '6:20', '7:31', '9:14', '10:14', '11:5', '15:6', '16:6', '17:6');
 
