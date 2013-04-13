@@ -24,6 +24,7 @@ Known issues
 - [ ] removed INI keys should be tested for `ini_set` and `ini_get`
 - [ ] closure `use ($x[, $y]*)` arguments are parsed as function parameters
 - [ ] warning for disallowed function parameter while those cause the script to fail
+- [ ] putenv argument parser relies on coding conventions
 
 Deprecated or removed
 ---------------------
