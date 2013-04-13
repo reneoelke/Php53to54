@@ -21,6 +21,7 @@ Known issues
 - [ ] added functions are only detected on use, not on definition
 - [ ] added function collision should give an error, not a warning
 - [ ] method (call) is detected as function (call)
+- [ ] removed INI keys should be tested for `ini_set` and `ini_get`
 
 Deprecated or removed
 ---------------------
