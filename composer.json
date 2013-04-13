@@ -46,6 +46,6 @@
         "goatherd/phpcs_installer": "*"
     },
     "extra": {
-        "phpcs-standard": "php53to54"
+        "phpcs-standard": "Php53to54"
     }
 }
