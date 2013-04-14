@@ -26,6 +26,7 @@ Known issues
 - [ ] warning for disallowed function parameter while those cause the script to fail
 - [ ] putenv argument parser relies on coding conventions
 - [ ] heredoc and nowdoc are not tested (likely not detected)
+- [ ] `constant($name)` is not tested
 
 Deprecated or removed
 ---------------------
