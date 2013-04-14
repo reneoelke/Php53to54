@@ -13,6 +13,8 @@ class SQLiteConstantNamesTest extends \AbstractPhpcsTestCase
     protected $sniffs = array('Php53to54.Extensions.SQLiteConstants');
     protected $defaultType = "Php53to54.Extensions.SQLiteConstants";
 
+    protected $errors = array('8:11');
+
     /** {@inheritdoc} */
     public function fixtureSniffProvider()
     {

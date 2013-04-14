@@ -15,3 +15,6 @@ define(
 	"MCAST_UNBLOCK_SOURCE",
 	"boobar"
 );
+
+constant('JSON_BIGINT_AS_STRING');
+defined('JSON_BIGINT_AS_STRING');
