@@ -5,6 +5,9 @@ Php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PH
 
 **This project is currently under development**
  
+ 
+[![Build Status](https://secure.travis-ci.org/goatherd/Php53to54.png?branch=next-gen)](https://travis-ci.org/goatherd/Php53to54)
+ 
  Features
 --------
 
