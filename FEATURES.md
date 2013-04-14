@@ -25,6 +25,7 @@ Known issues
 - [ ] closure `use ($x[, $y]*)` arguments are parsed as function parameters
 - [ ] warning for disallowed function parameter while those cause the script to fail
 - [ ] putenv argument parser relies on coding conventions
+- [ ] heredoc and nowdoc are not tested (likely not detected)
 
 Deprecated or removed
 ---------------------
