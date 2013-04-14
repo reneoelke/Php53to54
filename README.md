@@ -32,7 +32,7 @@ For the next two options make sure you’ve PHP_CodeSniffer installed. After tha
 You can add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
 
     "require-dev": {
-        "foobugs-standards/Php53to54": "*",
+        "foobugs-standards/php53to54": "*",
     }
 
 Usage
@@ -42,7 +42,7 @@ Usage
 
 After an update with `composer install --dev`, you are able to include the standard like:
 
-    vendor/bin/phpcs --standard=Php53to54 <source-path>
+    vendor/bin/phpcs --standard=php53to54 <source-path>
 
 ### External standard
     
