@@ -55,12 +55,12 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "rm -f vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54/*",
-            "rm -df vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54",
-            "mkdir vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54",
-            "ln -s ${PWD}/ruleset.xml vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54/ruleset.xml",
-            "ln -s ${PWD}/Sniffs vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54/Sniffs",
-            "ln -s ${PWD}/AbstractSniff.php vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Php53to54/AbstractSniff.php"
+            "rm -f vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/*",
+            "rm -df vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}",
+            "mkdir vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}",
+            "ln -s ${PWD}/ruleset.xml vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/ruleset.xml",
+            "ln -s ${PWD}/Sniffs vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/Sniffs",
+            "ln -s ${PWD}/AbstractSniff.php vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/AbstractSniff.php"
         ]
     }
 }
