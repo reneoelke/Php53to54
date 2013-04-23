@@ -1,15 +1,12 @@
 {
     "name": "foobugs-standards/php53to54",
     "description": "PHP_CodeSniffer standard for compatibility checking of PHP 5.3 to 5.4 migrations.",
-    "version": "0.9",
     "type": "phpcs-standard",
     "keywords": [
         "phpcs",
         "PHP_CodeSniffer",
         "standards",
         "sniff",
-        "migration",
-        "tool",
         "php5.3",
         "php5.4",
         "compatibility",
@@ -37,15 +34,33 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/foobugs-standards/php53to54",
+    "homepage": "https://github.com/foobugs-standards/Php53to54",
     "support": {
-        "issues": "https://github.com/foobugs-standards/php53to54/issues",
-        "source": "https://github.com/foobugs-standards/php53to54"
+        "issues": "https://github.com/foobugs-standards/Php53to54/issues",
+        "source": "https://github.com/foobugs-standards/Php53to54"
     },
     "require": {
+        "php": ">=5.4.0",
+        "goatherd/phpcs-patch": "*",
         "goatherd/phpcs_installer": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.*"
+    },
+    "autoload": {
+        "psr-0": { "Php53to54\\": "./" }
     },
     "extra": {
         "phpcs-standard": "Php53to54"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "rm -f vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/*",
+            "rm -df vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}",
+            "mkdir vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}",
+            "ln -s ${PWD}/ruleset.xml vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/ruleset.xml",
+            "ln -s ${PWD}/Sniffs vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/Sniffs",
+            "ln -s ${PWD}/AbstractSniff.php vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/${PWD##*/}/AbstractSniff.php"
+        ]
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CallTimePassByReferenceSniff
  *
@@ -10,9 +9,11 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\Functions;
 
 /**
  * CallTimePassByReferenceSniff
@@ -24,10 +25,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Functions_CallTimePassByReferenceSniff extends Generic_Sniffs_Functions_CallTimePassByReferenceSniff
+class CallTimePassByReferenceSniff extends \Generic_Sniffs_Functions_CallTimePassByReferenceSniff
 {
-    
+    // empty
 }

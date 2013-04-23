@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed Function Aliases Test
  *
@@ -10,9 +9,11 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\Deprecated;
 
 /**
  * Deprecated Function Call
@@ -25,11 +26,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Deprecated_FunctionsSniff
-extends Generic_Sniffs_PHP_DeprecatedFunctionsSniff
+class FunctionsSniff extends \Generic_Sniffs_PHP_DeprecatedFunctionsSniff
 {
     /**
      * A list of tokenizers this sniff supports.

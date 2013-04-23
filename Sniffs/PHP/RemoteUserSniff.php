@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Search for usage of $_SERVER['REMOTE_USAGE']
  *
@@ -10,9 +9,15 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\PHP;
+
+use Php53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Search for usage of $_SERVER['REMOTE_USAGE']
@@ -26,11 +31,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_RemoteUserSniff
-extends PHP53to54_AbstractSniff
+class RemoteUserSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -67,7 +71,8 @@ extends PHP53to54_AbstractSniff
         $tokens = $phpcsFile->getTokens();
         $token = $tokens[$stackPtr];
         $content = substr($token['content'], 1, -1);
-        if ($content == 'REMOTE_USER') {
+        // would cause warning if sniff was executed on itself
+        if ($content == 'REMOTE' . '_USER') {
             $phpcsFile->addWarning(
                 'REMOTE_USER is deprecated as SAFE_MODE was removed',
                 $stackPtr

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Removed INI Directives Sniff
  *
@@ -10,9 +9,15 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\PHP;
+
+use Php53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Removed INI Directives Sniff
@@ -25,11 +30,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_PHP_HtmlentitiesAsianCharsetsSniff
-extends PHP53to54_AbstractSniff
+class HtmlentitiesAsianCharsetsSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -43,11 +47,18 @@ extends PHP53to54_AbstractSniff
     // from http://en.wikipedia.org/wiki/Character_set
     protected $invalidEncodings = array(
         'BIG5',
+        '950', // alias for BIG5
         'GB2312',
-        'GB2312',
+        '936', // alias for GB2312
         'BIG5-HKSCS',
         'Shift_JIS',
+        'SJIS', // alias for Shift_JIS
+        'SJIS-win', // alias for Shift_JIS
+        '932', // alias for Shift_JIS
+        'cp932', // alias for Shift_JIS
         'EUC-JP',
+        'EUCJP',
+        'eucJP-win',
     );
 
     /**
@@ -88,7 +99,9 @@ extends PHP53to54_AbstractSniff
         }
         // check if third parameter defined
         $thirdParameter = $this->getFunctionCallParameterByIndex(
-            $phpcsFile, $stackPtr, 2
+            $phpcsFile,
+            $stackPtr,
+            2
         );
         if (!$thirdParameter
             || $thirdParameter['code'] !== T_CONSTANT_ENCAPSED_STRING

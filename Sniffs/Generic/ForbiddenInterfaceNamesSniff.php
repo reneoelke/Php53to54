@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Forbidden Interface Names Sniff
  *
@@ -10,9 +9,15 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\Generic;
+
+use Php53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Forbidden Interface Names Sniff
@@ -24,11 +29,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Generic_ForbiddenInterfaceNamesSniff
-extends PHP53to54_AbstractSniff
+class ForbiddenInterfaceNamesSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -83,19 +87,17 @@ extends PHP53to54_AbstractSniff
 
         $result = true;
         switch($token['code']) {
-        case T_NAMESPACE:
-            $result = $this->processNamespace($phpcsFile, $stackPtr);
-            break;
-
-        case T_INTERFACE:
-        default:
-            if ($this->checkNamespace
-                && $this->getLastNamespaceForFile($phpcsFile)
-            ) {
-                return false;
-            }
-            $result = $this->processInterface($phpcsFile, $stackPtr);
-            break;
+            case T_NAMESPACE:
+                $result = $this->processNamespace($phpcsFile, $stackPtr);
+                break;
+            case T_INTERFACE:
+            default:
+                if ($this->checkNamespace
+                    && $this->getLastNamespaceForFile($phpcsFile)
+                ) {
+                    return false;
+                }
+                $result = $this->processInterface($phpcsFile, $stackPtr);
         }
         return $result;
     }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Search for calls to array_combine
  *
@@ -10,9 +9,15 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\Generic;
+
+use Php53to54\AbstractSniff;
+
+use PHP_CodeSniffer_File;
 
 /**
  * Search for reserved Keywords
@@ -25,11 +30,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Generic_ReservedKeywordsSniff
-extends PHP53to54_AbstractSniff
+class ReservedKeywordsSniff extends AbstractSniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -45,10 +49,10 @@ extends PHP53to54_AbstractSniff
      *
      * @var array
      */
-    private $_keywords = array(
-        'callable',
-        'instanceof',
-        'trait',
+    private $keywords = array(
+        'callable' => false,
+        'instanceof' => false,
+        'trait' => false,
     );
 
     /**
@@ -84,7 +88,7 @@ extends PHP53to54_AbstractSniff
         $tokens = $phpcsFile->getTokens();
         $token = $tokens[$stackPtr]['content'];
 
-        if (true === in_array($token, $this->_keywords)) {
+        if (isset($this->keywords[$token])) {
             $error = sprintf(
                 'Use of reserved keyword "%s"!',
                 $token

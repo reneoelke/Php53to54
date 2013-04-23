@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SQLite Functions search
  *
@@ -10,9 +9,15 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
+
+namespace Php53to54\Sniffs\Extensions;
+
+use PHP_CodeSniffer_File;
+
+use PHP_CodeSniffer_Tokens;
 
 /**
  * SQLite Functions search
@@ -25,11 +30,10 @@
  * @author    Marcel Eichner // foobugs <marcel.eichner@foobugs.com>
  * @copyright 2012 foobugs oelke & eichner GbR
  * @license   BSD http://www.opensource.org/licenses/bsd-license.php
- * @link      https://github.com/foobugs/PHP53to54
+ * @link      https://github.com/foobugs/Php53to54
  * @since     1.0-beta
  */
-class PHP53to54_Sniffs_Extensions_SQLiteSniff
-implements PHP_CodeSniffer_Sniff
+class SQLiteSniff implements \PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -59,7 +63,7 @@ implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array( T_EXTENDS, T_STRING, );
+        return array(T_EXTENDS, T_STRING);
     }
 
     /**
@@ -80,7 +84,9 @@ implements PHP_CodeSniffer_Sniff
         // get previous and next token to determine type of found token
         $nextNotEmptyToken = $phpcsFile->findNext(
             PHP_CodeSniffer_Tokens::$emptyTokens,
-            $stackPtr + 1, null, true
+            $stackPtr + 1,
+            null,
+            true
         );
         $nextToken = $tokens[$nextNotEmptyToken];
 
@@ -105,7 +111,8 @@ implements PHP_CodeSniffer_Sniff
      *
      * @return boolean - always true
      */
-    protected function processStaticMethodCall(PHP_CodeSniffer_File $phpcsFile,
+    protected function processStaticMethodCall(
+        PHP_CodeSniffer_File $phpcsFile,
         $stackPtr
     ) {
         $tokens = $phpcsFile->getTokens();
@@ -128,7 +135,8 @@ implements PHP_CodeSniffer_Sniff
      *
      * @return boolean - always true
      */
-    protected function processExtendStatement(PHP_CodeSniffer_File $phpcsFile,
+    protected function processExtendStatement(
+        PHP_CodeSniffer_File $phpcsFile,
         $stackPtr
     ) {
         $tokens = $phpcsFile->getTokens();

@@ -1,8 +1,12 @@
-php53to54
+Php53to54
 ===============================================================================
-php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
+
+Php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PHP_CodeSniffer) that check an PHP 5.3 application for PHP 5.4 compatibility.
 
 **This project is currently under development**
+ 
+ 
+[![Build Status](https://secure.travis-ci.org/goatherd/Php53to54.png?branch=next-gen)](https://travis-ci.org/goatherd/Php53to54)
  
  Features
 --------
@@ -19,59 +23,65 @@ php53to54 is a collection of sniffs for [PHP_CodeSniffer](http://pear.php.net/PH
 Requirements
 ------------
 
-* [PHP_CodeSniffer 1.3.6+](http://pear.php.net/PHP_CodeSniffer)
+* [composer](http://getcomposer.org/doc/00-intro.md#installation-nix)
 
 Installation
 ------------
 
-Make sure you’ve PHP_CodeSniffer installed. After that you can either put this standard into the PHP_CodeSniffer Standards directory located in your PEAR directory: (`pear/PHP/CodeSniffer/Standards`) or place the standard somewhere else and use it as standalone standard.
+For the next two options make sure you’ve PHP_CodeSniffer installed. After that you can either put this standard into the PHP_CodeSniffer Standards directory located in your PEAR directory: (`pear/PHP/CodeSniffer/Standards`) or place the standard somewhere else and use it as standalone standard.
 
-### Composer
+### Composer (recommended)
 
-You cann add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
+You can add the standard to your vendors directory by adding the dependency to your projects `composer.json`:
 
-	"require": {
-    	"foobugs-standards": "php53to54",
-	}
-
-After an update with `composer update`, you’re able to include the standard via the full path using the `--standard` parameter:
-
-	vendor/bin/phpcs --standard="`pwd`/vendor/foobugs-standards/php53to54" <targetDir>
-
-### Download
-	
-Download the [zip master](https://github.com/foobugs-standards/php53to54/archive/master.zip) from github and extract it in the PHP_CodeSniffer Standards directory.
-
-### Git-Clone-Install
-
-This script will go to your PHP_CodeSniffer Standards directory and place
-a clone of php53to54 Standard inside of it:
-
-	cd `pear config-get php_dir`/PHP/CodeSniffer/Standards
-	git clone git@github.com:foobugs-standards/php53to54.git
+    "require-dev": {
+        "foobugs-standards/php53to54": "*",
+    }
 
 Usage
 -----
 
-### Installed standard
+### Composer install
 
-If you have this standard copied or cloned into the PHP_CodeSniffer Standards directory the standard should be listed when calling:
+After an update with `composer install --dev`, you are able to include the standard like:
 
-	phpcs -i
-
-If `php53to54` is listed there you’re ready to use this standard on any directory:
-
-	phpcs --standard=php53to54 <source-path>
+    vendor/bin/phpcs --standard=php53to54 <source-path>
 
 ### External standard
-	
+    
 If you did not put the Standard into PHP_CodeSniffers Standard directory you can specify the external location of the standard. Note that the path to the standard must be a full qualified path:
 
-	phpcs --standard=/Users/frank/Downloads/php53to54 <source-path>
+    phpcs --standard=/Users/frank/Downloads/Php53to54 <source-path>
 
 You can find more options and arguments (f.i. ignoring files, extensions, memory limit) in the official [PHP_CodeSniffer Manual](http://pear.php.net/manual/en/package.php.php-codesniffer.php).
 
+Development
+-----------
+
+Install with
+
+    composer install --dev
+
+Before you send a pull request make sure to add a test for your changes.
+
+Both testsuite and coding standard tests must pass before a pull request can be accepted:
+
+    vendor/bin/phpunit
+    vendor/bin/phpcs --standard=psr2 Sniffs/ AbstractSniff.php
+
+The testsuite utilises integration tests for a single or few sniffs and a single file at a time.
+If such a test fails you will get a `Mismatch between expected and reported %` message and a dump.
+
+Dumped is a multidimensional array with rows formated like
+```php
+   ROW . ':' . COLUMN => array(ERROR_CODE, SERVERITY),
+   // example
+   # '8:1' => array('Php53to54.Generic.ForbiddenInterfaceNames.invalidInterfaceName', 5)
+```
+
+Usually only missing or exceeding offsets should be reported.
 
 Participate!
 ------------
-You can participate in this project by forking the [Repository](https://github.com/foobugs-standards/php53to54/) and push changes back to the project. Feel free to post issues or whishes in the [issue section](https://github.com/foobugs-standards/php53to54/issues).
+
+You can participate in this project by forking the [Repository](https://github.com/foobugs-standards/Php53to54/) and push changes back to the project. Feel free to post issues or whishes in the [issue section](https://github.com/foobugs-standards/Php53to54/issues).
